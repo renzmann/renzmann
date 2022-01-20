@@ -1,6 +1,7 @@
 # .bashrc
 
-. $HOME/.func.sh
+# provides the load-funcs function, for sourcing other functions dynamically; (yo dawg...)
+. $HOME/.bash_functions/load-funcs.sh && load-funcs
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
