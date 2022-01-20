@@ -2,7 +2,7 @@
 "                              Keyboard Shortcuts
 " =============================================================================
 " Search for [<letter>] to see what's mapped under <leader><letter>.
-" e.g. /[s] will take you to the settings navigation section.
+" e.g. /[s will take you to the settings navigation section.
 
 " Faster scrolling
 nnoremap <C-e>                2<C-E>
@@ -10,14 +10,14 @@ nnoremap <C-y>                2<C-Y>
 
 " Make spacebar the leader key
 let mapleader=" "
-nnoremap <Space> <Nop>
+nnoremap <Space>              <Nop>
 
 " Case-insensitive search
 nnoremap <leader>/            /\c<Left><Left>
 
 " Make `cgn` operate on the currently selected word
 " https://vi.stackexchange.com/a/18895
-nnoremap <silent> cgn :let @/=expand('<cword>')<cr>cgn
+nnoremap <silent>cgn          :<C-u>let @/=expand('<cword>')<cr>cgn
 
 " [v]imscript execution
 " -----------------------------------------------------------------------
@@ -41,14 +41,9 @@ onoremap i;                   :<C-U>execute "normal! v/;\rhs"<CR>
 " [s]ettings navigation
 " -----------------------------------------------------------------------
 nnoremap <silent><leader>si   :<C-u>e $MYVIMRC<CR>
-nnoremap <silent><leader>sn   :<C-u>e $MYVIMHOME/init.vim<CR>
-nnoremap <silent><leader>sv   :<C-u>e $MYVIMHOME/vimrc<CR>
-nnoremap <silent><leader>sk   :<C-u>e $MYVIMHOME/plugin/keymap.vim<CR>
-nnoremap <silent><leader>sp   :<C-u>e $MYVIMHOME/plugin<CR>
+nnoremap <silent><leader>sk   :<C-u>e $MYVIMHOME/after/plugin/keymap.vim<CR>
+nnoremap <silent><leader>sp   :<C-u>e $MYVIMHOME/after/plugin<CR>
 nnoremap <silent><leader>so   :<C-u>e $MYVIMHOME/after/ftplugin<CR>
-
-" [p]ut files in a :Lexplore window
-nnoremap <silent><leader>p    :<C-u>20Lexplore<CR>
 
 " Capitalize last word while inserting text
 " -----------------------------------------------------------------------
@@ -75,10 +70,11 @@ nnoremap <leader>cv           "+p
 vnoremap <leader>cv           "+p
 vnoremap <leader>cc           "+y
 
-" [f]in[d] [b]uffers and [t]hin[g]s
+" [f]ind files
 " -----------------------------------------------------------------------
-nnoremap <leader>f          :Files<CR>
-nnoremap <leader>b          :Buffers<CR>
-nnoremap <leader>g          :GitFiles<CR>
-nnoremap <leader>t          :Tags<CR>
-nnoremap <leader>d          :Rg<CR>
+nnoremap <leader>f            :<C-u>find<space>.//**<left><left><left>
+
+" open [t]he file [T]ree
+" -----------------------------------------------------------------------
+nnoremap <silent><leader>t    :<C-u>20Lexplore<CR>
+nnoremap <silent><leader>T    :<C-u>20Lexplore %:p:h<CR>
