@@ -58,7 +58,9 @@ set termguicolors
 " colo evening
 " colo renzert  <-- tried my own 'desert' but is bad if `termguiolors` isn't set
 " apprentice is from romainl: github.com/romainl/Apprentice
-colo apprentice
+" colo apprentice
+" gruvbox is from morhetz: github.com/morhetz/gruvbox
+colo gruvbox
 
 " At one point I had set this to the below. See the following for why that might
 " not be a great idea:
