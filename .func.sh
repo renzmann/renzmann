@@ -20,10 +20,11 @@ new-venv () {
 }
 
 vim-add () {
-  author=$(echo $1 | awk -F '/' '{ print $1 }')
-  plugin=$(echo $1 | awk -F '/' '{ print $2 }')
+  local author=$(echo $1 | awk -F '/' '{ print $1 }')
+  local plugin=$(echo $1 | awk -F '/' '{ print $2 }')
+  local branch=$2
+  if [ -z $branch ]; then local branch="master"; fi
   cd $HOME
-  # TODO this will have issues if someone uses `main` instead of `master`
-  git subtree add -P .vim/pack/$author/start/$plugin git@github.com:$1 master --squash
+  git subtree add -P .vim/pack/$author/start/$plugin git@github.com:$1 $branch --squash
   cd -
 }
