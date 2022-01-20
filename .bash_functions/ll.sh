@@ -1,3 +1,1 @@
-ll () {
-  ls -lah
-}
+alias ll="ls -lah"
