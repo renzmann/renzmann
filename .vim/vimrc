@@ -57,7 +57,7 @@ set termguicolors
 " colo koehler
 " colo desert
 " colo evening
-colo desert
+colo renzert
 
 " At one point I had set this to the below. See the following for why that might
 " not be a great idea:
