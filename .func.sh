@@ -31,7 +31,7 @@ vim-add () {
   local plugin="$2"
   if [ -z $branch ]; then local branch="master"; fi
   cd $HOME
-  git subtree add -P .vim/pack/$author/start/$plugin git@github.com:$arg $branch --squash
+  git subtree add -P .vim/pack/$author/start/$plugin git@github.com:$author/$plugin --squash
   cd -
 }
 
