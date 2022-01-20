@@ -1,6 +1,10 @@
 *
 !.vim
+!.vim/**
+*.swp
+*.netrwhist
+!.profile
 !.bash_profile
 !.bashrc
+!.bash_functions
 !.bash_functions/*
-!.profile
