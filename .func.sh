@@ -3,7 +3,7 @@
 funced () {
   local name=$1
   linenum=$(grep -En "^$name \(" $HOME/.func.sh | awk -F ':' '{ print $1 }')
-  vim +$linenum "$HOME/.func.sh"
+  vim +$linenum "$HOME/.func.sh" && source $HOME/.func.sh
 }
 
 ll () { ls -lah; }
@@ -20,7 +20,9 @@ new-venv () {
 }
 
 vim-add () {
-  # Should get something like tpope/vim-sensible and then execute:
-  # git subtree add -P .vim/pack/tpope/start/vim-sensible git@github.com:tpope/vim-sensible --squash
-  ...
+  author=$(echo $1 | awk -F '/' '{ print $1 }')
+  plugin=$(echo $1 | awk -F '/' '{ print $2 }')
+  cd $HOME
+  git subtree add -P .vim/pack/$author/start/$plugin git@github.com:$1 --squash
+  cd -
 }
