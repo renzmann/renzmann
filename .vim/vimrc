@@ -56,10 +56,16 @@ set termguicolors
 " colo koehler
 " colo desert
 " colo evening
-" colo renzert  <-- tried my own 'desert' but is bad if `termguiolors` isn't set
-" apprentice is from romainl: github.com/romainl/Apprentice
-" colo apprentice
-" gruvbox is from morhetz: github.com/morhetz/gruvbox
+" if has("termguicolors")
+"   colo renzert
+" else
+"   " gruvbox is from morhetz: github.com/morhetz/gruvbox
+"   colo gruvbox
+"   " apprentice is from romainl: github.com/romainl/Apprentice
+"   " and also works well on terminals without gui colors
+"   " colo apprentice
+" end
+" I call uncle on colors - I can't get it working as well out of the box as gruvbox
 colo gruvbox
 
 " At one point I had set this to the below. See the following for why that might
