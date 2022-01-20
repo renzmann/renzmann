@@ -1,1 +1,6 @@
 *
+!.vim
+!.bash_profile
+!.bashrc
+!.bash_functions/*
+!.profile
