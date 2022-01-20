@@ -23,7 +23,7 @@ new-venv () {
 
 # Section: vim
 vim-add () {
-  logal arg=$1
+  local arg=$1
   local branch=$2
   local IFS='/'
   set -- $arg
