@@ -9,7 +9,7 @@ if exists(":CompilerSet") != 2 " older Vim always used :setlocal
 endif
 
 
-CompilerSet makeprg=mypy\ --check-untyped-defs\ --ignore-missing-import\ \"%:p:h\"
+CompilerSet makeprg=mypy\ --check-untyped-defs\ \"%\"
 CompilerSet errorformat=
             \%E%f:%l:\ error:\ %m,
             \%I%f:%l:\ note:\ %m
