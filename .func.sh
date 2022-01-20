@@ -23,6 +23,7 @@ vim-add () {
   author=$(echo $1 | awk -F '/' '{ print $1 }')
   plugin=$(echo $1 | awk -F '/' '{ print $2 }')
   cd $HOME
-  git subtree add -P .vim/pack/$author/start/$plugin git@github.com:$1 --squash
+  # TODO this will have issues if someone uses `main` instead of `master`
+  git subtree add -P .vim/pack/$author/start/$plugin git@github.com:$1 master --squash
   cd -
 }
