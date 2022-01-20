@@ -5,4 +5,4 @@ iab innit def __init__(self,
 " see :help make_makeprg and :help errorformat
 " setlocal errorformat="%f:%l:%c: %t%n: %m"
 
-compiler mypy
+compiler flake8
