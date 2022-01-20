@@ -1,3 +1,3 @@
 # renzmann
 
-My dotfiles and whatnot.
+I do science; mostly in python
