@@ -1,3 +1,1 @@
-la () {
-  ls -A
-}
+alias la="ls -A"

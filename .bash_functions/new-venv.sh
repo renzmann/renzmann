@@ -1,4 +1,4 @@
-new-venv () {
+new-venv() {
   if [ -z "$1" ]; then
     local name=".venv"
   else
