@@ -1,4 +1,4 @@
-vim-add () {
+vim-add() {
   local arg="$1"
   local branch="$2"
   local IFS='/'

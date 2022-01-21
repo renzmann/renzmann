@@ -1,4 +1,4 @@
-vim-rm () {
+vim-rm() {
   local IFS='/'
   set -- $1
   local author=$1
