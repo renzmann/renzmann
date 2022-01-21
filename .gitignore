@@ -8,3 +8,4 @@
 !.bashrc
 !.bash_functions
 !.bash_functions/*
+.bash_functions/*.swp
