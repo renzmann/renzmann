@@ -68,6 +68,6 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Make <C-q> work in vim
-stty start undef
+[[ $- == *i* ]] && stty start undef
 # Don't hang on ctrl-s https://unix.stackexchange.com/a/12108
-stty -ixon
+[[ $- == *i* ]] && stty -ixon
