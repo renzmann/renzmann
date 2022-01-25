@@ -7,8 +7,8 @@
 "
 " Thanks to: https://stackoverflow.com/a/3384476/13215205
 "
-" $ git clone --recurse-submodules git@github.com:renzmann/.vim ~/robbvim
-" $ vim -u ~/robbvim/vimrc
+" $ git clone git@github.com:renzmann/renzmann
+" $ vim -u ~/renzmann/.vim/vimrc
 "
 " set default 'runtimepath' (without ~/.vim folders)
 let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME, $VIM)
@@ -120,7 +120,6 @@ end
 let g:netrw_liststyle = 3
 " suppress the banner
 let g:netrw_banner = 0
-
 
 " =============================================================================
 " Section: slime customization

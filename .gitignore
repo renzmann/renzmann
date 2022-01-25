@@ -1,4 +1,6 @@
 *
+!.git-prompt.sh
+!.flake8
 !.vim
 !.vim/**
 *.swp

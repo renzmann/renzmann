@@ -1,1 +1,1 @@
-command! Ctags !ctags -R --exclude={ .venv, node_modules }
+command! Ctags !ctags -R --exclude={.*,node_modules}
