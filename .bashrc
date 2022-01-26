@@ -1,6 +1,7 @@
 # .bashrc
 
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/share/coursier/bin:$PATH
 . $HOME/.git-prompt.sh
 
 # provides the load-funcs function, for sourcing other functions dynamically; (yo dawg...)
