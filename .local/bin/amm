@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# RAE 2022-01-25: Adapted from https://github.com/com-lihaoyi/Ammonite/releases/download/2.5.1/2.13-2.5.1
+# This is a wrapper script, that automatically download ammonite from GitHub release pages
+# You can give the required ammonite version with AMM_VERSION env variable
+# If no version is given, it falls back to the value of DEFAULT_AMM_VERSION
+set -e
+
+_amm() {
+  local default_amm_version=2.5.1
+  local default_scala_version=3.0
+
+  if [[ -z $AMM_VERSION ]] ; then
+    local amm_version=$default_amm_version
+  else
+    local amm_version=$AMM_VERSION
+  fi
+
+  if [[ -z $AMM_SCALA_VERSION ]] ; then
+    local scala_version=$default_scala_version
+  else
+    local scala_version=$AMM_SCALA_VERSION
+  fi
+
+  local amm_download_path="$HOME/.ammonite/download"
+  local amm_exec_path="${amm_download_path}/${amm_version}_${scala_version}"
+
+  if [ ! -x "$amm_exec_path" ] ; then
+    mkdir -p $amm_download_path
+    local download_file=$amm_exec_path-tmp-download
+    local amm_download_url="https://github.com/lihaoyi/ammonite/releases/download/${amm_version%%-*}/$scala_version-$amm_version"
+    curl --fail -L -o "$download_file" "$amm_download_url"
+    chmod +x "$download_file"
+    mv "$download_file" "$amm_exec_path"
+  fi
+
+  exec $amm_exec_path "$@"
+}
+
+_amm $@
