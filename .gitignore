@@ -11,3 +11,6 @@
 !.bash_functions
 !.bash_functions/*
 .bash_functions/*.swp
+!.local
+!.local/bin
+!.local/bin/amm
