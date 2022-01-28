@@ -59,17 +59,12 @@ end
 " colo koehler
 " colo desert
 " colo evening
-" if has("termguicolors")
-"   colo renzert
-" else
-"   " gruvbox is from morhetz: github.com/morhetz/gruvbox
-"   colo gruvbox
-"   " apprentice is from romainl: github.com/romainl/Apprentice
-"   " and also works well on terminals without gui colors
-"   " colo apprentice
-" end
+
+" Custom colors that are okay:
+" colo renzert     " my own adaption of desert
+" colo apprentice  " from romainl: github.com/romainl/Apprentice
+colo gruvbox       " from morhetz: github.com/morhetz/gruvbox
 " I call uncle on colors - I can't get it working as well out of the box as gruvbox
-colo gruvbox
 
 " At one point I had set this to the below. See the following for why that might
 " not be a great idea:
