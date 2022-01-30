@@ -41,6 +41,9 @@
 ;; Stop stupid bell
 (setq ring-bell-function 'ignore)
 
+;; clock in statusline
+(display-time)
+
 ;; Enable split-window dired copying
 (setq dired-dwim-target t)
 
@@ -53,7 +56,7 @@
 (setq display-line-numbers-type 'relative)
 
 ;; Automatically create matching parens in lisp mode
-(add-hook 'prog-mode-hook (electric-pair-mode t))
+(add-hook 'lisp-mode (electric-pair-mode t))
 
 ;; Ido (Interactively DO) adds some completion niceties and is distributed
 ;; with emacs. https://www.gnu.org/software/emacs/manual/html_mono/ido.html#Overview
@@ -73,7 +76,7 @@
 
 ;; Version control (magit)
 (use-package magit :ensure magit)
-(global-set-key (kbd "C-x C-k") 'magit)
+(global-set-key (kbd "C-; g") 'magit)
 
 ;; evil - vim keybindings
 ;; resist the temptation... but in case we want it it's here.
@@ -82,6 +85,13 @@
 
 ;; Color theme
 (load-theme 'wombat)
+
+;; show markers for trailing whitespace and delete on save
+(setq-default show-trailing-whitespace t)
+(add-hook 'beore-save-hook 'delete-trailing-whitespace)
+
+;; delete trailing whitespace
+(global-set-key (kbd "C-; t w") 'delete-trailing-whitespace)
 
 ;; =======================================================================
 ;; Extra file modes
