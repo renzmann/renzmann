@@ -14,3 +14,5 @@
 !.local
 !.local/bin
 !.local/bin/amm
+!.emacs.d
+!.emacs.d/init.el
