@@ -93,6 +93,9 @@
 ;; delete trailing whitespace
 (global-set-key (kbd "C-; t w") 'delete-trailing-whitespace)
 
+;; don't wrap lines
+(setq-default truncate-lines t)
+
 ;; =======================================================================
 ;; Extra file modes
 ;; =======================================================================
