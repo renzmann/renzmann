@@ -5,8 +5,8 @@ new-venv() {
     local name="$1"
   fi
 
-  python3 -m venv $name \
+  python3 -m venv $name --upgrade-deps\
     && source $name/bin/activate \
-    && python3 -m pip install --upgrade pip wheel
+    && python3 -m pip install --upgrade wheel
 }
 
