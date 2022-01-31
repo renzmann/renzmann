@@ -116,6 +116,11 @@
 ;; (use-package evil :ensure evil)
 ;; (global-set-key (kbd "C-;") 'evil-mode)
 
+(defun funced (name)
+  "Edit a bash function."
+  (interactive "sFunction to edit: ")
+  (find-file (format "~/.bash_functions/%s.sh" name)))
+
 ;; =======================================================================
 ;; Extra file modes
 ;; =======================================================================
