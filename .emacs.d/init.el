@@ -99,13 +99,6 @@
 ;; don't wrap lines
 (setq-default truncate-lines t)
 
-;; =======================================================================
-;; Extra file modes
-;; =======================================================================
-(use-package vimrc-mode :ensure vimrc-mode)
-(use-package yaml-mode :ensure yaml-mode)
-(use-package markdown-mode :ensure markdown-mode)
-
 ;; Follow symlinks to the real file
 (setq vc-follow-symlinks t)
 
