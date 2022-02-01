@@ -143,20 +143,17 @@
 ;; =======================================================================
 ;; Language config sources
 ;; =======================================================================
-;; Not sure yet what elpy adds on top of built-in. Might add this back
-;; once I know.
-
-;; (setq python-shell-interpreter "ipython"
-;;       python-shell-interpreter-args "-i")
-
-;; (use-package elpy
-;;   :ensure t
-;;   :config
-;;   (elpy-enable)
-;;   (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
-;;   (setq python-shell-interpreter "ipython"
-;; 	python-shell-interpreter-args "-i --simple-prompt")
-;;   (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1))))
+;; We need the virtual environment activation party of elpy in order for
+;; pre-commit hooks to find locally installed dependencies like 'mypy' and
+;; 'pyright'
+(use-package elpy
+  :ensure t
+  :config
+  (elpy-enable)
+  (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
+  (setq python-shell-interpreter "ipython"
+	python-shell-interpreter-args "-i --simple-prompt")
+  (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1))))
 
 ;; just install this on demand - when opening a julia file
 ;; (use-package julia-mode :ensure julia-mode)
