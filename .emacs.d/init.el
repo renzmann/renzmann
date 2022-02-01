@@ -38,6 +38,9 @@
 ;; Basic preferences
 ;; =======================================================================
 
+;; Bigger font
+(set-frame-font "Menlo 14" nil t)
+
 ;; Stop stupid bell
 (setq ring-bell-function 'ignore)
 
