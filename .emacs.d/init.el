@@ -143,7 +143,7 @@
 ;; =======================================================================
 ;; Language config sources
 ;; =======================================================================
-;; We need the virtual environment activation party of elpy in order for
+;; We need the virtual environment activation part of elpy in order for
 ;; pre-commit hooks to find locally installed dependencies like 'mypy' and
 ;; 'pyright'
 (use-package elpy
