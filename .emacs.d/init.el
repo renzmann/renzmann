@@ -123,6 +123,8 @@
 (use-package vimrc-mode :ensure vimrc-mode)
 (use-package yaml-mode :ensure yaml-mode)
 (use-package markdown-mode :ensure markdown-mode)
+;; https://github.com/spotify/dockerfile-mode
+(use-package dockerfile-mode :ensure dockerfile-mode)
 
 ;; =======================================================================
 ;; Projectile - Project Management
