@@ -22,7 +22,7 @@
        (proto (if no-ssl "http" "https")))
   (when no-ssl (warn "Your version of Emacs does not support SSL connections."))
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  )
+)
 (package-initialize)
 
 ;; Install use-package if it hasn't been already
@@ -37,6 +37,8 @@
 ;; =======================================================================
 ;; Basic preferences
 ;; =======================================================================
+;; Color theme
+(load-theme 'wombat)
 
 ;; Bigger font
 (set-frame-font "Menlo 14" nil t)
@@ -60,6 +62,7 @@
 
 ;; Automatically create matching parens in lisp mode
 (add-hook 'lisp-mode (electric-pair-mode t))
+(add-hook 'prog-mode-hook (show-paren-mode t))
 
 ;; Ido (Interactively DO) adds some completion niceties and is distributed
 ;; with emacs. https://www.gnu.org/software/emacs/manual/html_mono/ido.html#Overview
@@ -71,46 +74,23 @@
 ;; Follow symlinks to the real file
 (setq vc-follow-symlinks t)
 
-;; Provides clipboarding to the outside OS
-;; Copy:  C-<Ins>
-;; Paste: S-<Ins>
-;; Cut:   S-<Del>
-(use-package simpleclip :ensure simpleclip)
-
 ;; Version control (magit)
 (use-package magit :ensure magit)
-(global-set-key (kbd "C-; g") 'magit)
 
 ;; evil - vim keybindings
 ;; resist the temptation... but in case we want it it's here.
 ;; (use-package evil :ensure evil)
 ;; (global-set-key (kbd "C-;") 'evil-mode)
 
-;; Color theme
-(load-theme 'wombat)
-
 ;; show markers for trailing whitespace and delete on save
 (setq-default show-trailing-whitespace t)
 (add-hook 'beore-save-hook 'delete-trailing-whitespace)
-
-;; delete trailing whitespace
-(global-set-key (kbd "C-; t w") 'delete-trailing-whitespace)
 
 ;; don't wrap lines
 (setq-default truncate-lines t)
 
 ;; Follow symlinks to the real file
 (setq vc-follow-symlinks t)
-
-;; Provides clipboarding to the outside OS
-;; Copy:  C-<Ins>
-;; Paste: S-<Ins>
-;; Cut:   S-<Del>
-(use-package simpleclip :ensure simpleclip)
-
-;; evil - vim keybindings
-;; (use-package evil :ensure evil)
-;; (global-set-key (kbd "C-;") 'evil-mode)
 
 (defun funced (name)
   "Edit a bash function."
@@ -162,4 +142,5 @@
 ;; (add-hook 'julia-mode-hook 'julia-repl-mode)
 ;; (use-package eglot-jl :ensure eglot-jl)
 
+(load-file "~/.emacs.d/keybindings.el")
 (provide 'init)

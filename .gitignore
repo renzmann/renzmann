@@ -16,3 +16,4 @@
 !.local/bin/amm
 !.emacs.d
 !.emacs.d/init.el
+!.emacs.d/keybindings.el
