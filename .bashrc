@@ -1,7 +1,13 @@
 # .bashrc
 
+local_bin_on_path=$(echo $PATH | grep '/usr/local/bin')
+if [[ -z $local_bin_on_path ]]; then
+  export PATH=/usr/local/bin:$PATH
+fi
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/share/coursier/bin:$PATH
+
+
 . $HOME/.git-prompt.sh
 
 # provides the load-funcs function, for sourcing other functions dynamically; (yo dawg...)
