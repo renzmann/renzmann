@@ -1,3 +1,5 @@
 (global-set-key (kbd "C-; t w") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-; f") 'find-file-at-point)
 (global-set-key (kbd "C-; g") 'magit)
+(global-set-key (kbd "C-; s i") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+(global-set-key (kbd "C-; s k") (lambda () (interactive) (find-file "~/.emacs.d/keybindings.el")))
