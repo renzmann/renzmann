@@ -38,10 +38,11 @@
 ;; Basic preferences
 ;; =======================================================================
 ;; Color theme
-(load-theme 'wombat)
+(use-package gruvbox-theme :ensure t)
+(load-theme 'gruvbox-dark-soft)
 
 ;; Bigger font
-(set-frame-font "Menlo 14" nil t)
+(set-frame-font "JuliaMono 13" nil t)
 
 ;; Stop stupid bell
 (setq ring-bell-function 'ignore)
@@ -54,7 +55,7 @@
 
 ;; If in a GUI, set the window a bit bigger and more centered
 (if (window-system) (set-frame-size (selected-frame) 124 50))
-(if (window-system) (set-frame-position (selected-frame) 400 60))
+(if (window-system) (set-frame-position (selected-frame) 300 30))
 
 ;; Line and number modes
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
