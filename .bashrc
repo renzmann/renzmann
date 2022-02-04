@@ -24,7 +24,7 @@ fi
 # User specific aliases and functions
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  *-color|*-256color|dumb) color_prompt=yes;;
+    screen|*-color|*-256color|dumb) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
