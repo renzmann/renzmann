@@ -92,6 +92,9 @@
 ;; Follow symlinks to the real file
 (setq vc-follow-symlinks t)
 
+;; Make cursor a vertical bar
+(setq-default cursor-type 'bar)
+
 (defun funced (name)
   "Edit a bash function."
   (interactive "sFunction to edit: ")
