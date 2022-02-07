@@ -108,6 +108,7 @@
 (use-package markdown-mode :ensure markdown-mode)
 ;; https://github.com/spotify/dockerfile-mode
 (use-package dockerfile-mode :ensure dockerfile-mode)
+(use-package terraform-mode :ensure terraform-mode)
 
 ;; =======================================================================
 ;; Projectile - Project Management
