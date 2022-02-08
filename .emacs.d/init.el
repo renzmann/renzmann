@@ -105,6 +105,10 @@
   (interactive "sFunction to edit: ")
   (find-file (format "~/.bash_functions/%s.sh" name)))
 
+;; Find recent files
+(require 'recentf)
+(recentf-mode t)
+
 ;; =======================================================================
 ;; Extra file modes
 ;; =======================================================================

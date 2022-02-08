@@ -6,3 +6,5 @@
 (global-set-key (kbd "C-c s i") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 (global-set-key (kbd "C-c s k") (lambda () (interactive) (find-file "~/.emacs.d/keybindings.el")))
 (global-set-key (kbd "C-c v") 'evil-mode)
+(global-set-key (kbd "C-c f") 'recentf-open-files)
+(global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
