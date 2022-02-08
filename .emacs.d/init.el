@@ -61,6 +61,7 @@
 (when (version<= "26.0.50" emacs-version )
   (global-display-line-numbers-mode))
 (setq display-line-numbers-type 'relative)
+(setq column-number-mode t)
 
 ;; Automatically create matching parens in lisp mode
 (add-hook 'lisp-mode (electric-pair-mode t))
@@ -91,6 +92,9 @@
 
 ;; Follow symlinks to the real file
 (setq vc-follow-symlinks t)
+
+;; Delete the region when we yank on top of it
+(delete-selection-mode t)
 
 (defun funced (name)
   "Edit a bash function."
