@@ -135,16 +135,16 @@
 ;; We need the virtual environment activation part of elpy in order for
 ;; pre-commit hooks to find locally installed dependencies like 'mypy' and
 ;; 'pyright'
-(use-package elpy
-  :ensure t
-  :config
-  (elpy-enable)
-  (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
-  (setq python-shell-interpreter "ipython"
-	python-shell-interpreter-args "-i --simple-prompt")
-  (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
-  (setq elpy-rpc-python-command "python3")
-  (setq elpy-rpc-timeout 10))
+;;(use-package elpy
+;;  :ensure t
+;;  :config
+;;  (elpy-enable)
+;;  (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
+;;  (setq python-shell-interpreter "ipython"
+;;	python-shell-interpreter-args "-i --simple-prompt")
+;;  (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
+;;  (setq elpy-rpc-python-command "python3")
+;;  (setq elpy-rpc-timeout 10))
 
 ;; If getting the 'error in process sentinel:
 ;; elpy-rpc--default-error-callback':
@@ -154,8 +154,8 @@
 ;; When flymake backend fails because we haven't activated the venv yet,
 ;; activate it and then reload the buffer using C-x C-v
 ;;    https://emacs.stackexchange.com/a/189
-(setq flymake-start-on-flymake-mode t)
-(setq flymake-start-on-save-buffer t)
+;;(setq flymake-start-on-flymake-mode t)
+;;(setq flymake-start-on-save-buffer t)
 
 ;; f-string highlighting
 ;; https://emacs.stackexchange.com/a/61244
@@ -188,9 +188,24 @@
 ;; =======================================================================
 ;; Completion
 ;; =======================================================================
-;; Elpy installs `company`
+;; Elpy installs `company`, but we ensure it here if we're not using elpy
 ;; https://company-mode.github.io/
+(use-package company :ensure company)
 (add-hook 'after-init-hook 'global-company-mode)
 
+;; =======================================================================
+;; Language server
+;; =======================================================================
+;; "It's elpy or lsp-mode, no reason to use both"
+(use-package lsp-mode :ensure lsp-mode)
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))
+
+;; =======================================================================
+;; Extras
+;; =======================================================================
 (load-file "~/.emacs.d/keybindings.el")
 (provide 'init)
