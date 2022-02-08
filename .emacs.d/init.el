@@ -85,7 +85,7 @@
 
 ;; show markers for trailing whitespace and delete on save
 (setq-default show-trailing-whitespace t)
-(add-hook 'beore-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; don't wrap lines
 (setq-default truncate-lines t)
@@ -95,6 +95,9 @@
 
 ;; Delete the region when we yank on top of it
 (delete-selection-mode t)
+
+;; Make cursor a vertical bar
+(setq-default cursor-type 'bar)
 
 (defun funced (name)
   "Edit a bash function."
@@ -109,6 +112,7 @@
 (use-package markdown-mode :ensure markdown-mode)
 ;; https://github.com/spotify/dockerfile-mode
 (use-package dockerfile-mode :ensure dockerfile-mode)
+(use-package terraform-mode :ensure terraform-mode)
 
 ;; =======================================================================
 ;; Projectile - Project Management
