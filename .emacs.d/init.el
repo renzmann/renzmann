@@ -22,6 +22,7 @@
        (proto (if no-ssl "http" "https")))
   (when no-ssl (warn "Your version of Emacs does not support SSL connections."))
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 )
 (package-initialize)
 
@@ -142,10 +143,17 @@
   (setq python-shell-interpreter "ipython"
 	python-shell-interpreter-args "-i --simple-prompt")
   (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
-;;  (add-hook 'elpy-mode-hook (flymake-start))
   (setq elpy-rpc-python-command "python3")
   (setq elpy-rpc-timeout 10))
 
+;; If getting the 'error in process sentinel:
+;; elpy-rpc--default-error-callback':
+;; reinstall the RPC virtualenv via `M-x elpy-rpc-reinstall-virtualenv'
+;; https://github.com/jorgenschaefer/elpy/issues/1936
+
+;; When flymake backend fails because we haven't activated the venv yet,
+;; activate it and then reload the buffer using C-x C-v
+;;    https://emacs.stackexchange.com/a/189
 (setq flymake-start-on-flymake-mode t)
 (setq flymake-start-on-save-buffer t)
 
@@ -153,6 +161,7 @@
 ;; https://emacs.stackexchange.com/a/61244
 (defconst brace-regexp  "[^{]{[^{}]*}")
 (defconst python-f-string-regexp  "f\\('.*?[^\\]'\\|\".*?[^\\]\"\\)")
+
 (defun python-f-string-font-lock-find (limit)
   (while (re-search-forward python-f-string-regexp limit t)
     (put-text-property (match-beginning 0) (match-end 0)
@@ -162,6 +171,7 @@
         (put-text-property (1+ (match-beginning 0)) (match-end 0)
                            'face 'font-lock-type-face))))
   nil)
+
 (with-eval-after-load 'python
   (font-lock-add-keywords
    'python-mode
@@ -174,6 +184,13 @@
 ;; (use-package flycheck-julia :ensure flycheck-julia)
 ;; (add-hook 'julia-mode-hook 'julia-repl-mode)
 ;; (use-package eglot-jl :ensure eglot-jl)
+
+;; =======================================================================
+;; Completion
+;; =======================================================================
+;; Elpy installs `company`
+;; https://company-mode.github.io/
+(add-hook 'after-init-hook 'global-company-mode)
 
 (load-file "~/.emacs.d/keybindings.el")
 (provide 'init)
