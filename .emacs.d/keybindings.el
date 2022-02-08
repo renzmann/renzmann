@@ -1,6 +1,5 @@
 (global-set-key (kbd "C-c t w") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c f") 'find-file-at-point)
-(global-set-key (kbd "C-c g") 'magit)
 (global-set-key (kbd "C-c p a") 'pyvenv-activate)
 (global-set-key (kbd "C-c p d") 'pyvenv-deactivate)
 (global-set-key (kbd "C-c p f") 'elpy-black-fix-code)
