@@ -197,6 +197,11 @@
 (use-package company :ensure company)
 (add-hook 'after-init-hook 'global-company-mode)
 
+;; Company is not a fuzzy-matcher:
+;; https://github.com/company-mode/company-mode/issues/296#issuecomment-73000089
+(add-to-list 'completion-styles 'initials t)
+
+
 ;; =======================================================================
 ;; Language server
 ;; =======================================================================
@@ -207,6 +212,7 @@
   :hook (python-mode . (lambda ()
                           (require 'lsp-pyright)
                           (lsp-deferred))))
+
 
 ;; =======================================================================
 ;; Extras
