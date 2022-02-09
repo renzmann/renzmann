@@ -109,6 +109,10 @@
 (require 'recentf)
 (recentf-mode t)
 
+;; Add semantic expansion and vim-like "ci" and "ca"
+(use-package expand-region :ensure expand-region)
+(use-package change-inner :ensure change-inner)
+
 ;; =======================================================================
 ;; Extra file modes
 ;; =======================================================================

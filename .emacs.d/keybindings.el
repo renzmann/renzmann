@@ -8,3 +8,6 @@
 (global-set-key (kbd "C-c v") 'evil-mode)
 (global-set-key (kbd "C-c f") 'recentf-open-files)
 (global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-c i") 'change-inner)
+(global-set-key (kbd "C-c a") 'change-outer)
