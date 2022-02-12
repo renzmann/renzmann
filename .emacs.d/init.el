@@ -223,5 +223,5 @@
 ;; =======================================================================
 (load-file "~/.emacs.d/keybindings.el")
 (exec-path-from-shell-initialize)
-(provide 'init)
 (put 'downcase-region 'disabled nil)
+(provide 'init)
