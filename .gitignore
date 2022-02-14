@@ -17,3 +17,7 @@
 !.emacs.d
 !.emacs.d/init.el
 !.emacs.d/keybindings.el
+!.config
+!.config/nvim
+!.config/nvim/*
+!.config/nvim/**
