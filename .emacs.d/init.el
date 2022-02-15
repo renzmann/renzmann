@@ -22,16 +22,15 @@
        (proto (if no-ssl "http" "https")))
   (when no-ssl (warn "Your version of Emacs does not support SSL connections."))
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-)
+  (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/")))
+
 (package-initialize)
 
 ;; Install use-package if it hasn't been already
 (unless (package-installed-p 'use-package)
   (progn
     (package-refresh-contents)
-    (package-install 'use-package))
-)
+    (package-install 'use-package)))
 
 (require 'use-package)
 
@@ -124,22 +123,20 @@
 (use-package terraform-mode :ensure terraform-mode)
 
 ;; =======================================================================
-;; Projectile - Project Management
+;; Projectile and Helm - Project Management and fuzzy searching
 ;; =======================================================================
-;; Used by elpy for navigating project files
-;;
-;; (use-package helm :ensure t)
-;; (use-package projectile :ensure t)
-;; (projectile-mode)
-;; (setq projectile-completion-system 'helm)
-;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-;; (global-set-key (kbd "C-S-n") 'projectile-find-file)
-;; (setq projectile-enable-caching t)
-;; (setq projectile-indexing-method 'native)
+(use-package helm :ensure t)
+(use-package projectile :ensure t)
+(use-package helm-projectile :ensure helm-projectile)
+(projectile-mode)
+(setq projectile-completion-system 'helm)
+(setq projectile-enable-caching t)
+(setq projectile-indexing-method 'native)
 
 ;; =======================================================================
-;; Language config sources
+;; Python Configuration
 ;; =======================================================================
+(use-package pyvenv :ensure pyvenv)
 ;; We need the virtual environment activation part of elpy in order for
 ;; pre-commit hooks to find locally installed dependencies like 'mypy' and
 ;; 'pyright'
@@ -186,6 +183,9 @@
    `((python-f-string-font-lock-find))
    'append))
 
+;; black formatting for buffers
+(use-package blacken :ensure blacken)
+
 ;; just install this on demand - when opening a julia file
 ;; (use-package julia-mode :ensure julia-mode)
 ;; (use-package julia-repl :ensure julia-repl)
@@ -217,6 +217,63 @@
                           (require 'lsp-pyright)
                           (lsp-deferred))))
 
+;; (setq lsp-log-io t)
+;; (setq lsp-pyright-use-library-code-for-types t)
+;; (setq lsp-pyright-diagnostic-mode "workspace")
+;; (lsp-register-client
+;;   (make-lsp-client
+;;     :new-connection (lsp-tramp-connection (lambda ()
+;;                                     (cons "pyright-langserver"
+;;                                           lsp-pyright-langserver-command-args)))
+;;     :major-modes '(python-mode)
+;;     :remote? t
+;;     :server-id 'pyright-remote
+;;     :multi-root t
+;;     :priority 3
+;;     :initialization-options (lambda () (let* ((pyright_hash (lsp-configuration-section "pyright"))
+;; 						 (python_hash (lsp-configuration-section "python"))
+;; 						 (_ (puthash "pythonPath" (concat (replace-regexp-in-string (file-remote-p default-directory) "" pyvenv-virtual-env) "bin/python") (gethash "python" python_hash))))
+;;                                          (ht-merge pyright_hash
+;;                                                    python_hash)))
+;;     :initialized-fn (lambda (workspace)
+;; 			 (with-lsp-workspace workspace
+;;                         (lsp--set-configuration
+;;                          (let* ((pyright_hash (lsp-configuration-section "pyright"))
+;;                                 (python_hash (lsp-configuration-section "python"))
+;;                                 (_ (puthash "pythonPath" (concat (replace-regexp-in-string (file-remote-p default-directory) "" pyvenv-virtual-env) "bin/python") (gethash "python" python_hash))))
+;;                            (ht-merge pyright_hash
+;;                                      python_hash)))))
+;;     :download-server-fn (lambda (_client callback error-callback _update?)
+;;                           (lsp-package-ensure 'pyright callback error-callback))
+;;     :notification-handlers (lsp-ht ("pyright/beginProgress" 'lsp-pyright--begin-progress-callback)
+;;                                      ("pyright/reportProgress" 'lsp-pyright--report-progress-callback)
+;;                                      ("pyright/endProgress" 'lsp-pyright--end-progress-callback))))
+;; (setq lsp-log-io t)
+;; (setq lsp-pyright-use-library-code-for-types t)
+;; (setq lsp-pyright-diagnostic-mode "workspace")
+;; (lsp-register-client
+;;   (make-lsp-client
+;;     :new-connection (lsp-tramp-connection (lambda ()
+;;                                     (cons "pyright-langserver"
+;;                                           lsp-pyright-langserver-command-args)))
+;;     :major-modes '(python-mode)
+;;     :remote? t
+;;     :server-id 'pyright-remote
+;;     :multi-root t
+;;     :priority 3
+;;     :initialization-options (lambda () (ht-merge (lsp-configuration-section "pyright")
+;;                                                  (lsp-configuration-section "python")))
+;;     :initialized-fn (lambda (workspace)
+;;                       (with-lsp-workspace workspace
+;;                         (lsp--set-configuration
+;;                         (ht-merge (lsp-configuration-section "pyright")
+;;                                   (lsp-configuration-section "python")))))
+;;     :download-server-fn (lambda (_client callback error-callback _update?)
+;;                           (lsp-package-ensure 'pyright callback error-callback))
+;;     :notification-handlers (lsp-ht ("pyright/beginProgress" 'lsp-pyright--begin-progress-callback)
+;;                                   ("pyright/reportProgress" 'lsp-pyright--report-progress-callback)
+;;                                   ("pyright/endProgress" 'lsp-pyright--end-progress-callback))))
+
 
 ;; =======================================================================
 ;; Extras
@@ -224,4 +281,5 @@
 (load-file "~/.emacs.d/keybindings.el")
 (exec-path-from-shell-initialize)
 (put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
 (provide 'init)
