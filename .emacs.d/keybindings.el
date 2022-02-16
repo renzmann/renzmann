@@ -1,6 +1,6 @@
 ;; C-c user keys
 ;; a
-(global-set-key (kbd "C-c a") 'change-outer)
+(global-set-key (kbd "C-c a") (lambda () (interactive) (find-file "~/.aws/credentials")))
 ;; c
 (global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
 ;; e
@@ -11,6 +11,8 @@
 (global-set-key (kbd "C-c f f") 'find-file-at-point)
 ;; i
 (global-set-key (kbd "C-c i") 'change-inner)
+;; o
+(global-set-key (kbd "C-c o") 'change-outer)
 ;; p
 (global-set-key (kbd "C-c p a") 'pyvenv-activate)
 (global-set-key (kbd "C-c p d") 'pyvenv-deactivate)
