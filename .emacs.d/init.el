@@ -112,6 +112,9 @@
 (use-package expand-region :ensure expand-region)
 (use-package change-inner :ensure change-inner)
 
+;; Enable mouse in terminal
+(xterm-mouse-mode)
+
 ;; =======================================================================
 ;; Extra file modes
 ;; =======================================================================
