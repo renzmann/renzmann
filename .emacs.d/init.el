@@ -42,7 +42,7 @@
 (load-theme 'gruvbox-dark-soft)
 
 ;; Bigger font
-(set-frame-font "JuliaMono 13" nil t)
+(set-frame-font "JuliaMono 11" nil t)
 
 ;; Stop stupid bell
 (setq ring-bell-function 'ignore)
