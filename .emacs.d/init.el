@@ -121,6 +121,7 @@
 ;; https://github.com/spotify/dockerfile-mode
 (use-package dockerfile-mode :ensure dockerfile-mode)
 (use-package terraform-mode :ensure terraform-mode)
+(use-package typescript-mode :ensure typescript-mode)
 
 ;; =======================================================================
 ;; Projectile and Helm - Project Management and fuzzy searching
