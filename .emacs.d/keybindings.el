@@ -28,7 +28,7 @@
 ;; p : python
 (global-set-key (kbd "C-c p a") 'pyvenv-activate)
 (global-set-key (kbd "C-c p d") 'pyvenv-deactivate)
-(global-set-key (kbd "C-c p f") 'elpy-black-fix-code)
+(global-set-key (kbd "C-c p f") 'blacken-buffer)
 ;; t
 (global-set-key (kbd "C-c t w") 'delete-trailing-whitespace)
 ;; v
