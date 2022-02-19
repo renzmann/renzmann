@@ -53,6 +53,10 @@
 ;; projectile prefix : C-t overrides transpose-characters
 (global-set-key (kbd "C-t") 'projectile-command-map)
 
+;; Python function navigation
+(define-key python-mode-map (kbd "M-p") 'python-nav-backward-defun)
+(define-key python-mode-map (kbd "M-n") 'python-nav-forward-defun)
+
 ;; smex enhanced M-x, commented in case we want it back
 ;; (global-set-key (kbd "M-x") 'smex)
 ;; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
