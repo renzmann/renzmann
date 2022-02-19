@@ -149,11 +149,10 @@
 
 (use-package projectile :ensure t)
 (use-package rg :ensure rg)
-(use-package counsel-projectile :ensure counsel-projectile)
 (projectile-mode t)
-(counsel-projectile-mode t)
 (setq projectile-enable-caching t)
 (setq projectile-indexing-method 'native)
+(setq projectile-globally-ignored-directories (append '("*.venv" "*.build" "*bin") projectile-globally-ignored-directories))
 
 ;; =======================================================================
 ;; Python Configuration

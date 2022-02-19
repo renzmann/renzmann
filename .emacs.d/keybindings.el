@@ -29,6 +29,8 @@
 (global-set-key (kbd "C-c p a") 'pyvenv-activate)
 (global-set-key (kbd "C-c p d") 'pyvenv-deactivate)
 (global-set-key (kbd "C-c p f") 'blacken-buffer)
+;; s : original Isearch-forward (replaced by swiper)
+(global-set-key (kbd "C-c s") 'isearch-forward)
 ;; t
 (global-set-key (kbd "C-c t w") 'delete-trailing-whitespace)
 ;; v
