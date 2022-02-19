@@ -67,13 +67,6 @@
 (add-hook 'lisp-mode (electric-pair-mode t))
 (add-hook 'prog-mode-hook (show-paren-mode t))
 
-;; Ido (Interactively DO) adds some completion niceties and is distributed
-;; with emacs. https://www.gnu.org/software/emacs/manual/html_mono/ido.html#Overview
-(require 'ido)
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-
 ;; Follow symlinks to the real file
 (setq vc-follow-symlinks t)
 
@@ -115,6 +108,9 @@
 ;; Enable mouse in terminal
 (xterm-mouse-mode 1)
 
+;; Scroll the compilation window as text appears
+(setq compilation-scroll-output t)
+
 ;; =======================================================================
 ;; Extra file modes
 ;; =======================================================================
@@ -125,47 +121,45 @@
 (use-package dockerfile-mode :ensure dockerfile-mode)
 (use-package terraform-mode :ensure terraform-mode)
 (use-package typescript-mode :ensure typescript-mode)
+(use-package julia-mode :ensure julia-mode)
 
 ;; =======================================================================
-;; Projectile and Helm - Project Management and fuzzy searching
+;; Projectile - Project Management and searching
 ;; =======================================================================
-(use-package helm :ensure t)
+;; Ido (Interactively DO) adds some completion niceties and is distributed
+;; with emacs. https://www.gnu.org/software/emacs/manual/html_mono/ido.html#Overview
+;; Leaving this commented in case we want to come back to it.
+;; (require 'ido)
+;; (ido-mode t)
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-everywhere t)
+;; (use-package smex :ensure smex)
+
+;; Ivy for minibuffer completion, recommended by projectile over IDO
+;; Ivy consists of three parts:
+;;  1. Ivy, a generic completion mechanism for Emacs.
+;;  2. Counsel, a collection of Ivy-enhanced versions of common Emacs commands.
+;;  3. Swiper, an Ivy-enhanced alternative to Isearch.
+(use-package ivy :ensure ivy)
+(use-package counsel :ensure counsel)
+(use-package swiper :ensure swiper)
+(ivy-mode t)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+
 (use-package projectile :ensure t)
-(use-package helm-projectile :ensure helm-projectile)
 (use-package rg :ensure rg)
-(projectile-mode)
-(setq projectile-completion-system 'helm)
+(use-package counsel-projectile :ensure counsel-projectile)
+(projectile-mode t)
+(counsel-projectile-mode t)
 (setq projectile-enable-caching t)
 (setq projectile-indexing-method 'native)
 
 ;; =======================================================================
 ;; Python Configuration
 ;; =======================================================================
+(use-package python :ensure t)
 (use-package pyvenv :ensure pyvenv)
-;; We need the virtual environment activation part of elpy in order for
-;; pre-commit hooks to find locally installed dependencies like 'mypy' and
-;; 'pyright'
-;;(use-package elpy
-;;  :ensure t
-;;  :config
-;;  (elpy-enable)
-;;  (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
-;;  (setq python-shell-interpreter "ipython"
-;;	python-shell-interpreter-args "-i --simple-prompt")
-;;  (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
-;;  (setq elpy-rpc-python-command "python3")
-;;  (setq elpy-rpc-timeout 10))
-
-;; If getting the 'error in process sentinel:
-;; elpy-rpc--default-error-callback':
-;; reinstall the RPC virtualenv via `M-x elpy-rpc-reinstall-virtualenv'
-;; https://github.com/jorgenschaefer/elpy/issues/1936
-
-;; When flymake backend fails because we haven't activated the venv yet,
-;; activate it and then reload the buffer using C-x C-v
-;;    https://emacs.stackexchange.com/a/189
-;;(setq flymake-start-on-flymake-mode t)
-;;(setq flymake-start-on-save-buffer t)
 
 ;; f-string highlighting
 ;; https://emacs.stackexchange.com/a/61244
@@ -191,13 +185,6 @@
 ;; black formatting for buffers
 (use-package blacken :ensure blacken)
 
-;; just install this on demand - when opening a julia file
-;; (use-package julia-mode :ensure julia-mode)
-;; (use-package julia-repl :ensure julia-repl)
-;; (use-package flycheck-julia :ensure flycheck-julia)
-;; (add-hook 'julia-mode-hook 'julia-repl-mode)
-;; (use-package eglot-jl :ensure eglot-jl)
-
 ;; =======================================================================
 ;; Completion
 ;; =======================================================================
@@ -221,64 +208,6 @@
   :hook (python-mode . (lambda ()
                           (require 'lsp-pyright)
                           (lsp-deferred))))
-
-;; (setq lsp-log-io t)
-;; (setq lsp-pyright-use-library-code-for-types t)
-;; (setq lsp-pyright-diagnostic-mode "workspace")
-;; (lsp-register-client
-;;   (make-lsp-client
-;;     :new-connection (lsp-tramp-connection (lambda ()
-;;                                     (cons "pyright-langserver"
-;;                                           lsp-pyright-langserver-command-args)))
-;;     :major-modes '(python-mode)
-;;     :remote? t
-;;     :server-id 'pyright-remote
-;;     :multi-root t
-;;     :priority 3
-;;     :initialization-options (lambda () (let* ((pyright_hash (lsp-configuration-section "pyright"))
-;; 						 (python_hash (lsp-configuration-section "python"))
-;; 						 (_ (puthash "pythonPath" (concat (replace-regexp-in-string (file-remote-p default-directory) "" pyvenv-virtual-env) "bin/python") (gethash "python" python_hash))))
-;;                                          (ht-merge pyright_hash
-;;                                                    python_hash)))
-;;     :initialized-fn (lambda (workspace)
-;; 			 (with-lsp-workspace workspace
-;;                         (lsp--set-configuration
-;;                          (let* ((pyright_hash (lsp-configuration-section "pyright"))
-;;                                 (python_hash (lsp-configuration-section "python"))
-;;                                 (_ (puthash "pythonPath" (concat (replace-regexp-in-string (file-remote-p default-directory) "" pyvenv-virtual-env) "bin/python") (gethash "python" python_hash))))
-;;                            (ht-merge pyright_hash
-;;                                      python_hash)))))
-;;     :download-server-fn (lambda (_client callback error-callback _update?)
-;;                           (lsp-package-ensure 'pyright callback error-callback))
-;;     :notification-handlers (lsp-ht ("pyright/beginProgress" 'lsp-pyright--begin-progress-callback)
-;;                                      ("pyright/reportProgress" 'lsp-pyright--report-progress-callback)
-;;                                      ("pyright/endProgress" 'lsp-pyright--end-progress-callback))))
-;; (setq lsp-log-io t)
-;; (setq lsp-pyright-use-library-code-for-types t)
-;; (setq lsp-pyright-diagnostic-mode "workspace")
-;; (lsp-register-client
-;;   (make-lsp-client
-;;     :new-connection (lsp-tramp-connection (lambda ()
-;;                                     (cons "pyright-langserver"
-;;                                           lsp-pyright-langserver-command-args)))
-;;     :major-modes '(python-mode)
-;;     :remote? t
-;;     :server-id 'pyright-remote
-;;     :multi-root t
-;;     :priority 3
-;;     :initialization-options (lambda () (ht-merge (lsp-configuration-section "pyright")
-;;                                                  (lsp-configuration-section "python")))
-;;     :initialized-fn (lambda (workspace)
-;;                       (with-lsp-workspace workspace
-;;                         (lsp--set-configuration
-;;                         (ht-merge (lsp-configuration-section "pyright")
-;;                                   (lsp-configuration-section "python")))))
-;;     :download-server-fn (lambda (_client callback error-callback _update?)
-;;                           (lsp-package-ensure 'pyright callback error-callback))
-;;     :notification-handlers (lsp-ht ("pyright/beginProgress" 'lsp-pyright--begin-progress-callback)
-;;                                   ("pyright/reportProgress" 'lsp-pyright--report-progress-callback)
-;;                                   ("pyright/endProgress" 'lsp-pyright--end-progress-callback))))
-
 
 ;; =======================================================================
 ;; Extras
