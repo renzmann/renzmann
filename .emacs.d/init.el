@@ -111,6 +111,14 @@
 ;; Scroll the compilation window as text appears
 (setq compilation-scroll-output t)
 
+;; Put backups in their own directory
+;; https://stackoverflow.com/a/151946/13215205
+(setq backup-directory-alist `(("." . "~/.saves")))
+(setq delete-old-versions t
+  kept-new-versions 6
+  kept-old-versions 2
+  version-control t)
+
 ;; =======================================================================
 ;; Extra file modes
 ;; =======================================================================
