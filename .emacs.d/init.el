@@ -132,6 +132,7 @@
 (use-package helm :ensure t)
 (use-package projectile :ensure t)
 (use-package helm-projectile :ensure helm-projectile)
+(use-package rg :ensure rg)
 (projectile-mode)
 (setq projectile-completion-system 'helm)
 (setq projectile-enable-caching t)
