@@ -113,7 +113,7 @@
 (use-package change-inner :ensure change-inner)
 
 ;; Enable mouse in terminal
-(xterm-mouse-mode)
+(xterm-mouse-mode 1)
 
 ;; =======================================================================
 ;; Extra file modes
