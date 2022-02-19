@@ -159,9 +159,10 @@
 (use-package rg :ensure rg)
 (projectile-mode t)
 (setq projectile-enable-caching t)
-(setq projectile-indexing-method 'native)
-(setq projectile-globally-ignored-directories (append '("*.venv" "*.build" "*bin") projectile-globally-ignored-directories))
+;; (setq projectile-indexing-method 'native)
+(setq projectile-globally-ignored-directories (append '("*.venv" "*.virtual_documents" "*.build" "*bin") projectile-globally-ignored-directories))
 (setq projectile-globally-ignored-files (append '("#*#") projectile-globally-ignored-files))
+(setq projectile-globally-ignored-file-suffixes '(".pyc"))
 
 ;; =======================================================================
 ;; Python Configuration
@@ -216,6 +217,9 @@
   :hook (python-mode . (lambda ()
                           (require 'lsp-pyright)
                           (lsp-deferred))))
+
+;; Disable file watchers, since we often hit directories with virtualenvs
+(setq lsp-enable-file-watchers nil)
 
 ;; =======================================================================
 ;; Extras
