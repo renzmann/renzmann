@@ -153,6 +153,7 @@
 (setq projectile-enable-caching t)
 (setq projectile-indexing-method 'native)
 (setq projectile-globally-ignored-directories (append '("*.venv" "*.build" "*bin") projectile-globally-ignored-directories))
+(setq projectile-globally-ignored-files (append '("#*#") projectile-globally-ignored-files))
 
 ;; =======================================================================
 ;; Python Configuration
