@@ -166,7 +166,7 @@
 (setq projectile-enable-caching t)
 ;; (setq projectile-indexing-method 'native)
 (setq projectile-globally-ignored-directories (append '("*.venv" "*.virtual_documents" "*.build" "*bin") projectile-globally-ignored-directories))
-(setq projectile-globally-ignored-files (append '("#*#") projectile-globally-ignored-files))
+(setq projectile-globally-ignored-files (append '("*#") projectile-globally-ignored-files))
 (setq projectile-globally-ignored-file-suffixes '(".pyc"))
 
 ;; =======================================================================
