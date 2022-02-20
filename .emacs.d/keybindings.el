@@ -73,6 +73,8 @@
 (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
 
+;; Reserved for users: f5 - f8
+(global-set-key (kbd "<f5>") 'compile)
 (global-set-key (kbd "<f6>") 'ivy-resume)
 
 ;; ===================================================================
