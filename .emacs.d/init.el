@@ -44,6 +44,11 @@
 ;; Bigger font
 ;; (set-frame-font "JetBrains Mono 13" nil t)
 
+;; Icons!
+(use-package all-the-icons :ensure t :if (display-graphic-p))
+(use-package all-the-icons-dired :ensure t)
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
 ;; Stop stupid bell
 (setq ring-bell-function 'ignore)
 
