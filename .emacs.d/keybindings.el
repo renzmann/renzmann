@@ -1,6 +1,8 @@
 ;; ===================================================================
 ;; C-c user keys
 ;; ===================================================================
+;; a : projectile prefix if function keys aren't available
+(global-set-key (kbd "C-c a") 'projectile-command-map)
 ;; c : comments
 (global-set-key (kbd "C-c c l") 'comment-line)
 (global-set-key (kbd "C-c c r") 'comment-or-uncomment-region)
@@ -39,8 +41,10 @@
 ;; ===================================================================
 ;; Motion keys
 ;; ===================================================================
-(global-set-key (kbd "C-<left>") 'er/contract-region)
-(global-set-key (kbd "C-<right>") 'er/expand-region)
+(global-set-key (kbd "C-<left>") 'previous-buffer)
+(global-set-key (kbd "C-<down>") 'er/contract-region)
+(global-set-key (kbd "C-<up>") 'er/expand-region)
+(global-set-key (kbd "C-<right>") 'next-buffer)
 
 ;; ===================================================================
 ;; Default overrides
@@ -50,8 +54,6 @@
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-;; projectile prefix : C-t overrides transpose-characters
-(global-set-key (kbd "C-t") 'projectile-command-map)
 
 ;; Python function navigation
 (define-key python-mode-map (kbd "M-p") 'python-nav-backward-defun)
@@ -75,7 +77,8 @@
 
 ;; Reserved for users: f5 - f8
 (global-set-key (kbd "<f5>") 'compile)
-(global-set-key (kbd "<f6>") 'ivy-resume)
+(global-set-key (kbd "<f6>") 'projectile-command-map)
+(global-set-key (kbd "<f8>") 'ivy-resume)
 
 ;; ===================================================================
 ;; Ctrl + Shift commands (poor man's super)
