@@ -137,7 +137,7 @@
 (use-package julia-mode :ensure julia-mode)
 
 ;; =======================================================================
-;; Projectile - Project Management and searching
+;; Project Management and searching
 ;; =======================================================================
 ;; Ido (Interactively DO) adds some completion niceties and is distributed
 ;; with emacs. https://www.gnu.org/software/emacs/manual/html_mono/ido.html#Overview
@@ -170,7 +170,7 @@
 (setq projectile-globally-ignored-file-suffixes '(".pyc"))
 
 ;; =======================================================================
-;; Python Configuration
+;; Python
 ;; =======================================================================
 (use-package python :ensure t)
 (use-package pyvenv :ensure pyvenv)
