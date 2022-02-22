@@ -43,7 +43,10 @@
 
 ;; Use DejaVu, if it's installed
 (condition-case nil
-  (set-frame-font "DejaVu Sans Mono for Powerline" nil t)
+    (if (eq system-type 'darwin)
+	(set-frame-font "DejaVu Sans Mono for Powerline 14" nil t)
+	(set-frame-font "DejaVu Sans Mono for Powerline 12" nil t))
+
   (error nil))
 
 ;; Icons!
