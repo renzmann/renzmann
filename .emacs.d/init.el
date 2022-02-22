@@ -125,6 +125,10 @@
   kept-old-versions 2
   version-control t)
 
+;; Capture shell variables when we aren't launching from shell
+(use-package exec-path-from-shell :ensure t)
+(exec-path-from-shell-initialize)
+
 ;; =======================================================================
 ;; Extra file modes
 ;; =======================================================================
