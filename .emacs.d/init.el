@@ -41,13 +41,15 @@
 (use-package gruvbox-theme :ensure t)
 (load-theme 'gruvbox-dark-soft)
 
-;; Bigger font
-;; (set-frame-font "JetBrains Mono 13" nil t)
+;; Use DejaVu, if it's installed
+(condition-case nil
+  (set-frame-font "DejaVu Sans Mono for Powerline" nil t)
+  (error nil))
 
 ;; Icons!
-(use-package all-the-icons :ensure t :if (display-graphic-p))
-(use-package all-the-icons-dired :ensure t)
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+;; (use-package all-the-icons :ensure t :if (display-graphic-p))
+;; (use-package all-the-icons-dired :ensure t)
+;; (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 ;; Stop stupid bell
 (setq ring-bell-function 'ignore)
@@ -126,8 +128,10 @@
   version-control t)
 
 ;; Capture shell variables when we aren't launching from shell
-(use-package exec-path-from-shell :ensure t)
-(exec-path-from-shell-initialize)
+(if (eq system-type 'darwin)
+  ((use-package exec-path-from-shell :ensure t)
+   (exec-path-from-shell-initialize))
+)
 
 ;; =======================================================================
 ;; Extra file modes
