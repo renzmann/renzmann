@@ -240,7 +240,6 @@
 ;; Extras
 ;; =======================================================================
 (load-file "~/.emacs.d/keybindings.el")
-(exec-path-from-shell-initialize)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (provide 'init)
