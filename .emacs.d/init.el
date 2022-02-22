@@ -80,6 +80,7 @@
 
 ;; evil - vim keybindings
 (use-package evil :ensure evil)
+(evil-mode t)
 
 ;; show markers for trailing whitespace and delete on save
 (setq-default show-trailing-whitespace t)
