@@ -118,11 +118,28 @@
 
 ;; Put backups in their own directory
 ;; https://stackoverflow.com/a/151946/13215205
-(setq backup-directory-alist `(("." . "~/.saves")))
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups")))
 (setq delete-old-versions t
   kept-new-versions 6
   kept-old-versions 2
   version-control t)
+;; Auto-saves too
+;; https://snarfed.org/gnu_emacs_backup_files
+(defvar temp-directory "~/.emacs.d/saves")
+(make-directory temp-directory t)
+(setq auto-save-directory (concat temp-directory "/autosave")
+      auto-save-hash-directory (concat temp-directory "/autosave-hash")
+      auto-save-list-file-prefix (concat temp-directory "/autosave-")
+      auto-save-hash-p nil
+      auto-save-timeout 100
+      auto-save-interval 300)
+(make-directory auto-save-directory t)
+
+;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
+(defun revert-buffer-no-confirm ()
+    "Revert buffer without confirmation."
+    (interactive)
+    (revert-buffer :ignore-auto :noconfirm))
 
 ;; =======================================================================
 ;; Extra file modes
