@@ -9,8 +9,7 @@ export PATH=$HOME/.local/share/coursier/bin:$PATH
 
 
 . $HOME/.git-prompt.sh
-
-# provides the load-funcs function, for sourcing other functions dynamically; (yo dawg...)
+. $HOME/.bash_completions/.dbt-completion.bash
 . $HOME/.bash_functions/load-funcs.sh && load-funcs
 
 # Source global definitions
