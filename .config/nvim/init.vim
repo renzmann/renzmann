@@ -53,6 +53,7 @@ autocmd VimEnter *
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'cespare/vim-toml'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/vim-vsnip'
