@@ -96,3 +96,5 @@ if command -v nvim &> /dev/null; then
 else
 	export EDITOR=vim
 fi
+
+[[ -z $GOPATH ]] && export GOPATH=$HOME/go
