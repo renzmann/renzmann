@@ -1,0 +1,25 @@
+install-nvim() {
+	[[ -z $1 ]] && local version='0.6.1' || local version=$1
+	local download_url="https://github.com/neovim/neovim/releases/download/v${version}"
+
+	case $OSTYPE in
+		'darwin'*)
+			curl -sSLO ${download_url}/nvim-macos.tar.gz \
+				&& tar xzvf nvim-macos.tar.gz \
+				&& mv ./nvim-macos.tar.gz $HOME/.local/bin
+			;;
+		*)
+			curl -LO ${download_url}/nvim.appimage \
+				&& chmod u+x nvim.appimage \
+				&& mv nvim.appimage $HOME/.local/bin
+			;;
+	esac
+
+	cd $HOME
+	so .nvim.venv || new-venv .nvim.venv
+	python3 -m pip install black flake8 jedi jedi-language-server neovim
+	deactivate
+	cd -
+
+	yn-prompt 'Install language servers?' && install-language-servers
+}
