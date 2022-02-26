@@ -1,5 +1,11 @@
 funced() {
-  vim $HOME/.bash_functions/$(basename $1).sh && load-funcs
+  if command -v nvim &> /dev/null; then
+    local editor=nvim
+  else
+    local editor=vim
+  fi
+
+  $editor $HOME/.bash_functions/$(basename $1).sh && load-funcs
 }
 
 _funced() {

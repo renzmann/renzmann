@@ -43,8 +43,8 @@ onoremap i;                   :<C-U>execute "normal! v/;\rhs"<CR>
 nnoremap <silent><leader>si   :<C-u>e $MYVIMRC<CR>
 nnoremap <silent><leader>sn   :<C-u>e ~/.config/nvim/init.vim<CR>
 nnoremap <silent><leader>sv   :<C-u>e ~/.config/nvim/vimrc<CR>
-nnoremap <silent><leader>sk   :<C-u>e ~/.config/nvim/plugin/keymap.vim<CR>
-nnoremap <silent><leader>sp   :<C-u>e ~/.config/nvim/plugin<CR>
+nnoremap <silent><leader>sk   :<C-u>e ~/.config/nvim/after/plugin/keymap.vim<CR>
+nnoremap <silent><leader>sp   :<C-u>e ~/.config/nvim/after/plugin<CR>
 nnoremap <silent><leader>so   :<C-u>e ~/.config/nvim/after/ftplugin<CR>
 
 " [p]ut files in a :Lexplore window
