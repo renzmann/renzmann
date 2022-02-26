@@ -17,7 +17,7 @@ install-nvim() {
 
 	cd $HOME
 	so .nvim.venv || new-venv .nvim.venv
-	python3 -m pip install black flake8 jedi jedi-language-server neovim
+	python3 -m pip install black flake8 jedi jedi-language-server neovim mypy
 	deactivate
 	cd -
 
