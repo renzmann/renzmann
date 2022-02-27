@@ -63,6 +63,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'morhetz/gruvbox'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
 
 colo gruvbox
