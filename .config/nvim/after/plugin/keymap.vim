@@ -19,6 +19,9 @@ nnoremap <leader>/            /\c<Left><Left>
 " https://vi.stackexchange.com/a/18895
 nnoremap <silent>cgn          :<C-u>let @/=expand('<cword>')<cr>cgn
 
+" Capitalize last word while inserting text
+inoremap <C-j>                <Esc>gUiwea
+
 " [v]imscript execution
 " -----------------------------------------------------------------------
 " Execute the whole line under cursor in normal mode
@@ -48,14 +51,11 @@ nnoremap <silent><leader>sap  :<C-u>e ~/.config/nvim/after/plugin<CR>
 nnoremap <silent><leader>saf  :<C-u>e ~/.config/nvim/after/ftplugin<CR>
 
 " [t]ree view of the CWD or current file's directory
+" -----------------------------------------------------------------------
 nnoremap <silent><leader>t    :<C-u>20Lexplore<CR>
 nnoremap <silent><leader>T    :<C-u>20Lexplore %:p:h<CR>
 
-" Capitalize last word while inserting text
-" -----------------------------------------------------------------------
-inoremap <C-j>                <Esc>viwUea
-
-" Markdown and RST headers
+" Markdown and RST headers [1] [2] [3] [4]
 " -----------------------------------------------------------------------
 nnoremap <leader>1            yypVr=
 nnoremap <leader>2            yypVr-
@@ -63,11 +63,9 @@ nnoremap <leader>3            yypVr+
 nnoremap <leader>4            yypVr*
 onoremap ih                   :<C-U>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<CR>
 
-" Tab movement
+" Tab movement [h] [l]
 " -----------------------------------------------------------------------
-" [h]
 nnoremap <silent><leader>h    :<C-u>tabp<CR>
-" [l]
 nnoremap <silent><leader>l    :<C-u>tabn<CR>
 
 " [c]lipboard [c]ommands
