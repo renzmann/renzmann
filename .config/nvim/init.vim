@@ -47,26 +47,11 @@ end
 " =============================================================================
 " Section: plugins
 " =============================================================================
-autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
-  \| endif
-call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'cespare/vim-toml'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/nvim-compe'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'morhetz/gruvbox'
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-call plug#end()
+source ~/.config/nvim/plugs.vim
 
+" =============================================================================
+" Section: colorscheme
+" =============================================================================
 colo gruvbox
 
 " =============================================================================
@@ -81,10 +66,11 @@ let g:netrw_banner = 0
 " Section: slime customization
 " =============================================================================
 let g:slime_target = "tmux"
+" I always have the REPL on the right, vertical split.
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
 
 " =============================================================================
-"                        Language Server Configuration
+" Section: language servers
 " =============================================================================
 " Copied from the suggestions in the nvim-lspconfig README:
 " https://github.com/neovim/nvim-lspconfig
