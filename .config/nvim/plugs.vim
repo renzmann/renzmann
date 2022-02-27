@@ -16,4 +16,5 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'morhetz/gruvbox'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'jpalardy/vim-slime'
 call plug#end()
