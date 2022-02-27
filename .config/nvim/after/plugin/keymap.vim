@@ -47,7 +47,7 @@ nnoremap <silent><leader>sk   :<C-u>e ~/.config/nvim/after/plugin/keymap.vim<CR>
 nnoremap <silent><leader>sp   :<C-u>e ~/.config/nvim/after/plugin<CR>
 nnoremap <silent><leader>so   :<C-u>e ~/.config/nvim/after/ftplugin<CR>
 
-" [p]ut files in a :Lexplore window
+" [t]ree view of the CWD or current file's directory
 nnoremap <silent><leader>t    :<C-u>20Lexplore<CR>
 nnoremap <silent><leader>T    :<C-u>20Lexplore %:p:h<CR>
 
