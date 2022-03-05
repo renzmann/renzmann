@@ -1,5 +1,7 @@
 # .bashrc
 
+[[ -z $GOPATH ]] && export GOPATH=$HOME/go
+
 local_bin_on_path=$(echo $PATH | grep '/usr/local/bin')
 if [[ -z $local_bin_on_path ]]; then
 	export PATH=/usr/local/bin:$PATH
@@ -7,6 +9,7 @@ fi
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/share/coursier/bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
 
 . $HOME/.git-prompt.sh
 . $HOME/.bash_completions/.dbt-completion.bash
@@ -96,5 +99,3 @@ if command -v nvim &> /dev/null; then
 else
 	export EDITOR=vim
 fi
-
-[[ -z $GOPATH ]] && export GOPATH=$HOME/go
