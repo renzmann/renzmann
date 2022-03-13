@@ -99,3 +99,5 @@ if command -v nvim &> /dev/null; then
 else
 	export EDITOR=vim
 fi
+
+export SSL_CERT_DIR=/etc/ssl/certs
