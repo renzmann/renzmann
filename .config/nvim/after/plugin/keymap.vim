@@ -52,8 +52,8 @@ nnoremap <silent><leader>saf  :<C-u>e ~/.config/nvim/after/ftplugin<CR>
 
 " [t]ree view of the CWD or current file's directory
 " -----------------------------------------------------------------------
-nnoremap <silent><leader>t    :<C-u>20Lexplore<CR>
-nnoremap <silent><leader>T    :<C-u>20Lexplore %:p:h<CR>
+nnoremap <silent><leader>t    :<C-u>30Lexplore<CR>
+nnoremap <silent><leader>T    :<C-u>30Lexplore %:p:h<CR>
 
 " Markdown and RST headers [1] [2] [3] [4]
 " -----------------------------------------------------------------------
@@ -81,3 +81,4 @@ nnoremap <leader>fb         :Buffers<CR>
 nnoremap <leader>fg         :GitFiles<CR>
 nnoremap <leader>ft         :Tags<CR>
 nnoremap <leader>fr         :Rg<CR>
+nnoremap <leader>fa         :<C-u>e ~/.aws/credentials<CR>
