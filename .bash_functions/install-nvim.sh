@@ -11,7 +11,7 @@ install-nvim() {
 		*)
 			curl -LO ${download_url}/nvim.appimage \
 				&& chmod u+x nvim.appimage \
-				&& mv nvim.appimage $HOME/.local/bin
+				&& mv nvim.appimage $HOME/.local/bin/nvim
 			;;
 	esac
 
