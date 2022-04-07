@@ -18,4 +18,6 @@ Plug 'morhetz/gruvbox'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jpalardy/vim-slime'
+Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser-github.vim'
 call plug#end()
