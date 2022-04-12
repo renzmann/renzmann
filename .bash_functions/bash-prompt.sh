@@ -26,7 +26,7 @@ bash-prompt() {
 	local host_part=${YELLOW}$(trunc-string -n 20 $(echo ${HOSTNAME} | awk -F '.' '{ print $1 }'))${COLOR_RESET}
 	local dir_sep=${LIGHT_GRAY}:${COLOR_RESET}
 	local dir_part=${GREEN}'$(abbrev-pwd)'${COLOR_RESET}
-	local git_part=${LIGHT_RED}'$(__git_ps1)'${COLOR_RESET}
+	local git_part=${LIGHT_CYAN}'$(__git_ps1)'${COLOR_RESET}
 	local prompt_part=${GREEN}'>'${COLOR_RESET}' '
 	# local force_color_prompt=yes
 
