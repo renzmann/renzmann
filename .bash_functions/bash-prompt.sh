@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
 bash-prompt() {
+	# Easier to read color codes: https://www.shellhacks.com/bash-colors/
+	local BLACK="\[\033[0;30m\]"
+	local RED="\[\033[0;31m\]"
+	local GREEN="\[\033[0;32m\]"
+	local BROWN="\[\033[0;33m\]"
+	local BLUE="\[\033[0;34m\]"
+	local PURPLE="\[\033[0;35m\]"
+	local CYAN="\[\033[0;36m\]"
+	local LIGHT_GRAY="\[\033[0;37m\]"
+	local DARK_GRAY="\[\033[1;30m\]"
+	local LIGHT_RED="\[\033[1;31m\]"
+	local LIGHT_GREEN="\[\033[1;32m\]"
+	local YELLOW="\[\033[1;33m\]"
+	local LIGHT_BLUE="\[\033[1;34m\]"
+	local PURPLE="\[\033[1;35m\]"
+	local LIGHT_CYAN="\[\033[1;36m\]"
+	local WHITE="\[\033[1;37m\]"
+	local COLOR_RESET="\[\033[00m\]"
+
 	# set a fancy prompt (non-color, unless we know we "want" color)
 	local deb_part='${debian_chroot:+($debian_chroot)}'
 	local user_part=${LIGHT_BLUE}$(trunc-string -n 20 $(echo ${USER} | awk -F '.' '{ print $1 }'))${COLOR_RESET}
