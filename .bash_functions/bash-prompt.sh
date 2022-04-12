@@ -2,9 +2,9 @@
 bash-prompt() {
 	# set a fancy prompt (non-color, unless we know we "want" color)
 	local deb_part='${debian_chroot:+($debian_chroot)}'
-	local user_part=${LIGHT_BLUE}'\u'${COLOR_RESET}
+	local user_part=${LIGHT_BLUE}$(trunc-string -n 20 $(echo ${USER} | awk -F '.' '{ print $1 }'))${COLOR_RESET}
 	local user_sep=${LIGHT_GRAY}@${COLOR_RESET}
-	local host_part=${YELLOW}'\h'${COLOR_RESET}
+	local host_part=${YELLOW}$(trunc-string -n 20 $(echo ${HOSTNAME} | awk -F '.' '{ print $1 }'))${COLOR_RESET}
 	local dir_sep=${LIGHT_GRAY}:${COLOR_RESET}
 	local dir_part=${CYAN}'$(abbrev-pwd)'${COLOR_RESET}
 	local git_part=${LIGHT_RED}'$(__git_ps1)'${COLOR_RESET}
