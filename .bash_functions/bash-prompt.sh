@@ -18,7 +18,7 @@ bash-prompt() {
 	fi
 
 	if [[ "$color_prompt" = yes ]]; then
-		PS1="${debian_chroot:+($debian_chroot)}${LIGHT_BLUE}\u${LIGHT_GRAY}@${YELLOW}\h${LIGHT_GRAY}:${CYAN}$(abbrev-pwd)${LIGHT_GRAY}$(__git_ps1)${COLOR_RESET}\n> "
+		PS1="${debian_chroot:+($debian_chroot)}${LIGHT_BLUE}\u${LIGHT_GRAY}@${YELLOW}\h${LIGHT_GRAY}:${CYAN}$(abbrev-pwd)${LIGHT_GRAY}$(__git_ps1)${COLOR_RESET}\n${GREEN}>${COLOR_RESET} "
 	else
 		PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1)\n\$ "
 	fi
