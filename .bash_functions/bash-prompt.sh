@@ -6,9 +6,9 @@ bash-prompt() {
 	local user_sep=${LIGHT_GRAY}@${COLOR_RESET}
 	local host_part=${YELLOW}$(trunc-string -n 20 $(echo ${HOSTNAME} | awk -F '.' '{ print $1 }'))${COLOR_RESET}
 	local dir_sep=${LIGHT_GRAY}:${COLOR_RESET}
-	local dir_part=${CYAN}'$(abbrev-pwd)'${COLOR_RESET}
+	local dir_part=${GREEN}'$(abbrev-pwd)'${COLOR_RESET}
 	local git_part=${LIGHT_RED}'$(__git_ps1)'${COLOR_RESET}
-	local prompt_part='\n'${GREEN}'>'${COLOR_RESET}' '
+	local prompt_part=${GREEN}'>'${COLOR_RESET}' '
 	# local force_color_prompt=yes
 
 	case "$TERM" in
@@ -31,7 +31,7 @@ bash-prompt() {
 	fi
 
 	if [[ "$color_prompt" = yes ]]; then
-		PS1=${deb_part}${user_part}${user_sep}${host_part}${dir_sep}${dir_part}${git_part}${prompt_part}
+		PS1=${deb_part}${git_part}' '${user_part}${user_sep}${host_part}${dir_sep}${dir_part}${prompt_part}
 	else
 		PS1=${deb_part}'\u@\h:\w$(__git_ps1)\n\$ '
 	fi
