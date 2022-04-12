@@ -23,3 +23,5 @@
 !.config/nvim/**
 !.bash_completions
 !.bash_completions/*
+!.config/alacritty
+!.config/alacritty/*

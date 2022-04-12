@@ -20,4 +20,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jpalardy/vim-slime'
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
+Plug 'psf/black'
+Plug 'windwp/nvim-autopairs'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'catppuccin/catppuccin'
+Plug 'navarasu/onedark.nvim'
 call plug#end()

@@ -22,9 +22,9 @@ set list listchars=tab:>\ ,trail:·
 set mouse=a
 set showcmd
 
-if $TERM != 'screen-256color'
-  set termguicolors
-end
+" if $TERM != 'screen-256color'
+"   set termguicolors
+" end
 
 " Command line typos
 cabbrev fidn find
@@ -52,7 +52,10 @@ source ~/.config/nvim/plugs.vim
 " =============================================================================
 " Section: colorscheme
 " =============================================================================
+" colo nordfox
 colo gruvbox
+" colo kanagawa
+" colo onedark
 
 " =============================================================================
 " Section: netrw customization
@@ -289,3 +292,21 @@ require('nvim-treesitter.configs').setup {
   indent = { enable = true },
 }
 EOF
+
+" =============================================================================
+"                         AutoPairs Configuration
+" =============================================================================
+lua <<EOF
+require('nvim-autopairs').setup{}
+
+require("nvim-autopairs.completion.compe").setup({
+  map_cr = true, --  map <CR> on insert mode
+  map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
+  auto_select = false,  -- auto select first item
+  map_char = { -- modifies the function or method delimiter by filetypes
+    all = '(',
+    tex = '{'
+  }
+})
+EOF
+
