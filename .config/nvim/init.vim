@@ -22,9 +22,9 @@ set list listchars=tab:>\ ,trail:·
 set mouse=a
 set showcmd
 
-if $TERM != 'screen-256color'
-  set termguicolors
-end
+" if $TERM != 'screen-256color'
+"   set termguicolors
+" end
 
 " Command line typos
 cabbrev fidn find
@@ -52,7 +52,10 @@ source ~/.config/nvim/plugs.vim
 " =============================================================================
 " Section: colorscheme
 " =============================================================================
-colo nordfox
+" colo nordfox
+colo gruvbox
+" colo kanagawa
+" colo onedark
 
 " =============================================================================
 " Section: netrw customization
