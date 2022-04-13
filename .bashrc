@@ -1,4 +1,9 @@
 #! /usr/bin/env bash
+
+# Still need to:
+# 1. add-path function that inserts/appends to PATH if something's not on it
+# 2. modify funced to work on ~/.bash_functions while ced is on ~/.local/bin
+
 if command -v nvim &> /dev/null; then
 	export EDITOR=nvim
 else
@@ -27,11 +32,10 @@ fi
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-# Add function editing and completion of names
-source funced
-
-# Set the prompt
-source bash-prompt
+# Things that need to be "sourced" instead of loaded on-demand
+for file in $HOME/.bash_functions/*; do
+	source $file
+done
 
 # enable color support of ls and also add handy aliases
 if [[ -x /usr/bin/dircolors ]]; then
