@@ -11,9 +11,6 @@
 !.bash_functions
 !.bash_functions/*
 .bash_functions/*.swp
-!.local
-!.local/bin
-!.local/bin/amm
 !.emacs.d
 !.emacs.d/init.el
 !.emacs.d/keybindings.el
@@ -25,3 +22,10 @@
 !.bash_completions/*
 !.config/alacritty
 !.config/alacritty/*
+!.local
+!.local/bin
+!.local/bin/amm
+!.local/bin/funced
+!.local/bin/abbrev-pwd
+!.local/bin/ff
+!.local/bin/so
