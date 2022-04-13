@@ -12,7 +12,7 @@ fi
 
 # Source global definitions
 if [[ -f /etc/bashrc ]]; then
-	. /etc/bashrc
+	source /etc/bashrc
 fi
 
 # Things that need to be "sourced" instead of loaded on-demand
@@ -27,9 +27,6 @@ insert-path $HOME/.emacs.d/bin
 [[ -z $GOPATH ]] && export GOPATH=$HOME/go
 insert-path $GOPATH/bin
 insert-path $HOME/.cargo/bin
-
-. $HOME/.git-prompt.sh
-. $HOME/.bash_completions/.dbt-completion.bash
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
