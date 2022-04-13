@@ -10,32 +10,29 @@ else
 	export EDITOR=vim
 fi
 
-local_bin_on_path=$(echo $PATH | grep '/usr/local/bin')
-[[ -z $local_bin_on_path ]] && export PATH=/usr/local/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.local/share/coursier/bin:$PATH
-export PATH=$HOME/.emacs.d/bin:$PATH
-[[ -z $GOPATH ]] && export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-[[ -z $(echo $PATH | grep '.cargo/bin') ]] && export PATH=$HOME/.cargo/bin:$PATH
-
-. $HOME/.git-prompt.sh
-. $HOME/.bash_completions/.dbt-completion.bash
-# . $HOME/.bash_functions/load-funcs.sh
-# load-funcs
-
 # Source global definitions
 if [[ -f /etc/bashrc ]]; then
 	. /etc/bashrc
 fi
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
 # Things that need to be "sourced" instead of loaded on-demand
 for file in $HOME/.bash_functions/*; do
 	source $file
 done
+
+insert-path /usr/local/bin
+insert-path $HOME/.local/bin
+insert-path $HOME/.local/share/coursier/bin
+insert-path $HOME/.emacs.d/bin
+[[ -z $GOPATH ]] && export GOPATH=$HOME/go
+insert-path $GOPATH/bin
+insert-path $HOME/.cargo/bin
+
+. $HOME/.git-prompt.sh
+. $HOME/.bash_completions/.dbt-completion.bash
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
 
 # enable color support of ls and also add handy aliases
 if [[ -x /usr/bin/dircolors ]]; then

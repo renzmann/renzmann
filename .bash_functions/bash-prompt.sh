@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+_trunc() {
+	$HOME/.local/bin/trunc-string -n 20 $(echo ${1} | awk -F '.' '{ print $1 }')
+}
 _bash-prompt() {
 	# Easier to read color codes: https://www.shellhacks.com/bash-colors/
 	local BLACK="\[\033[0;30m\]"
@@ -21,9 +24,9 @@ _bash-prompt() {
 
 	# set a fancy prompt (non-color, unless we know we "want" color)
 	local deb_part='${debian_chroot:+($debian_chroot)}'
-	local user_part=${LIGHT_BLUE}$(trunc-string -n 20 $(echo ${USER} | awk -F '.' '{ print $1 }'))${COLOR_RESET}
+	local user_part=${LIGHT_BLUE}$(_trunc ${USER})${COLOR_RESET}
 	local user_sep=${LIGHT_GRAY}@${COLOR_RESET}
-	local host_part=${YELLOW}$(trunc-string -n 20 $(echo ${HOSTNAME} | awk -F '.' '{ print $1 }'))${COLOR_RESET}
+	local host_part=${YELLOW}$(_trunc ${HOSTNAME})${COLOR_RESET}
 	local dir_sep=${LIGHT_GRAY}:${COLOR_RESET}
 	local dir_part=${GREEN}'$(abbrev-pwd)'${COLOR_RESET}
 	local git_part=${LIGHT_CYAN}'$(__git_ps1)'${COLOR_RESET}
