@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+p="${PWD#${HOME}}"
+[[ "${PWD}" != "${p}" ]] && printf "~"
+
+IFS=/
+for q in ${p:1}
+	do printf /${q:0:1}
+done
+unset IFS
+
+printf "${q:1}"

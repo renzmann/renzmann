@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+_fast_find() {
+	if [[ ! -z $2 ]]; then
+		local dir=$1
+		local search_term=$2
+	else
+		local dir="."
+		local search_term=$1
+	fi
+
+	find ${dir} -path ./.venv -prune -o -name "${search_term}" -print
+}
+
+_fast_find $@
