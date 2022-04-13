@@ -1,20 +1,24 @@
 #! /usr/bin/env bash
-# .bashrc
 
-[[ -z $GOPATH ]] && export GOPATH=$HOME/go
+if command -v nvim &> /dev/null; then
+	export EDITOR=nvim
+else
+	export EDITOR=vim
+fi
 
 local_bin_on_path=$(echo $PATH | grep '/usr/local/bin')
 [[ -z $local_bin_on_path ]] && export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/share/coursier/bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
+[[ -z $GOPATH ]] && export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 [[ -z $(echo $PATH | grep '.cargo/bin') ]] && export PATH=$HOME/.cargo/bin:$PATH
 
 . $HOME/.git-prompt.sh
 . $HOME/.bash_completions/.dbt-completion.bash
-. $HOME/.bash_functions/load-funcs.sh
-load-funcs
+# . $HOME/.bash_functions/load-funcs.sh
+# load-funcs
 
 # Source global definitions
 if [[ -f /etc/bashrc ]]; then
@@ -24,13 +28,17 @@ fi
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
+# Add function editing and completion of names
+source funced
+
 # Set the prompt
-bash-prompt
+source bash-prompt
 
 # enable color support of ls and also add handy aliases
 if [[ -x /usr/bin/dircolors ]]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 	alias ls='ls --color=auto'
+	alias ll='ls -lah'
 	#alias dir='dir --color=auto'
 	#alias vdir='vdir --color=auto'
 
@@ -59,11 +67,5 @@ case "$TERM" in
 		[[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
 		;;
 esac
-
-if command -v nvim &> /dev/null; then
-	export EDITOR=nvim
-else
-	export EDITOR=vim
-fi
 
 export SSL_CERT_DIR=/etc/ssl/certs
