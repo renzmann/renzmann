@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-_so() {
+so() {
 	local name=${1:-.venv}
 	if [[ ! -d $name ]]; then
 		new-venv $name
