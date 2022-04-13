@@ -1,5 +1,4 @@
 #! /usr/bin/env bash
-
 if command -v nvim &> /dev/null; then
 	export EDITOR=nvim
 else
@@ -69,3 +68,5 @@ case "$TERM" in
 esac
 
 export SSL_CERT_DIR=/etc/ssl/certs
+
+[[ -d $HOME/.jabba ]] && source $HOME/.jabba/jabba.sh
