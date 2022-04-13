@@ -16,6 +16,7 @@ if [[ -f /etc/bashrc ]]; then
 fi
 
 # Things that need to be "sourced" instead of loaded on-demand
+source $HOME/.git-prompt.sh
 for file in $HOME/.bash_functions/*; do
 	source $file
 done
