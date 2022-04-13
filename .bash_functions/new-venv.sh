@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-_new-venv() {
+new-venv() {
 	local name=${1:-.venv}
 	local version=${2:-3}
 
@@ -7,5 +7,3 @@ _new-venv() {
 		&& source $name/bin/activate \
 		&& python${version} -m pip install --upgrade pip wheel
 }
-
-_new-venv $@
