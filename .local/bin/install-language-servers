@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+npm install -g pyright
+npm install -g bash-language-server
+
+mkdir -p $HOME/tmp && cd $HOME/tmp
+go install golang.org/x/tools/gopls@latest
+cd -
