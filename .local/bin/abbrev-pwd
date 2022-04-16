@@ -1,11 +1,33 @@
-#!/usr/bin/env bash
-p="${PWD#${HOME}}"
-[[ "${PWD}" != "${p}" ]] && printf "~"
+#!/usr/bin/env python3
+from pathlib import Path
 
-IFS=/
-for q in ${p:1}
-	do printf /${q:0:1}
-done
-unset IFS
 
-printf "${q:1}"
+def abbrev(s: str) -> str:
+    stripped = s.lstrip("./")
+
+    if len(stripped) > 0:
+        if s.startswith('.'):
+            return f".{stripped[0]}"
+        else:
+            return stripped[0]
+    else:
+        return ''
+
+if __name__ == "__main__":
+    cwd = Path(".").absolute()
+    home = Path().home().absolute()
+
+    if cwd.is_relative_to(home):
+        p = cwd.relative_to(home)
+        root = "~"
+    else:
+        p = cwd.relative_to("/")
+        root = "/"
+
+    if p.parts:
+        *parts, tail = p.parts
+        dirs = [abbrev(s) for s in [root] + list(parts)]
+        abbrev_path = dirs + [tail]
+        print("/".join(abbrev_path))
+    else:
+        print(root)
