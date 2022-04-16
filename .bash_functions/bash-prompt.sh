@@ -38,9 +38,9 @@ _bash-prompt() {
 	# ᓺ U+14FA Canadian Swii
 	# set a fancy prompt (non-color, unless we know we "want" color)
 	local deb_part='${debian_chroot:+($debian_chroot)}'
-	local user_part=${BOLD_YELLOW}$(_trunc ${USER})${COLOR_RESET}
-	local user_sep=${BOLD_YELLOW}@${COLOR_RESET}
-	local host_part=${BOLD_YELLOW}$(_trunc ${HOSTNAME})${COLOR_RESET}
+	local user_part=${BOLD_GREEN}$(_trunc ${USER})${COLOR_RESET}
+	local user_sep=${BOLD_GREEN}@${COLOR_RESET}
+	local host_part=${BOLD_GREEN}$(_trunc ${HOSTNAME})${COLOR_RESET}
 	local dir_sep=' '
 	local dir_part=${BOLD_BLUE}'$(abbrev-pwd)'${COLOR_RESET}
 	local git_part=${BOLD_MAGENTA}'$(__git_ps1 "[ᓺ %s]")'${COLOR_RESET}
