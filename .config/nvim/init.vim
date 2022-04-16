@@ -298,8 +298,14 @@ EOF
 " =============================================================================
 "                         AutoPairs Configuration
 " =============================================================================
+" Without the auto-pair insertion, there are times when writing python that
+" inserting a `:` character causes the indentation to go haywire.  With the
+" parenthesis and `"` auto-closed, this happens less frequently
 lua <<EOF
-require('nvim-autopairs').setup{}
+require('nvim-autopairs').setup{
+  enable_check_bracket_line = false,
+  ignored_next_char = "[%w%.]" -- will ignore alphanumeric and `.` symbol
+}
 
 require("nvim-autopairs.completion.compe").setup({
   map_cr = true, --  map <CR> on insert mode
