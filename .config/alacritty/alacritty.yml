@@ -1,7 +1,7 @@
-font:
-  normal:
-    family: 'DejaVu Sans Mono for Powerline'
-  size: 14
+# font:
+#   normal:
+#     family: 'DejaVu Sans Mono for Powerline'
+#   size: 14
 
 # Colors
 # (Nord)
