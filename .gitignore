@@ -27,7 +27,6 @@
 !.local/bin/amm
 !.local/bin/abbrev-pwd
 !.local/bin/ff
-!.local/bin/so
 !.local/bin/sqlfmt
 !.local/bin/trunc-string
 !.local/bin/yn-prompt
@@ -35,7 +34,6 @@
 !.local/bin/bash-prompt
 !.local/bin/fix-sound
 !.local/bin/flash-model-f
-!.local/bin/new-venv
 !.local/bin/mail
 !.local/bin/install-poetry
 !.local/bin/install-cs
@@ -45,3 +43,4 @@
 !.local/bin/install-language-servers
 !.local/bin/install-nvim
 !.local/bin/install-nvm
+!.local/bin/icat
