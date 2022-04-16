@@ -22,6 +22,8 @@
 !.bash_completions/*
 !.config/alacritty
 !.config/alacritty/*
+!.config/kitty
+!.config/kitty/*
 !.local
 !.local/bin
 !.local/bin/amm
