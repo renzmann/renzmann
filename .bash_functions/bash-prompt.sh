@@ -2,6 +2,11 @@
 _trunc() {
 	$HOME/.local/bin/trunc-string -n 20 $(echo ${1} | awk -F '.' '{ print $1 }')
 }
+
+_venv() {
+	[[ ! -z $VIRTUAL_ENV ]] && echo \($(basename $VIRTUAL_ENV)\)' '
+}
+
 _bash-prompt() {
 	# Easier to read color codes
 	local BLACK="\[\033[0;30m\]"
@@ -68,7 +73,7 @@ _bash-prompt() {
 	fi
 
 	if [[ "$color_prompt" = yes ]]; then
-		PS1=${conn_color}'┌─ '${COLOR_RESET}${deb_part}${user_part}${user_sep}${host_part}${dir_sep}${dir_part}' '${git_part}${prompt_part}
+		PS1=${conn_color}'┌─ '${COLOR_RESET}'$(_venv)'${deb_part}${user_part}${user_sep}${host_part}${dir_sep}${dir_part}' '${git_part}${prompt_part}
 	else
 		PS1=${deb_part}'\u@\h:\w$(__git_ps1)\n\$ '
 	fi
