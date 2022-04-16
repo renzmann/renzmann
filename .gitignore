@@ -24,6 +24,8 @@
 !.config/alacritty/*
 !.config/kitty
 !.config/kitty/*
+!.config/kitty/themes
+!.config/kitty/themes/*
 !.local
 !.local/bin
 !.local/bin/amm
