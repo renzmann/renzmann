@@ -73,7 +73,13 @@ _bash-prompt() {
 	fi
 
 	if [[ "$color_prompt" = yes ]]; then
-		PS1=${conn_color}'┌─ '${COLOR_RESET}'$(_venv)'${deb_part}${user_part}${user_sep}${host_part}${dir_sep}${dir_part}' '${git_part}${prompt_part}
+		PS1=${conn_color}'\n┌─ '${COLOR_RESET}
+		PS1+='$(_venv)'
+		PS1+=${deb_part}
+		PS1+=${user_part}${user_sep}${host_part}
+		PS1+=${dir_sep}${dir_part}
+		PS1+=' '${git_part}
+		PS1+=${prompt_part}
 	else
 		PS1=${deb_part}'\u@\h:\w$(__git_ps1)\n\$ '
 	fi
