@@ -1,6 +1,4 @@
-" =============================================================================
-" Section: Editor settings
-" =============================================================================
+" Editor Settings: {{{
 let g:python3_host_prog = "$HOME/.nvim.venv/bin/python"
 set nocompatible
 filetype plugin on
@@ -45,38 +43,33 @@ if has("win32")
     set t_vb=
   end
 end
+" }}}
 
-" =============================================================================
-" Section: plugins
-" =============================================================================
+" Plugins : {{{
 source ~/.config/nvim/plugs.vim
+" }}}
 
-" =============================================================================
-" Section: colorscheme
-" =============================================================================
+" Color Theme: {{{
 " colo nordfox
 colo gruvbox
 " colo kanagawa
 " colo onedark
+" }}}
 
-" =============================================================================
-" Section: netrw customization
-" =============================================================================
+" netrw customization: {{{
 " tree style list
 " let g:netrw_liststyle = 3
 " suppress the banner
 let g:netrw_banner = 0
+" }}}
 
-" =============================================================================
-" Section: slime customization
-" =============================================================================
+" slime customization: {{{
 let g:slime_target = "tmux"
 " I always have the REPL on the right, vertical split.
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+" }}}
 
-" =============================================================================
-" Section: language servers
-" =============================================================================
+" Language Servers: {{{
 " Copied from the suggestions in the nvim-lspconfig README:
 " https://github.com/neovim/nvim-lspconfig
 lua << EOF
@@ -205,10 +198,9 @@ augroup END
 "   Hint = "#10B981"
 " }
 " EOF
+" }}}
 
-" =============================================================================
-"                   Completion engine: nvim-compe
-" =============================================================================
+" Auto-complete (intellisense): {{{
 set completeopt=menuone,noselect
 let g:compe = {}
 let g:compe.enabled = v:true
@@ -282,11 +274,9 @@ inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+" }}}
 
-
-" =============================================================================
-"                         TreeSitter Configuration
-" =============================================================================
+" TreeSitter: {{{
 lua <<EOF
 require('nvim-treesitter.configs').setup {
   ensure_installed = { "python", "fish", "bash", "lua", "vim" },
@@ -294,10 +284,9 @@ require('nvim-treesitter.configs').setup {
   indent = { enable = true },
 }
 EOF
+" }}}
 
-" =============================================================================
-"                         AutoPairs Configuration
-" =============================================================================
+" Autopairs: {{{
 " Without the auto-pair insertion, there are times when writing python that
 " inserting a `:` character causes the indentation to go haywire.  With the
 " parenthesis and `"` auto-closed, this happens less frequently
@@ -317,4 +306,4 @@ require("nvim-autopairs.completion.compe").setup({
   }
 })
 EOF
-
+" }}}
