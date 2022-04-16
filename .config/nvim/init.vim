@@ -21,6 +21,8 @@ set wildignore=*.o,*.obj,*.db-whl,*.db-shm,*node_modules*,*.venv*,tags,.*.un~,*.
 set list listchars=tab:>\ ,trail:·
 set mouse=a
 set showcmd
+set foldmethod=marker
+set foldmarker={{{,}}}
 
 " if $TERM != 'screen-256color'
 "   set termguicolors
