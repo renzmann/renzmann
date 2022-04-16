@@ -18,7 +18,7 @@ EOF
 
 _funced() {
 	local cur=${COMP_WORDS[COMP_CWORD]}
-	local funcs=$(declare -F | awk '{ print $3 }' | tr '\n' ' ')
+	local funcs=$(ls $HOME/.bash_functions | sed 's/\.sh$//' | tr '\n' ' ')
 	COMPREPLY=( $(compgen -W "$funcs" -- $cur) )
 }
 
