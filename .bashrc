@@ -69,3 +69,6 @@ esac
 export SSL_CERT_DIR=/etc/ssl/certs
 
 [[ -d $HOME/.jabba ]] && source $HOME/.jabba/jabba.sh
+
+# .bash_functions/bash-profile.sh sets the correct VIRTUAL_ENV position
+export VIRTUAL_ENV_DISABLE_PROMPT=1
