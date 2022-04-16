@@ -50,8 +50,8 @@ source ~/.config/nvim/plugs.vim
 " }}}
 
 " Color Theme: {{{
-" colo nordfox
-colo gruvbox
+colo nordfox
+" colo gruvbox
 " colo kanagawa
 " colo onedark
 " }}}
