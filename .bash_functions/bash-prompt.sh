@@ -50,7 +50,7 @@ _bash-prompt() {
 	local dir_part=${BOLD_BLUE}'$(abbrev-pwd)'${COLOR_RESET}
 	local git_part=${BOLD_MAGENTA}'$(__git_ps1 "[ᓺ %s]")'${COLOR_RESET}
 	local conn_color=${DARK_GRAY}
-	local prompt_part=${conn_color}'\n└'${MAGENTA}'❯'${COLOR_RESET}' '
+	local prompt_part=${COLOR_RESET}'\n'${conn_color}'└'${MAGENTA}'❯'${COLOR_RESET}' '
 	# local force_color_prompt=yes
 
 	case "$TERM" in
