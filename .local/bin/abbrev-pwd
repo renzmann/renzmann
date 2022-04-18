@@ -17,12 +17,12 @@ if __name__ == "__main__":
     cwd = Path(".").absolute()
     home = Path().home().absolute()
 
-    if cwd.is_relative_to(home):
-        p = cwd.relative_to(home)
+    try:
         root = "~"
-    else:
-        p = cwd.relative_to("/")
+        p = cwd.relative_to(home)
+    except ValueError:
         root = "/"
+        p = cwd.relative_to("/")
 
     if p.parts:
         *parts, tail = p.parts
