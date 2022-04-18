@@ -1,4 +1,5 @@
 *
+!.fzf-mine.sh
 !.git-prompt.sh
 !.flake8
 !.vim
