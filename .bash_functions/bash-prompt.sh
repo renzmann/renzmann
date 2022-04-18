@@ -7,7 +7,7 @@ _venv() {
 	[[ ! -z $VIRTUAL_ENV ]] && echo \($(basename $VIRTUAL_ENV)\)' '
 }
 
-_bash-prompt() {
+_bash_prompt() {
 	# Easier to read color codes
 	local BLACK="\[\033[0;30m\]"
 	local DARK_GRAY="\[\033[1;30m\]"
@@ -84,4 +84,4 @@ _bash-prompt() {
 		PS1=${deb_part}'\u@\h:\w$(__git_ps1)\n\$ '
 	fi
 }
-_bash-prompt $@
+_bash_prompt $@

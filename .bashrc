@@ -21,13 +21,13 @@ for file in $HOME/.bash_functions/*; do
 	source $file
 done
 
-insert-path /usr/local/bin
-insert-path $HOME/.local/bin
-insert-path $HOME/.local/share/coursier/bin
-insert-path $HOME/.emacs.d/bin
+insert_path /usr/local/bin
+insert_path $HOME/.local/bin
+insert_path $HOME/.local/share/coursier/bin
+insert_path $HOME/.emacs.d/bin
 [[ -z $GOPATH ]] && export GOPATH=$HOME/go
-insert-path $GOPATH/bin
-insert-path $HOME/.cargo/bin
+insert_path $GOPATH/bin
+insert_path $HOME/.cargo/bin
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -43,6 +43,14 @@ if [[ -x /usr/bin/dircolors ]]; then
 	alias grep='grep --color=auto'
 	alias fgrep='fgrep --color=auto'
 	alias egrep='egrep --color=auto'
+fi
+
+if [[ "$OSTYPE" =~ darwin ]]; then
+	alias ls='ls --color=yes'
+	alias ll='ls -lah'
+	alias grep='grep --color=yes'
+	alias fgrep='fgrep --color=yes'
+	alias egrep='egrep --color=yes'
 fi
 
 # colored GCC warnings and errors
@@ -62,7 +70,7 @@ case "$TERM" in
 	dumb|emacs*)
 		;;
 	*)
-		[[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
+		[[ -f ~/.fzf.bash ]] && source ~/.fzf-mine.sh
 		;;
 esac
 
