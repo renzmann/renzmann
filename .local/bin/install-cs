@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
-curl -fLo cs https://git.io/coursier-cli-"$(uname | tr LD ld)"
-chmod u+x cs
-./cs install cs
-rm ./cs
+platform=$(uname | tr LD ld)
+
+if [[ $platform = "linux" ]]; then
+	curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > cs
+elif [[ $platform = "darwin" ]]; then
+	curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-apple-darwin.gz | gzip -d > cs
+fi
+
+chmod +x cs
+./cs setup --install-dir $HOME/.coursier
+rm -rf ./cs

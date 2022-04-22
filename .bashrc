@@ -28,6 +28,7 @@ insert_path $HOME/.emacs.d/bin
 [[ -z $GOPATH ]] && export GOPATH=$HOME/go
 insert_path $GOPATH/bin
 insert_path $HOME/.cargo/bin
+append_path $HOME/.coursier
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
