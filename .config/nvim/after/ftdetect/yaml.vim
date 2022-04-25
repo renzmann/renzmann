@@ -1,1 +1,1 @@
-autocmd BufRead BufNewFile *.yml setlocal filtype=yaml
+autocmd BufRead,BufNewFile *.yml setlocal filetype=yaml
