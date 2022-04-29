@@ -81,3 +81,8 @@ export SSL_CERT_DIR=/etc/ssl/certs
 
 # .bash_functions/bash-profile.sh sets the correct VIRTUAL_ENV position
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# Alias batcat if we must
+if command -v batcat &> /dev/null; then
+	alias bat="batcat"
+fi
