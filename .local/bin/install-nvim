@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-_install-nvim() {
+_install_nvim() {
 	[[ -z $1 ]] && local version='0.6.1' || local version=$1
 	local download_url="https://github.com/neovim/neovim/releases/download/v${version}"
 
@@ -25,4 +25,4 @@ _install-nvim() {
 	yn-prompt 'Install language servers?' && install-language-servers
 }
 
-_install-nvim $@
+_install_nvim $@
