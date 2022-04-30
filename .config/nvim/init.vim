@@ -109,10 +109,13 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "bashls", "yamlls" }
+local servers = { "bashls", "yamlls", "rust_analyzer" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup { on_attach = on_attach }
 end
+
+-- rust notes
+-- https://rust-analyzer.github.io/manual.html#installation
 
 -- python setup
 lspconfig['pyright'].setup {
@@ -177,10 +180,10 @@ lspconfig["julials"].setup {
 
 EOF
 
-" Format golang on save
-augroup gofmt
+" Format on save
+augroup lspfmt
   autocmd!
-  autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
+  autocmd BufWritePre *.go,*.rs lua vim.lsp.buf.formatting()
 augroup END
 
 " Uncomment to enable automatic opening of location list with LSP diagnostics
