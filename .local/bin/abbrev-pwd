@@ -1,33 +1,18 @@
-#!/usr/bin/env python3
-from pathlib import Path
+#!/usr/bin/env bash
+function _crunch_pwd() {
+	# https://stackoverflow.com/a/44269717/13215205
+	local lpwd="$PWD"
+	[[ $PWD = ${HOME}* ]] && lpwd="~${lpwd#$HOME}"
 
+	while [[ $lpwd =~ (.*)(/[._]?[a-z0-9])[a-z0-9._-]+(/.*) ]]; do
+		# This regex - as long as $lpwd has a component between slashes `/`
+		# that has two or more ascii characters (optionally prefixed with a dot),
+		# replace that chunk with the captured prefix (BASH_REMATCH[2] here)
+		lpwd="${BASH_REMATCH[1]}${BASH_REMATCH[2]}${BASH_REMATCH[3]}"
+		# See https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#index-BASH_005fREMATCH
+		# for more on BASH_REMATCH
+	done
 
-def abbrev(s: str) -> str:
-    stripped = s.lstrip("./")
-
-    if len(stripped) > 0:
-        if s.startswith('.'):
-            return f".{stripped[0]}"
-        else:
-            return stripped[0]
-    else:
-        return ''
-
-if __name__ == "__main__":
-    cwd = Path(".").absolute()
-    home = Path().home().absolute()
-
-    try:
-        root = "~"
-        p = cwd.relative_to(home)
-    except ValueError:
-        root = "/"
-        p = cwd.relative_to("/")
-
-    if p.parts:
-        *parts, tail = p.parts
-        dirs = [abbrev(s) for s in [root] + list(parts)]
-        abbrev_path = dirs + [tail]
-        print("/".join(abbrev_path))
-    else:
-        print(root)
+	printf '%s' "$lpwd"
+}
+_crunch_pwd $@
