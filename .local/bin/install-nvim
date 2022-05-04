@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
+yn_prompt() {
+	while true; do
+			read -p "$* [y/n]: " yn
+			case $yn in
+					[Yy]*) return 0  ;;
+					[Nn]*) echo "Aborted" ; return  1 ;;
+			esac
+	done
+}
+
 _install_nvim() {
-	[[ -z $1 ]] && local version='0.6.1' || local version=$1
+	[[ -z $1 ]] && local version='0.7.0' || local version=$1
 	local download_url="https://github.com/neovim/neovim/releases/download/v${version}"
 
 	case $OSTYPE in
@@ -22,7 +32,7 @@ _install_nvim() {
 	deactivate
 	cd -
 
-	yn-prompt 'Install language servers?' && install-language-servers
+	yn_prompt 'Install language servers?' && install-language-servers
 }
 
 _install_nvim $@
