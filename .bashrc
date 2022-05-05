@@ -86,3 +86,5 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 if command -v batcat &> /dev/null; then
 	alias bat="batcat"
 fi
+
+[[ -f $HOME/.cargo/env ]] && . "$HOME/.cargo/env"
