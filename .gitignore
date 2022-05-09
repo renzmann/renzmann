@@ -51,3 +51,4 @@
 !.local/bin/icat
 !.local/bin/install-golang
 !.local/bin/install-cargo
+!.local/bin/ilite
