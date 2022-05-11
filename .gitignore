@@ -49,3 +49,6 @@
 !.local/bin/install-nvim
 !.local/bin/install-nvm
 !.local/bin/icat
+!.local/bin/install-golang
+!.local/bin/install-cargo
+!.local/bin/ilite
