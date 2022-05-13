@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
+# In order to get the hex file, you have to go here:
+#    http://35.164.28.200:5000/#/xwhatsit/brand_new_model_f/f77/LAYOUT_ansi_regular_shift_regular_backspace
+# I haven't figured out the QMK source setup to compile this file yet
 if [[ ! -z $(sudo dfu-programmer atmega32u2 get manufacturer) ]]; then
 	sudo dfu-programmer atmega32u2 erase
-	sudo dfu-programmer atmega32u2 flash ${1:-xwhatsit_brand_new_model_f_f77_wcass_renzmann_modelf_77.hex}
+	sudo dfu-programmer atmega32u2 flash ${1:-xwhatsit_brand_new_model_f_f77_wcass_robbmann_modelf_77.hex}
 fi
