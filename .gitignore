@@ -52,3 +52,4 @@
 !.local/bin/install-golang
 !.local/bin/install-cargo
 !.local/bin/ilite
+!.local/bin/install-ctags
