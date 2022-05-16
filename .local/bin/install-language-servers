@@ -1,27 +1,29 @@
 #!/usr/bin/env bash
-npm install -g pyright
-npm install -g bash-language-server
+_install_gopls() {
+	mkdir -p "$HOME/tmp" && cd "$HOME/tmp" || exit
+	go install golang.org/x/tools/gopls@latest
+	cd - || exit
+}
 
-mkdir -p $HOME/tmp && cd $HOME/tmp
-go install golang.org/x/tools/gopls@latest
-cd -
-
-_install_rls() {
+_install_rust_analyzer() {
 	local base_url="https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-"
 
-	if [[ $OSTYPE =~ *darwin ]]; then
+	if [[ $OSTYPE = *darwin ]]; then
 		local name=apple-darwin
 	elif [[ $OSTYPE =~ linux* ]]; then
 		local name=unknown-linux-gnu
 	else
-		echo Bad OSTYPE: $OSTYPE
+		echo Bad OSTYPE: "$OSTYPE"
 		return 1
 	fi
 
 	local url="${base_url}${name}.gz"
-	curl -L ${url} | gunzip -c - > $HOME/.local/bin/rust-analyzer \
-		&& chmod +x $HOME/.local/bin/rust-analyzer
+
+	curl -L ${url} | gunzip -c - > "$HOME/.local/bin/rust-analyzer" \
+		&& chmod +x "$HOME/.local/bin/rust-analyzer"
 }
 
-_install_rls
-
+npm install -g pyright || sudo npm install -g pyright
+npm install -g bash-language-server || sudo npm install -g bash-language-server
+_install_gopls
+_install_rust_analyzer
