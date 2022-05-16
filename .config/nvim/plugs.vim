@@ -26,4 +26,5 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'catppuccin/catppuccin'
 Plug 'navarasu/onedark.nvim'
+Plug 'rust-lang/rust.vim'
 call plug#end()
