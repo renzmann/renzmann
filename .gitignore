@@ -34,7 +34,6 @@
 !.local/bin/ff
 !.local/bin/sqlfmt
 !.local/bin/trunc-string
-!.local/bin/yn-prompt
 !.local/bin/pywhere
 !.local/bin/bash-prompt
 !.local/bin/fix-sound
