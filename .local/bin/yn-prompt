@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+while true; do
+	read -rp "$1 [y/n]: " yn
+	case $yn in
+		[Yy]*) exit 0  ;;
+		[Nn]*) echo "Aborted" ; exit  1 ;;
+	esac
+done

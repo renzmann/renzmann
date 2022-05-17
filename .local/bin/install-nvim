@@ -1,14 +1,4 @@
 #!/usr/bin/env bash
-yn_prompt() {
-	while true; do
-			read -rp "$* [y/n]: " yn
-			case $yn in
-				[Yy]*) return 0  ;;
-				[Nn]*) echo "Aborted" ; return  1 ;;
-			esac
-	done
-}
-
 _install_nvim() {
 	local version=${1:-"0.7.0"}
 	local download_url="https://github.com/neovim/neovim/releases/download/v${version}"
@@ -29,7 +19,7 @@ _install_nvim() {
 	python3 -m venv "$HOME/.nvim.venv"
 	"$HOME/.nvim.venv/bin/python3" -m pip install --upgrade pip black flake8 jedi jedi-language-server neovim mypy
 
-	yn_prompt 'Install language servers?' && install-language-servers
+	yn-prompt 'Install language servers?' && install-language-servers
 }
 
 _install_nvim "$@"
