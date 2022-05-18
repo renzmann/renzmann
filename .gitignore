@@ -33,7 +33,7 @@
 !.local/bin/abbrev-pwd
 !.local/bin/ff
 !.local/bin/sqlfmt
-!.local/bin/trunc-string
+!.local/bin/trunc
 !.local/bin/pywhere
 !.local/bin/bash-prompt
 !.local/bin/fix-sound

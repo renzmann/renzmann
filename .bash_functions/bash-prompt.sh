@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 _trunc() {
-	$HOME/.local/bin/trunc-string -n 20 $(echo ${1} | awk -F '.' '{ print $1 }')
+	$HOME/.local/bin/trunc -n 20 $(echo ${1} | awk -F '.' '{ print $1 }')
 }
 
 _venv() {
