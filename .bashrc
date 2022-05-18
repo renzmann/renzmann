@@ -4,12 +4,6 @@
 # 1. add-path function that inserts/appends to PATH if something's not on it
 # 2. modify funced to work on ~/.bash_functions while ced is on ~/.local/bin
 
-if command -v nvim &> /dev/null; then
-	export EDITOR=nvim
-else
-	export EDITOR=vim
-fi
-
 # Source global definitions
 if [[ -f /etc/bashrc ]]; then
 	source /etc/bashrc
@@ -29,6 +23,13 @@ insert_path $HOME/.emacs.d/bin
 insert_path $GOPATH/bin
 insert_path $HOME/.cargo/bin
 append_path $HOME/.coursier
+
+# This has to be after we set PATH above
+if command -v nvim &> /dev/null; then
+	export EDITOR=nvim
+else
+	export EDITOR=vim
+fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
