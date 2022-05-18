@@ -16,13 +16,13 @@ for file in $HOME/.bash_functions/*; do
 done
 
 insert_path /usr/local/bin
-insert_path $HOME/.local/bin
-insert_path $HOME/.local/share/coursier/bin
-insert_path $HOME/.emacs.d/bin
+insert_path "$HOME/.local/bin"
+insert_path "$HOME/.local/share/coursier/bin"
+insert_path "$HOME/.emacs.d/bin"
 [[ -z $GOPATH ]] && export GOPATH=$HOME/go
-insert_path $GOPATH/bin
-insert_path $HOME/.cargo/bin
-append_path $HOME/.coursier
+insert_path "$GOPATH/bin"
+insert_path "$HOME/.cargo/bin"
+append_path "$HOME/.coursier"
 
 # This has to be after we set PATH above
 if command -v nvim &> /dev/null; then
