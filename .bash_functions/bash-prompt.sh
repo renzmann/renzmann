@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# This script is meant to be `source`d!
 _trunc() {
 	$HOME/.local/bin/trunc -n 20 $(echo ${1} | awk -F '.' '{ print $1 }')
 }

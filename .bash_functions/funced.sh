@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+# This script is meant to be `source`d!
 funced() {
 	local funcname=$(basename $1)
 	local fp=$HOME/.bash_functions/${funcname}.sh
 	local template="#!/usr/bin/env bash\n${funcname}()\n{	\n}\n"
 	[[ ! -f $fp ]] && cat > $fp << EOF
-#!/usr/bin/env bash
+# This script is meant to be `source`d!
 ${funcname}() {
 	echo hello
 }

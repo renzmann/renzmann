@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# This script is meant to be `source`d!
 so() {
 	local name=${1:-.venv}
 	local version=${2:-3}

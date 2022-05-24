@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# This script is meant to be `source`d!
 _not_in_path() {
 	local prefixed=$(echo "$PATH" | grep "$1:")
 	[[ ! -z "$prefixed" ]] && return 1

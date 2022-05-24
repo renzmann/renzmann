@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# This script is meant to be `source`d!
 _csync() {
 	# Stop ignoring anything that's been removed since the last
 	# call to `funced`
@@ -27,7 +27,10 @@ crm() {
 }
 
 clist() {
-	grep '!.local/bin/*' "$HOME/.gitignore" | awk -F '/' ' { print $3 }' | tr '\n' ' ' | xargs
+	grep '!.local/bin/*' "$HOME/.gitignore" \
+		| awk -F '/' ' { print $3 }' \
+		| tr '\n' ' ' \
+		| sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
 
 ced() {
