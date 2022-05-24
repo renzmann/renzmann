@@ -29,6 +29,7 @@
 !.config/kitty/themes/*
 !.local
 !.local/bin
+!.local/bin/rae
 !.local/bin/amm
 !.local/bin/abbrev-pwd
 !.local/bin/ff
