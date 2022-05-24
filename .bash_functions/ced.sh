@@ -26,6 +26,10 @@ crm() {
 	rm "$HOME/.local/bin/$1" && _csync
 }
 
+clist() {
+	grep '!.local/bin/*' "$HOME/.gitignore" | awk -F '/' ' { print $3 }' | tr '\n' ' ' | xargs
+}
+
 ced() {
 	local cname
 	cname=$(basename "$1")
@@ -43,9 +47,8 @@ EOF
 _ced() {
 	local cur=${COMP_WORDS[COMP_CWORD]}
 	local funcs
-	funcs=$(grep '!.local/bin/*' "$HOME/.gitignore" | awk -F '/' ' { print $3 }')
 	# "Prefer mapfile or read -a" -- I can't figure this one out, bash official docs recommend the below
-	COMPREPLY=( $(compgen -W "$funcs" -- "$cur") )
+	COMPREPLY=( $(compgen -W "$(clist)" -- "$cur") )
 }
 
 complete -F _ced ced

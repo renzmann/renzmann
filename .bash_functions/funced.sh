@@ -16,10 +16,13 @@ EOF
 	done
 }
 
+funclist() {
+	ls $HOME/.bash_functions | sed 's/\.sh$//' | tr '\n' ' '
+}
+
 _funced() {
 	local cur=${COMP_WORDS[COMP_CWORD]}
-	local funcs=$(ls $HOME/.bash_functions | sed 's/\.sh$//' | tr '\n' ' ')
-	COMPREPLY=( $(compgen -W "$funcs" -- $cur) )
+	COMPREPLY=( $(compgen -W "$(funclist)" -- $cur) )
 }
 
 complete -F _funced funced
