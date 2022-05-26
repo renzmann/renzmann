@@ -31,6 +31,12 @@ else
 	export EDITOR=vim
 fi
 
+if [[ "$OSTYPE" =~ darwin ]]; then
+	for x in $(echo "$HOME/Library/Python/*/bin"); do
+		append_path $x
+	done
+fi
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
