@@ -46,12 +46,64 @@ end
 " }}}
 
 " Plugins : {{{
-source ~/.config/nvim/plugs.vim
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+
+" Install vim-plug if it's not found
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Install any missing plugins on launch
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+
+call plug#begin()
+" Basics
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+" Intellisense
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'williamboman/nvim-lsp-installer'
+" Fuzzy menus
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" Coloring
+if !has('win32')
+  Plug 'nvim-treesitter/nvim-treesitter'
+endif
+Plug 'morhetz/gruvbox'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'catppuccin/catppuccin'
+Plug 'navarasu/onedark.nvim'
+" Multitasking
+Plug 'jpalardy/vim-slime'
+Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser-github.vim'
+Plug 'psf/black'
+Plug 'windwp/nvim-autopairs'
+" Languages
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+call plug#end()
 " }}}
 
 " Color Theme: {{{
-colo nordfox
-" colo gruvbox
+" colo nordfox
+colo gruvbox
 " colo kanagawa
 " colo onedark
 " }}}
@@ -68,6 +120,142 @@ let g:slime_target = "tmux"
 " I always have the REPL on the right, vertical split.
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
 " }}}
+
+" Auto-complete (intellisense): {{{
+set completeopt=menu,menuone,noselect
+lua <<EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+
+      -- Wonky ass error when doing TAB inside python function
+      -- ["<Tab>"] = cmp.mapping(function(fallback)
+      --   if cmp.visible() then
+      --     cmp.select_next_item()
+      --   elseif vim.fn["vsnip#available"](1) == 1 then
+      --     feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      --   elseif has_words_before() then
+      --     cmp.complete()
+      --   else
+      --     fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      --   end
+      -- end, { "i", "s" }),
+
+      -- ["<S-Tab>"] = cmp.mapping(function()
+      --   if cmp.visible() then
+      --     cmp.select_prev_item()
+      --   elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+      --     feedkey("<Plug>(vsnip-jump-prev)", "")
+      --   end
+      -- end, { "i", "s" }),
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+EOF
+" From old compe configuration
+" "lua << EOF
+" "local t = function(str)
+" "  return vim.api.nvim_replace_termcodes(str, true, true, true)
+" "end
+" "
+" "local check_back_space = function()
+" "  local col = vim.fn.col('.') - 1
+" "  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+" "end
+" "
+" "-- Use (s-)tab to:
+" "--- move to prev/next item in completion menuone
+" "--- jump to prev/next snippet's placeholder
+" "_G.tab_complete = function()
+" "  if vim.fn.pumvisible() == 1 then
+" "    return t "<C-n>"
+" "  elseif vim.fn['vsnip#available'](1) == 1 then
+" "    return t "<Plug>(vsnip-expand-or-jump)"
+" "  elseif check_back_space() then
+" "    return t "<Tab>"
+" "  else
+" "    return vim.fn['compe#complete']()
+" "  end
+" "end
+" "_G.s_tab_complete = function()
+" "  if vim.fn.pumvisible() == 1 then
+" "    return t "<C-p>"
+" "  elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+" "    return t "<Plug>(vsnip-jump-prev)"
+" "  else
+" "    -- If <S-Tab> is not working in your terminal, change it to <C-h>
+" "    return t "<S-Tab>"
+" "  end
+" "end
+" "
+" "vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+" "vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+" "vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+" "vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+" "EOF
+" "
+" "inoremap <silent><expr> <C-Space> compe#complete()
+" "inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+" "inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+" "inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+" "inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+"  }}}
 
 " Language Servers: {{{
 " Copied from the suggestions in the nvim-lspconfig README:
@@ -109,21 +297,23 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local servers = {
   "bashls",
   "yamlls",
   "rust_analyzer",
 }
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup { on_attach = on_attach }
+  lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
 end
 
 -- rust notes
 -- https://rust-analyzer.github.io/manual.html#installation
 
 -- python setup
+local pyright_command = vim.fn.has('win32') and 'pyright-langserver.cmd' or 'pyright-langserver'
 lspconfig['pyright'].setup {
-  cmd = { 'pyright-langserver', '--stdio' },
+  cmd = { pyright_command, '--stdio' },
   on_attach = on_attach,
   filetypes = { 'python' },
   root_dir = lspconfig.util.root_pattern(
@@ -145,12 +335,13 @@ lspconfig['pyright'].setup {
     }
   },
   single_file_support = true,
+  capabilities = capabilities,
 }
 
 -- gopls setup
 -- Make sure that $GOPATH/bin is on $PATH after installing gopls for this to work
 -- cd $HOME && mkdir -p tmp && cd tmp && go install golang.org/x/tools/gopls@latest
-lspconfig["gopls"].setup { on_attach = on_attach, cmd = {'gopls', '--remote=auto'} }
+lspconfig["gopls"].setup { on_attach = on_attach, cmd = {'gopls', '--remote=auto'}, capabilities = capabilities }
 
 -- julia setup
 -- Make sure to run julia and from the package manager prompt:
@@ -173,7 +364,8 @@ lspconfig["julials"].setup {
       server.runlinter = true;
       run(server);
     ]]
-  }
+  },
+  capabilities = capabilities,
 }
 
 -- Uncomment to disable diagnostics
@@ -207,91 +399,17 @@ augroup END
 " EOF
 " }}}
 
-" Auto-complete (intellisense): {{{
-set completeopt=menuone,noselect
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'enable'
-let g:compe.throttle_time = 80
-let g:compe.source_timeout = 200
-let g:compe.resolve_timeout = 800
-let g:compe.incomplete_delay = 400
-let g:compe.max_abbr_width = 100
-let g:compe.max_kind_width = 100
-let g:compe.max_menu_width = 100
-let g:compe.documentation = v:true
-
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.nvim_lsp = v:true
-let g:compe.source.nvim_lua = v:true
-let g:compe.source.vsnip = v:true
-let g:compe.source.ultisnips = v:true
-let g:compe.source.luasnip = v:true
-let g:compe.source.emoji = v:true
-
-lua << EOF
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-local check_back_space = function()
-  local col = vim.fn.col('.') - 1
-  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
-end
-
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif vim.fn['vsnip#available'](1) == 1 then
-    return t "<Plug>(vsnip-expand-or-jump)"
-  elseif check_back_space() then
-    return t "<Tab>"
-  else
-    return vim.fn['compe#complete']()
-  end
-end
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn['vsnip#jumpable'](-1) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
-  else
-    -- If <S-Tab> is not working in your terminal, change it to <C-h>
-    return t "<S-Tab>"
-  end
-end
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+"  TreeSitter: {{{
+if !has('win32')
+  lua <<EOF
+  require('nvim-treesitter.configs').setup {
+    ensure_installed = { "python", "fish", "bash", "lua", "vim" },
+    highlight = { enable = true },
+    indent = { enable = true },
+  }
 EOF
-
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-" }}}
-
-" TreeSitter: {{{
-lua <<EOF
-require('nvim-treesitter.configs').setup {
-  ensure_installed = { "python", "fish", "bash", "lua", "vim" },
-  highlight = { enable = true },
-  indent = { enable = true },
-}
-EOF
-" }}}
+end
+"  }}}
 
 " Autopairs: {{{
 " Without the auto-pair insertion, there are times when writing python that
@@ -303,14 +421,15 @@ require('nvim-autopairs').setup{
   ignored_next_char = "[%w%.$*]" -- will ignore alphanumeric and a few other symbols
 }
 
-require("nvim-autopairs.completion.compe").setup({
-  map_cr = true, --  map <CR> on insert mode
-  map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
-  auto_select = false,  -- auto select first item
-  map_char = { -- modifies the function or method delimiter by filetypes
-    all = '(',
-    tex = '{'
-  }
-})
+-- Switched to the newer `cmp`, but not sure if this migrated yet
+-- require("nvim-autopairs.completion.compe").setup({
+--   map_cr = true, --  map <CR> on insert mode
+--   map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
+--   auto_select = false,  -- auto select first item
+--   map_char = { -- modifies the function or method delimiter by filetypes
+--     all = '(',
+--     tex = '{'
+--   }
+-- })
 EOF
-" }}}
+"  }}}
