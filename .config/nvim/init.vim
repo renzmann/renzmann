@@ -102,8 +102,8 @@ call plug#end()
 " }}}
 
 " Color Theme: {{{
-" colo nordfox
-colo gruvbox
+colo nordfox
+" colo gruvbox
 " colo kanagawa
 " colo onedark
 " }}}
@@ -311,7 +311,9 @@ end
 -- https://rust-analyzer.github.io/manual.html#installation
 
 -- python setup
-local pyright_command = vim.fn.has('win32') and 'pyright-langserver.cmd' or 'pyright-langserver'
+-- TODO How do I do a ternary in lua?
+-- local pyright_command = vim.fn.has('win32') and 'pyright-langserver.cmd' or 'pyright-langserver'
+local pyright_command = 'pyright-langserver'
 lspconfig['pyright'].setup {
   cmd = { pyright_command, '--stdio' },
   on_attach = on_attach,
