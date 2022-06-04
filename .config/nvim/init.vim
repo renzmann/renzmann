@@ -66,6 +66,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Intellisense
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -106,6 +108,8 @@ colo nordfox
 " colo gruvbox
 " colo kanagawa
 " colo onedark
+let g:airline_theme='base16_nord'
+" let g:airline_theme='base16_gruvbox_dark_medium'
 " }}}
 
 " netrw customization: {{{
