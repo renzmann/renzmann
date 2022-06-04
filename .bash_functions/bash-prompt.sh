@@ -1,6 +1,7 @@
+#!/usr/bin/env bash
 # This script is meant to be `source`d!
 _trunc() {
-	$HOME/.local/bin/trunc -n 20 $(echo ${1} | awk -F '.' '{ print $1 }')
+	$HOME/.local/bin/trunc -n 20 "$(echo ${1} | awk -F '.' '{ print $1 }')"
 }
 
 _venv() {
@@ -41,6 +42,7 @@ _bash_prompt() {
 	# ⯙ U+2BD9 Astraea
 	# ⯘ U+2BD8 Persephone
 	# ᓺ U+14FA Canadian Swii
+	# ᚠ U+16A0 Norse Fé Rune
 	# set a fancy prompt (non-color, unless we know we "want" color)
 	local deb_part='${debian_chroot:+($debian_chroot)}'
 	local user_part=${BOLD_GREEN}$(_trunc ${USER})${COLOR_RESET}
@@ -84,4 +86,4 @@ _bash_prompt() {
 		PS1=${deb_part}'\u@\h:\w$(__git_ps1)\n\$ '
 	fi
 }
-_bash_prompt $@
+_bash_prompt "$@"
