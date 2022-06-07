@@ -66,6 +66,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Intellisense
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -102,10 +104,12 @@ call plug#end()
 " }}}
 
 " Color Theme: {{{
-" colo nordfox
-colo gruvbox
+colo nordfox
+" colo gruvbox
 " colo kanagawa
 " colo onedark
+let g:airline_theme='base16_nord'
+" let g:airline_theme='base16_gruvbox_dark_medium'
 " }}}
 
 " netrw customization: {{{
@@ -289,10 +293,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>rn', '<CMD>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<leader>ca', '<CMD>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr',         '<CMD>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>e',  '<CMD>lua vim.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<leader>e',  '<CMD>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '[d',         '<CMD>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d',         '<CMD>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>q',  '<CMD>lua vim.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<leader>q',  '<CMD>lua vim.diagnostic.setqflist()<CR>', opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -311,7 +315,9 @@ end
 -- https://rust-analyzer.github.io/manual.html#installation
 
 -- python setup
-local pyright_command = vim.fn.has('win32') and 'pyright-langserver.cmd' or 'pyright-langserver'
+-- TODO How do I do a ternary in lua?
+-- local pyright_command = vim.fn.has('win32') and 'pyright-langserver.cmd' or 'pyright-langserver'
+local pyright_command = 'pyright-langserver'
 lspconfig['pyright'].setup {
   cmd = { pyright_command, '--stdio' },
   on_attach = on_attach,
