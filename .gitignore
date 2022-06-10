@@ -29,7 +29,6 @@
 !.config/kitty/themes/*
 !.local
 !.local/bin
-!.local/bin/rae
 !.local/bin/amm
 !.local/bin/abbrev-pwd
 !.local/bin/ff
@@ -54,3 +53,4 @@
 !.local/bin/ilite
 !.local/bin/install-ctags
 !.local/bin/yn-prompt
+!.local/bin/install-julia

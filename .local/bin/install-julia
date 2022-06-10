@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+_install-julia() {
+	cd "$HOME" || exit
+	local version=${1:-"1.7.3"}
+	curl -sSLO "https://julialang-s3.julialang.org/bin/linux/x64/${version:0:3}/julia-$version-linux-x86_64.tar.gz"
+	tar -xzvf "julia-$version-linux-x86_64.tar.gz"
+	ln -fs "$HOME/julia-$version/bin/julia" "$HOME/.local/bin/julia"
+	cd - || exit
+}
+_install-julia "$@"
