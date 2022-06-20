@@ -114,7 +114,7 @@ let g:airline_theme='base16_nord'
 
 " netrw customization: {{{
 " tree style list
-" let g:netrw_liststyle = 3
+let g:netrw_liststyle = 3
 " suppress the banner
 let g:netrw_banner = 0
 " }}}
