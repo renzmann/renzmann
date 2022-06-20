@@ -7,7 +7,7 @@ _install_nvim() {
 		'darwin'*)
 			curl -sSLO "${download_url}/nvim-macos.tar.gz" \
 				&& tar xzvf nvim-macos.tar.gz \
-				&& mv ./nvim-macos.tar.gz "$HOME/.local/bin"
+				&& ln -s ./nvim-osx64/bin/nvim "$HOME/.local/bin/nvim"
 			;;
 		*)
 			curl -LO "${download_url}/nvim.appimage" \
