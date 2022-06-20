@@ -62,11 +62,7 @@ autocmd VimEnter *
 call plug#begin()
 " Basics
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 " Intellisense
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -89,10 +85,15 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'catppuccin/catppuccin'
 Plug 'navarasu/onedark.nvim'
+Plug 'vim-airline/vim-airline-themes'
 " Multitasking
+Plug 'tpope/vim-fugitive'
 Plug 'jpalardy/vim-slime'
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
+" Formatting
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'windwp/nvim-autopairs'
 " Languages
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
