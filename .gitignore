@@ -44,7 +44,6 @@
 !.local/bin/install-fzf
 !.local/bin/install-hugo
 !.local/bin/install-jabba
-!.local/bin/install-language-servers
 !.local/bin/install-nvim
 !.local/bin/install-nvm
 !.local/bin/icat
