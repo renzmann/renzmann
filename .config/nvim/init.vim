@@ -1,5 +1,4 @@
 " Editor Settings: {{{
-let g:python3_host_prog = "$HOME/.nvim.venv/bin/python"
 set nocompatible
 filetype plugin on
 set background=dark
