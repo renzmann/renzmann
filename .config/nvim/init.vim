@@ -265,34 +265,18 @@ EOF
 " Copied from the suggestions in the nvim-lspconfig README:
 " https://github.com/neovim/nvim-lspconfig
 lua << EOF
+require('nvim-lsp-installer').setup { automatic_installation = true }
 local lspconfig = require('lspconfig')
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  -- Mappings.
   local opts = { noremap=true, silent=true }
 
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD',         '<CMD>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd',         '<CMD>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K',          '<CMD>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi',         '<CMD>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('i', '<C-k>',      '<CMD>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<leader>wa', '<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wr', '<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wl', '<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<leader>D',  '<CMD>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<CMD>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader>ca', '<CMD>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr',         '<CMD>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>e',  '<CMD>lua vim.diagnostic.open_float()<CR>', opts)
-  buf_set_keymap('n', '[d',         '<CMD>lua vim.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d',         '<CMD>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>q',  '<CMD>lua vim.diagnostic.setqflist()<CR>', opts)
+  -- The bindings here override very similar ones in base vim, and isn't a spot
+  -- to add new bindings.  See the ./after/plugin/keymap.vim for those.
+  buf_set_keymap('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K',  '<CMD>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -302,54 +286,21 @@ local servers = {
   "bashls",
   "yamlls",
   "rust_analyzer",
+  "pyright",
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
 end
 
--- rust notes
--- https://rust-analyzer.github.io/manual.html#installation
-
--- python setup
--- TODO How do I do a ternary in lua?
--- local pyright_command = vim.fn.has('win32') and 'pyright-langserver.cmd' or 'pyright-langserver'
-local pyright_command = 'pyright-langserver'
-lspconfig['pyright'].setup {
-  cmd = { pyright_command, '--stdio' },
-  on_attach = on_attach,
-  filetypes = { 'python' },
-  root_dir = lspconfig.util.root_pattern(
-    'pyproject.toml',
-    'setup.cfg',
-    'setup.py',
-    'requirements.txt',
-    '.git',
-    '.gitignore'
-  ),
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = "workspace",
-        useLibraryCodeForTypes = true
-      },
-      pythonPath = "python3"
-    }
-  },
-  single_file_support = true,
-  capabilities = capabilities,
-}
-
 -- gopls setup
 -- Make sure that $GOPATH/bin is on $PATH after installing gopls for this to work
 -- cd $HOME && mkdir -p tmp && cd tmp && go install golang.org/x/tools/gopls@latest
-lspconfig["gopls"].setup { on_attach = on_attach, cmd = {'gopls', '--remote=auto'}, capabilities = capabilities }
+lspconfig["gopls"].setup { cmd = {'gopls', '--remote=auto'}, capabilities = capabilities }
 
 -- julia setup
 -- Make sure to run julia and from the package manager prompt:
 -- ] add LanguageServer SymbolServer
 lspconfig["julials"].setup {
-  on_attach = on_attach,
   cmd = {
     "julia",
     "--startup-file=no",
