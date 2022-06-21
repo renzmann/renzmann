@@ -78,8 +78,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Coloring
 if !has('win32')
+" Treesitter causing fatal crash on Windows for me
   Plug 'nvim-treesitter/nvim-treesitter'
-endif
+end
 Plug 'morhetz/gruvbox'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'rebelot/kanagawa.nvim'
@@ -351,8 +352,9 @@ augroup END
 " EOF
 " }}}
 
-"  TreeSitter: {{{
+" TreeSitter: {{{
 if !has('win32')
+  " Treesitter causing fatal crash on Windows for me
   lua <<EOF
   require('nvim-treesitter.configs').setup {
     ensure_installed = { "python", "fish", "bash", "lua", "vim" },
@@ -361,7 +363,7 @@ if !has('win32')
   }
 EOF
 end
-"  }}}
+" }}}
 
 " Autopairs: {{{
 " Without the auto-pair insertion, there are times when writing python that

@@ -35,3 +35,4 @@ Function Install-Poetry {
 # Install-Julia
 # Install-Go
 # LspInstall rust-analyzer fails
+# Treesitter modules causing fatal crash on Windows. Bad `cc` or something else?
