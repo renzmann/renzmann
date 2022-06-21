@@ -265,7 +265,7 @@ EOF
 " Copied from the suggestions in the nvim-lspconfig README:
 " https://github.com/neovim/nvim-lspconfig
 lua << EOF
-require('nvim-lsp-installer').setup { automatic_installation = true }
+require('nvim-lsp-installer').setup {}
 local lspconfig = require('lspconfig')
 
 local on_attach = function(client, bufnr)
