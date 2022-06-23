@@ -21,8 +21,8 @@ let &runtimepath = printf('%s,%s,%s/after', s:portable, &runtimepath, s:portable
 
 " Use this script as the $MYVIMRC variable
 let $MYVIMHOME = printf('%s', s:portable)
-let $MYVIMRC = printf('%s/vimrc', s:portable)
-let $MYNVIMRC = printf('%s/nvimrc', s:portable)
+" let $MYVIMRC = printf('%s/vimrc', s:portable)
+" let $MYNVIMRC = printf('%s/nvimrc', s:portable)
 
 " =============================================================================
 " Section: Editor settings
@@ -31,7 +31,7 @@ let $MYNVIMRC = printf('%s/nvimrc', s:portable)
 " https://stackoverflow.com/a/21808952
 set nocompatible
 filetype plugin on
-set background=dark
+" set background=dark
 set encoding=utf-8
 set noerrorbells
 set visualbell
@@ -49,21 +49,21 @@ set list listchars=tab:>\ ,trail:·
 set mouse=a
 set showcmd
 
-if $TERM != 'screen-256color'
-  set termguicolors
-end
+" if $TERM != 'screen-256color'
+"   set termguicolors
+" end
 
 " default colos that are okay:
 " colo torte
 " colo murphy
 " colo koehler
-" colo desert
+colo desert
 " colo evening
 
 " Custom colors that are okay:
 " colo renzert     " my own adaption of desert
 " colo apprentice  " from romainl: github.com/romainl/Apprentice
-colo gruvbox       " from morhetz: github.com/morhetz/gruvbox
+" colo gruvbox     " from morhetz: github.com/morhetz/gruvbox
 " I call uncle on colors - I can't get it working as well out of the box as gruvbox
 
 " At one point I had set this to the below. See the following for why that might
