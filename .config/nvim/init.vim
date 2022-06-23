@@ -45,7 +45,13 @@ end
 " }}}
 
 " Plugins : {{{
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if has('nvim')
+  let data_dir = stdpath('data') . '/site'
+elseif has('win32')
+  let data_dir = 'vimfiles'
+else
+  let data_dir = : '~/.vim'
+endif
 
 " Install vim-plug if it's not found
 if empty(glob(data_dir . '/autoload/plug.vim'))
