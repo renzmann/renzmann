@@ -50,7 +50,7 @@ if has('nvim')
 elseif has('win32')
   let data_dir = 'vimfiles'
 else
-  let data_dir = : '~/.vim'
+  let data_dir = '~/.vim'
 endif
 
 " Install vim-plug if it's not found
