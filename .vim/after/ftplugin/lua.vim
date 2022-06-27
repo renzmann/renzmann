@@ -1,6 +1,6 @@
-setlocal tabstop=2
+setlocal tabstop=3
 setlocal expandtab
-setlocal softtabstop=2
-setlocal shiftwidth=2
+setlocal softtabstop=3
+setlocal shiftwidth=3
 setlocal fileformat=unix
 setlocal textwidth=95

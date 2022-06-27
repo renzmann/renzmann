@@ -18,11 +18,7 @@ let s:portable = expand('<sfile>:p:h')
 
 " add the directory to 'runtimepath'
 let &runtimepath = printf('%s,%s,%s/after', s:portable, &runtimepath, s:portable)
-
-" Use this script as the $MYVIMRC variable
-let $MYVIMHOME = printf('%s', s:portable)
-" let $MYVIMRC = printf('%s/vimrc', s:portable)
-" let $MYNVIMRC = printf('%s/nvimrc', s:portable)
+let &packpath = &runtimepath
 
 " =============================================================================
 " Section: Editor settings
@@ -31,7 +27,7 @@ let $MYVIMHOME = printf('%s', s:portable)
 " https://stackoverflow.com/a/21808952
 set nocompatible
 filetype plugin on
-" set background=dark
+set background=dark
 set encoding=utf-8
 set noerrorbells
 set visualbell
@@ -49,20 +45,20 @@ set list listchars=tab:>\ ,trail:·
 set mouse=a
 set showcmd
 
-" if $TERM != 'screen-256color'
-"   set termguicolors
-" end
+if has('win32')
+  set termguicolors
+endif
 
 " default colos that are okay:
 " colo torte
 " colo murphy
 " colo koehler
-colo desert
+" colo desert
 " colo evening
 
 " Custom colors that are okay:
 " colo renzert     " my own adaption of desert
-" colo apprentice  " from romainl: github.com/romainl/Apprentice
+colo apprentice  " from romainl: github.com/romainl/Apprentice
 " colo gruvbox     " from morhetz: github.com/morhetz/gruvbox
 " I call uncle on colors - I can't get it working as well out of the box as gruvbox
 
@@ -98,10 +94,10 @@ cabbrev %% %:p:h
 " `cd current file`
 cabbrev ccf cd %:p:h
 
-if has("win32")
+if has('win32')
   set nocursorline
   set t_vb=
-  if has("gui")
+  if has('gui')
     set guifont=DejaVu_Sans_Mono_for_Powerline:h11
     set guioptions-=T
     set t_vb=
