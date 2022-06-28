@@ -47,6 +47,10 @@ if has('win32')
   set termguicolors
 endif
 
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+endif
+
 " default colos that are okay:
 " colo torte
 " colo murphy
