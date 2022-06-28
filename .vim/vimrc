@@ -7,8 +7,10 @@
 "
 " Thanks to: https://stackoverflow.com/a/3384476/13215205
 "
-" $ git clone git@github.com:renzmann/renzmann
+" $ git clone --recursive git@github.com:renzmann/renzmann
 " $ vim -u ~/renzmann/.vim/vimrc
+"
+" Runtime path setup {{{
 let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME, $VIM)
 let $MYVIMHOME = expand('<sfile>:p:h')
 let &runtimepath = printf('%s,%s,%s/after', $MYVIMHOME, &runtimepath, $MYVIMHOME)
@@ -16,10 +18,9 @@ if has('nvim')
   let &runtimepath = printf('%s,%s,%s/after', stdpath('config'), &runtimepath, stdpath('config').'/after')
 endif
 let &packpath = &runtimepath
+" }}}
 
-" =============================================================================
-" Section: Editor settings
-" =============================================================================
+" Editor Settings: {{{
 " Make sure that `stty start undef` and `stty -ixon` are in ~/.bashrc
 " https://stackoverflow.com/a/21808952
 set nocompatible
@@ -41,6 +42,9 @@ set wildignore=*.o,*.obj,*.db-whl,*.db-shm,*node_modules*,*.venv*,tags,.*.un~,*.
 set list listchars=tab:>\ ,trail:·
 set mouse=a
 set showcmd
+set foldmethod=marker
+set foldmarker={{{,}}}
+set completeopt=menu,menuone,preview,longest
 
 " Sometimes prevents crazy bad highlighted lines when they shouldn't be
 set t_ut=
@@ -74,7 +78,7 @@ colo gruvbox     " from morhetz: github.com/morhetz/gruvbox
 " Default file style modeled after PEP8 and `black` defaults
 set softtabstop=4
 set shiftwidth=4
-set textwidth=85
+set textwidth=95
 set expandtab
 set autoindent
 
@@ -107,17 +111,17 @@ if has('win32')
     set t_vb=
   end
 end
+" }}}
 
-" =============================================================================
-" Section: netrw customization
-" =============================================================================
+" netrw customization: {{{
 " tree style list
 let g:netrw_liststyle = 3
 " suppress the banner
 let g:netrw_banner = 0
+" }}}
 
-" =============================================================================
-" Section: slime customization
-" =============================================================================
+" slime customization: {{{
 let g:slime_target = "tmux"
+" I always have the REPL on the right, vertical split.
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+" }}}
