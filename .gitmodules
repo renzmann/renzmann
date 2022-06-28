@@ -20,7 +20,7 @@
 	path = .vim/pack/morhetz/start/gruvbox
 	url = https://github.com/morhetz/gruvbox
 [submodule ".vim/pack/vim-airline/start/vim-airline"]
-	path = .vim/pack/vim-airline/start/vim-airline
+	path = .config/nvim/pack/vim-airline/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
 [submodule ".vim/pack/tpope/start/vim-commentary"]
 	path = .vim/pack/tpope/start/vim-commentary
