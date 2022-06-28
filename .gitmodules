@@ -34,3 +34,6 @@
 [submodule ".vim/pack/tpope/start/vim-sensible"]
 	path = .vim/pack/tpope/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible
+[submodule ".vim/pack/romainl/start/Apprentice"]
+	path = .vim/pack/romainl/start/Apprentice
+	url = https://github.com/romainl/Apprentice
