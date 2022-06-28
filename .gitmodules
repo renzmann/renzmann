@@ -41,7 +41,7 @@
 	path = .vim/pack/cespare/start/vim-toml
 	url = https://github.com/cespare/vim-toml
 [submodule ".vim/pack/LeonB/start/vim-nginx"]
-	path = .vim/pack/LeonB/start/vim-nginx
+	path = .vim/pack/LeonB/opt/vim-nginx
 	url = https://github.com/LeonB/vim-nginx
 [submodule ".vim/pack/JuliaEditorSupport/opt/julia-vim"]
 	path = .vim/pack/JuliaEditorSupport/opt/julia-vim
