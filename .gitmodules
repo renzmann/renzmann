@@ -16,3 +16,6 @@
 [submodule ".config/nvim/pack/nvim-treesitter/start/nvim-treesitter"]
 	path = .config/nvim/pack/nvim-treesitter/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule ".vim/pack/morhetz/start/gruvbox"]
+	path = .vim/pack/morhetz/start/gruvbox
+	url = https://github.com/morhetz/gruvbox
