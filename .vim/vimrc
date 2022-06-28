@@ -8,7 +8,7 @@
 " Thanks to: https://stackoverflow.com/a/3384476/13215205
 "
 " $ git clone --recursive git@github.com:renzmann/renzmann
-" $ vim -u ~/renzmann/.vim/vimrc
+" $ vim -u renzmann/.vim/vimrc
 "
 " Runtime path setup {{{
 let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME, $VIM)
