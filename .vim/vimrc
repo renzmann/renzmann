@@ -1,15 +1,14 @@
 " Author: Robert A. Enzmann
 " License: Do anything you like.
 "
-"   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-"   !       This vim configuration is portable        !
-"   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"   !       This vim configuration is portable       !
+"   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 "
 " Thanks to: https://stackoverflow.com/a/3384476/13215205
 "
 " $ git clone git@github.com:renzmann/renzmann
 " $ vim -u ~/renzmann/.vim/vimrc
-"
 let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME, $VIM)
 let $MYVIMHOME = expand('<sfile>:p:h')
 let &runtimepath = printf('%s,%s,%s/after', $MYVIMHOME, &runtimepath, $MYVIMHOME)
