@@ -10,9 +10,6 @@
 [submodule ".config/nvim/pack/cmp-nvim-lsp/start/cmp-nvim-lsp"]
 	path = .config/nvim/pack/cmp-nvim-lsp/start/cmp-nvim-lsp
 	url = https://github.com/hrsh7th/cmp-nvim-lsp
-[submodule ".vim/pack/gruvbox/start/gruvbox"]
-	path = .vim/pack/gruvbox/start/gruvbox
-	url = https://github.com/morhetz/gruvbox
 [submodule ".config/nvim/pack/nightfox/start/nightfox.nvim"]
 	path = .config/nvim/pack/nightfox/start/nightfox.nvim
 	url = https://github.com/EdenEast/nightfox.nvim
