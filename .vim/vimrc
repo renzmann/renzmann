@@ -42,6 +42,9 @@ set list listchars=tab:>\ ,trail:·
 set mouse=a
 set showcmd
 
+" Sometimes prevents crazy bad highlighted lines when they shouldn't be
+set t_ut=
+
 if has('win32')
   set termguicolors
 endif

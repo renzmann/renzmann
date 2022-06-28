@@ -1,9 +1,16 @@
-if vim.fn.has('win32')
-then
-   vim.cmd('source ~/vimfiles/vimrc')
-else
-   vim.cmd('source ~/.vim/vimrc')
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
 end
+
+if file_exists("~/vimfiles/vimrc")
+then
+   vim.cmd("source ~/vimfiles/vimrc")
+else
+   vim.cmd("source ~/.vim/vimrc")
+end
+
+vim.cmd("colorscheme nordfox")
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
@@ -149,4 +156,3 @@ lspconfig["julials"].setup {
 
 -- Uncomment to disable location list of diagnostics
 -- lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
-
