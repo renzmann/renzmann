@@ -32,11 +32,12 @@ vnoremap <silent><leader>ve    y:@"<CR>
 " [s]ettings navigation
 " -----------------------------------------------------------------------
 nnoremap <silent><leader>si    :<C-u>e $MYVIMRC<CR>
-nnoremap <silent><leader>sn    :<C-u>e ~/.config/nvim/init.vim<CR>
-nnoremap <silent><leader>sk    :<C-u>e ~/.config/nvim/after/plugin/keymap.vim<CR>
-nnoremap <silent><leader>sp    :<C-u>e ~/.config/nvim/plugs.vim<CR>
-nnoremap <silent><leader>sap   :<C-u>e ~/.config/nvim/after/plugin<CR>
-nnoremap <silent><leader>saf   :<C-u>e ~/.config/nvim/after/ftplugin<CR>
+if has('nvim')
+  nnoremap <silent><leader>sn    :<C-u>exe 'edit '.stdpath('config').'/init.lua'<CR>
+endif
+nnoremap <silent><leader>sk    :<C-u>e $MYVIMHOME/after/plugin/keymap.vim<CR>
+nnoremap <silent><leader>sp    :<C-u>e $MYVIMHOME/after/plugin<CR>
+nnoremap <silent><leader>sf    :<C-u>e $MYVIMHOME/after/ftplugin<CR>
 
 " [t]ree view of the CWD or current file's directory
 " -----------------------------------------------------------------------
@@ -73,24 +74,6 @@ nnoremap <leader>fa            :<C-u>e ~/.aws/credentials<CR>
 
 " Language server bindings
 " -----------------------------------------------------------------------
-" Original setup from lua
-" -- See `:help vim.lsp.*` for documentation on any of the below functions
-" buf_set_keymap('n', 'gD',         '<CMD>lua vim.lsp.buf.declaration()<CR>', opts)
-" buf_set_keymap('n', 'gd',         '<CMD>lua vim.lsp.buf.definition()<CR>', opts)
-" buf_set_keymap('n', 'K',          '<CMD>lua vim.lsp.buf.hover()<CR>', opts)
-" buf_set_keymap('n', 'gi',         '<CMD>lua vim.lsp.buf.implementation()<CR>', opts)
-" buf_set_keymap('i', '<C-k>',      '<CMD>lua vim.lsp.buf.signature_help()<CR>', opts)
-" buf_set_keymap('n', '<leader>wa', '<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-" buf_set_keymap('n', '<leader>wr', '<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-" buf_set_keymap('n', '<leader>wl', '<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-" buf_set_keymap('n', '<leader>D',  '<CMD>lua vim.lsp.buf.type_definition()<CR>', opts)
-" buf_set_keymap('n', '<leader>rn', '<CMD>lua vim.lsp.buf.rename()<CR>', opts)
-" buf_set_keymap('n', '<leader>ca', '<CMD>lua vim.lsp.buf.code_action()<CR>', opts)
-" buf_set_keymap('n', 'gr',         '<CMD>lua vim.lsp.buf.references()<CR>', opts)
-" buf_set_keymap('n', '<leader>e',  '<CMD>lua vim.diagnostic.open_float()<CR>', opts)
-" buf_set_keymap('n', '[d',         '<CMD>lua vim.diagnostic.goto_prev()<CR>', opts)
-" buf_set_keymap('n', ']d',         '<CMD>lua vim.diagnostic.goto_next()<CR>', opts)
-" buf_set_keymap('n', '<leader>q',  '<CMD>lua vim.diagnostic.setqflist()<CR>', opts)
 inoremap <silent><C-s>         <ESC>l:lua vim.lsp.buf.signature_help()<CR>i
 nnoremap <silent><leader>wa    :lua vim.lsp.buf.add_workspace_folder()<CR>
 nnoremap <silent><leader>wr    :lua vim.lsp.buf.remove_workspace_folder()<CR>
