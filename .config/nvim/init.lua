@@ -1,3 +1,7 @@
+-- Author: Robert A. Enzmann
+-- License: Do anything you like.
+
+-- Source vimrc {{{
 function file_exists(name)
    local f=io.open(name,"r")
    if f~=nil then io.close(f) return true else return false end
@@ -9,11 +13,14 @@ then
 else
    vim.cmd("source ~/.vim/vimrc")
 end
+-- }}}
 
+-- Set Neovim color theme {{{
 vim.cmd("colorscheme nordfox")
 vim.g.airline_theme = "base16_nord"
+-- }}}
 
--- Setup nvim-cmp.
+-- Setup nvim-cmp {{{
 local cmp = require'cmp'
 
 cmp.setup({
@@ -95,7 +102,9 @@ cmp.setup.cmdline('/', {
 --     { name = 'cmdline' }
 --   })
 -- })
+-- }}}
 
+-- LSP (Language Servers) {{{
 require('nvim-lsp-installer').setup {}
 local lspconfig = require('lspconfig')
 
@@ -157,3 +166,4 @@ lspconfig["julials"].setup {
 
 -- Uncomment to disable location list of diagnostics
 -- lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
+-- }}}
