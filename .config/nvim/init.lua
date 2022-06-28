@@ -11,6 +11,7 @@ else
 end
 
 vim.cmd("colorscheme nordfox")
+vim.g.airline_theme = "base16_nord"
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
