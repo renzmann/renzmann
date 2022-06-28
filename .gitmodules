@@ -40,3 +40,6 @@
 [submodule ".vim/pack/cespare/start/vim-toml"]
 	path = .vim/pack/cespare/start/vim-toml
 	url = https://github.com/cespare/vim-toml
+[submodule ".vim/pack/LeonB/start/vim-nginx"]
+	path = .vim/pack/LeonB/start/vim-nginx
+	url = https://github.com/LeonB/vim-nginx
