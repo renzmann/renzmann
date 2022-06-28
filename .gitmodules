@@ -13,3 +13,9 @@
 [submodule ".vim/pack/gruvbox/start/gruvbox"]
 	path = .vim/pack/gruvbox/start/gruvbox
 	url = https://github.com/morhetz/gruvbox
+[submodule ".config/nvim/pack/nightfox/start/nightfox.nvim"]
+	path = .config/nvim/pack/nightfox/start/nightfox.nvim
+	url = https://github.com/EdenEast/nightfox.nvim
+[submodule ".config/nvim/pack/nvim-treesitter/start/nvim-treesitter"]
+	path = .config/nvim/pack/nvim-treesitter/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
