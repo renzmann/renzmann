@@ -43,3 +43,6 @@
 [submodule ".vim/pack/LeonB/start/vim-nginx"]
 	path = .vim/pack/LeonB/start/vim-nginx
 	url = https://github.com/LeonB/vim-nginx
+[submodule ".vim/pack/JuliaEditorSupport/opt/julia-vim"]
+	path = .vim/pack/JuliaEditorSupport/opt/julia-vim
+	url = https://github.com/JuliaEditorSupport/julia-vim
