@@ -46,3 +46,6 @@
 [submodule ".vim/pack/JuliaEditorSupport/opt/julia-vim"]
 	path = .vim/pack/JuliaEditorSupport/opt/julia-vim
 	url = https://github.com/JuliaEditorSupport/julia-vim
+[submodule ".config/nvim/pack/vim-airline/start/vim-airline-themes"]
+	path = .config/nvim/pack/vim-airline/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
