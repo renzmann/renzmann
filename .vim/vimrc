@@ -18,6 +18,12 @@ if has('nvim')
   let &runtimepath = printf('%s,%s,%s/after', stdpath('config'), &runtimepath, stdpath('config').'/after')
 endif
 let &packpath = &runtimepath
+
+" If the current project defines a project-level .vimrc, source it here
+if filereadable("project.vim") && !exists("g:loaded_renzmann_project")
+  source project.vim
+  let g:loaded_renzmann_project = 1
+endif
 " }}}
 
 " Editor Settings: {{{
@@ -45,6 +51,10 @@ set showcmd
 set foldmethod=marker
 set foldmarker={{{,}}}
 set completeopt=menu,menuone,preview,longest
+" At one point I had set this to the below. See the following for why that might
+" not be a great idea:
+" https://gist.github.com/romainl/7e2b425a1706cd85f04a0bd8b3898805
+" set path=.,,./**,**,
 
 " Sometimes prevents crazy bad highlighted lines when they shouldn't be
 set t_ut=
@@ -53,10 +63,43 @@ if has('win32')
   set termguicolors
 endif
 
+" Set grep program to the much faster ripgrep
 if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
 
+" Auto set Omnifunc completion to `syntaxcomplete`
+if has("autocmd") && exists("+omnifunc")
+endif
+
+augroup default
+  autocmd!
+  " Automatically open the quickfix menu if there are results sent to it
+  autocmd QuickFixCmdPost [^l]* cwindow
+  " Common save hooks
+  autocmd BufWritePre *
+    \ " Automatically create folders
+    \ if '<afile>' !~ '^scp:' && !isdirectory(expand('<afile>:h')) |
+      \ call mkdir(expand('<afile>:h'), 'p') |
+    \ endif
+  autocmd Filetype *
+    \ if &omnifunc == "" |
+      \ setlocal omnifunc=syntaxcomplete#Complete |
+    \ endif
+augroup END
+
+if has('win32')
+  set nocursorline
+  set t_vb=
+  if has('gui')
+    set guifont=DejaVu_Sans_Mono_for_Powerline:h11
+    set guioptions-=T
+    set t_vb=
+  end
+end
+" }}}
+
+" Color theme {{{
 " default colos that are okay:
 " colo torte
 " colo murphy
@@ -69,48 +112,15 @@ endif
 " colo apprentice  " from romainl: github.com/romainl/Apprentice
 colo gruvbox     " from morhetz: github.com/morhetz/gruvbox
 " I call uncle on colors - I can't get it working as well out of the box as gruvbox
+" }}}
 
-" At one point I had set this to the below. See the following for why that might
-" not be a great idea:
-" https://gist.github.com/romainl/7e2b425a1706cd85f04a0bd8b3898805
-" set path=.,,./**,**,
-
-" Default file style modeled after PEP8 and `black` defaults
-set softtabstop=4
-set shiftwidth=4
-set textwidth=95
-set expandtab
-set autoindent
-
-augroup default
-  autocmd!
-  " Automatically open the quickfix menu if there are results sent to it
-  autocmd QuickFixCmdPost [^l]* cwindow
-  " Common save hooks
-  autocmd BufWritePre *
-    \ " Automatically create folders
-    \ if '<afile>' !~ '^scp:' && !isdirectory(expand('<afile>:h')) |
-      \ call mkdir(expand('<afile>:h'), 'p') |
-    \ endif
-augroup END
-
-" Command line typos
+" Common abbreviations {{{
 cabbrev fidn find
 cabbrev greo grep
 cabbrev vsf vert sfind
 cabbrev %% %:p:h
 " `cd current file`
 cabbrev ccf cd %:p:h
-
-if has('win32')
-  set nocursorline
-  set t_vb=
-  if has('gui')
-    set guifont=DejaVu_Sans_Mono_for_Powerline:h11
-    set guioptions-=T
-    set t_vb=
-  end
-end
 " }}}
 
 " netrw customization: {{{
