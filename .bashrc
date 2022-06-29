@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 # Still need to:
 # 1. add-path function that inserts/appends to PATH if something's not on it
@@ -25,11 +25,7 @@ insert_path "$HOME/.cargo/bin"
 append_path "$HOME/.coursier"
 
 # This has to be after we set PATH above
-if command -v nvim &> /dev/null; then
-	export EDITOR=nvim
-else
-	export EDITOR=vim
-fi
+export EDITOR=vim
 
 if [[ "$OSTYPE" =~ darwin ]]; then
 	for x in $(echo "$HOME/Library/Python/*/bin"); do
