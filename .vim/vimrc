@@ -108,10 +108,22 @@ end
 " colo evening
 
 " Custom colors that are okay:
-" colo renzert     " my own adaption of desert
 " colo apprentice  " from romainl: github.com/romainl/Apprentice
-colo gruvbox     " from morhetz: github.com/morhetz/gruvbox
-" I call uncle on colors - I can't get it working as well out of the box as gruvbox
+" colo gruvbox     " from morhetz: github.com/morhetz/gruvbox
+
+augroup desert_override
+  autocmd!
+  " Italic comments
+  autocmd ColorScheme desert hi Comment cterm=italic gui=italic ctermfg=73
+  " Quieter line numbers
+  autocmd ColorScheme desert hi CursorLineNr ctermbg=236 ctermfg=73 cterm=NONE guibg=#303030 guifg=#5fafaf gui=NONE
+  autocmd ColorScheme desert hi CursorLine ctermbg=236 ctermfg=NONE cterm=NONE guibg=#303030 guifg=NONE gui=NONE
+  autocmd ColorScheme desert hi LineNr ctermbg=236 ctermfg=242 cterm=NONE guibg=grey15 guifg=#6c6c6c gui=NONE
+  " Quieter fold text
+  autocmd ColorScheme desert hi Folded ctermfg=246 cterm=NONE guibg=grey15 guifg=#6c6c6c gui=NONE
+augroup END
+colorscheme desert
+
 " }}}
 
 " Common abbreviations {{{
