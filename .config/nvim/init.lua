@@ -7,7 +7,7 @@ function file_exists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
-if file_exists("~/vimfiles/vimrc")
+if file_exists(vim.env.HOME .. "/vimfiles/vimrc")
 then
    vim.cmd("source ~/vimfiles/vimrc")
 else
