@@ -100,17 +100,6 @@ end
 " }}}
 
 " Color theme {{{
-" default colos that are okay:
-" colo torte
-" colo murphy
-" colo koehler
-" colo desert
-" colo evening
-
-" Custom colors that are okay:
-" colo apprentice  " from romainl: github.com/romainl/Apprentice
-" colo gruvbox     " from morhetz: github.com/morhetz/gruvbox
-
 augroup desert_override
   autocmd!
   " Italic comments
@@ -122,7 +111,19 @@ augroup desert_override
   " Quieter fold text
   autocmd ColorScheme desert hi Folded ctermfg=246 cterm=NONE guibg=grey15 guifg=#6c6c6c gui=NONE
 augroup END
-colorscheme desert
+
+" Default colos that are okay:
+" colo torte
+" colo murphy
+" colo koehler
+" colo desert
+" colo evening
+
+" Custom colors that are okay:
+" colo apprentice  " github.com/romainl/Apprentice
+" colo gruvbox     " github.com/morhetz/gruvbox
+" colo iceberg     " github.com/cocopon/iceberg.vim
+colo nord        " github.com/arcticicestudio/nord-vim
 
 " }}}
 
