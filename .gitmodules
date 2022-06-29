@@ -49,3 +49,6 @@
 [submodule ".config/nvim/pack/vim-airline/start/vim-airline-themes"]
 	path = .config/nvim/pack/vim-airline/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
+[submodule ".vim/pack/vim/start/colorschemes"]
+	path = .vim/pack/vim/start/colorschemes
+	url = https://github.com/vim/colorschemes
