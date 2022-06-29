@@ -56,3 +56,4 @@
 !.local/bin/install-ctags
 !.local/bin/yn-prompt
 !.local/bin/install-julia
+!.local/bin/install-vim
