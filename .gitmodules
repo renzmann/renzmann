@@ -17,7 +17,7 @@
 	path = .config/nvim/pack/nvim-treesitter/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter
 [submodule ".vim/pack/morhetz/start/gruvbox"]
-	path = .vim/pack/morhetz/start/gruvbox
+	path = .vim/pack/morhetz/opt/gruvbox
 	url = https://github.com/morhetz/gruvbox
 [submodule ".vim/pack/vim-airline/start/vim-airline"]
 	path = .config/nvim/pack/vim-airline/start/vim-airline
@@ -35,7 +35,7 @@
 	path = .vim/pack/tpope/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible
 [submodule ".vim/pack/romainl/start/Apprentice"]
-	path = .vim/pack/romainl/start/Apprentice
+	path = .vim/pack/romainl/opt/Apprentice
 	url = https://github.com/romainl/Apprentice
 [submodule ".vim/pack/cespare/start/vim-toml"]
 	path = .vim/pack/cespare/start/vim-toml
@@ -53,8 +53,8 @@
 	path = .vim/pack/vim/start/colorschemes
 	url = https://github.com/vim/colorschemes
 [submodule ".vim/pack/cocopon/start/iceberg.vim"]
-	path = .vim/pack/cocopon/start/iceberg.vim
+	path = .vim/pack/cocopon/opt/iceberg.vim
 	url = https://github.com/cocopon/iceberg.vim
 [submodule ".vim/pack/arcticicestudio/start/nord-vim"]
-	path = .vim/pack/arcticicestudio/start/nord-vim
+	path = .vim/pack/arcticicestudio/opt/nord-vim
 	url = https://github.com/arcticicestudio/nord-vim
