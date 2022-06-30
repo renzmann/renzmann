@@ -65,25 +65,35 @@ vnoremap <leader>cc            "+y
 
 " [f]ind things
 " -----------------------------------------------------------------------
-nnoremap <leader>ff            :Files<CR>
-nnoremap <leader>fb            :Buffers<CR>
-nnoremap <leader>fg            :GitFiles<CR>
-nnoremap <leader>ft            :Tags<CR>
-nnoremap <leader>fr            :Rg<CR>
+if executable('fzf') && exists(":Files")
+  nnoremap <leader>ff            :Files<CR>
+  nnoremap <leader>fb            :Buffers<CR>
+  nnoremap <leader>fg            :GitFiles<CR>
+  nnoremap <leader>ft            :Tags<CR>
+  nnoremap <leader>fr            :Rg<CR>
+  nnoremap <leader>fa            :<C-u>e ~/.aws/credentials<CR>
+else
+  nnoremap <leader>ff            :find *
+  nnoremap <leader>fb            :b *
+  nnoremap <leader>ft            :tag *
+  nnoremap <leader>fr            :grep **<Left>
+endif
 nnoremap <leader>fa            :<C-u>e ~/.aws/credentials<CR>
 
 " Language server bindings
 " -----------------------------------------------------------------------
-inoremap <silent><C-s>         <ESC>l:lua vim.lsp.buf.signature_help()<CR>i
-nnoremap <silent><leader>wa    :lua vim.lsp.buf.add_workspace_folder()<CR>
-nnoremap <silent><leader>wr    :lua vim.lsp.buf.remove_workspace_folder()<CR>
-nnoremap <silent><leader>wl    :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
-" [r]ename
-nnoremap <silent><leader>rn    :lua vim.lsp.buf.rename()<CR>
-" [g]o references
-nnoremap <silent><leader>gr    :lua vim.lsp.buf.references()<CR>
-" [d]iagnostics
-nnoremap <silent><leader>de    :lua vim.diagnostic.open_float()<CR>
-nnoremap <silent><leader>dn    :lua vim.diagnostic.goto_next()<CR>
-nnoremap <silent><leader>dp    :lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent><leader>dq    :lua vim.diagnostic.setqflist()<CR>
+if has('nvim')
+  inoremap <silent><C-s>         <ESC>l:lua vim.lsp.buf.signature_help()<CR>i
+  nnoremap <silent><leader>wa    :lua vim.lsp.buf.add_workspace_folder()<CR>
+  nnoremap <silent><leader>wr    :lua vim.lsp.buf.remove_workspace_folder()<CR>
+  nnoremap <silent><leader>wl    :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
+  " [r]ename
+  nnoremap <silent><leader>rn    :lua vim.lsp.buf.rename()<CR>
+  " [g]o references
+  nnoremap <silent><leader>gr    :lua vim.lsp.buf.references()<CR>
+  " [d]iagnostics
+  nnoremap <silent><leader>de    :lua vim.diagnostic.open_float()<CR>
+  nnoremap <silent><leader>dn    :lua vim.diagnostic.goto_next()<CR>
+  nnoremap <silent><leader>dp    :lua vim.diagnostic.goto_prev()<CR>
+  nnoremap <silent><leader>dq    :lua vim.diagnostic.setqflist()<CR>
+endif
