@@ -30,14 +30,12 @@ endif
 " Make sure that `stty start undef` and `stty -ixon` are in ~/.bashrc
 " https://stackoverflow.com/a/21808952
 set nocompatible
-filetype plugin on
 set background=dark
 set encoding=utf-8
-set noerrorbells
-set visualbell
 set cursorline
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 set hidden
-syntax on
 set linebreak
 set shiftround
 set number
