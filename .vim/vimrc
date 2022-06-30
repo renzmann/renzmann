@@ -50,7 +50,7 @@ set mouse=a
 set showcmd
 set foldmethod=marker
 set foldmarker={{{,}}}
-set completeopt=menu,menuone,preview,longest
+set completeopt=menu,menuone,preview
 " At one point I had set this to the below. See the following for why that might
 " not be a great idea:
 " https://gist.github.com/romainl/7e2b425a1706cd85f04a0bd8b3898805
