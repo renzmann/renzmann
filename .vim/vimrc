@@ -10,6 +10,8 @@
 " $ git clone --recursive git@github.com:renzmann/renzmann
 " $ vim -u renzmann/.vim/vimrc
 "
+" Use `za` to fold/unfold any of the sections below
+"
 " Runtime path setup {{{
 let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME, $VIM)
 let $MYVIMHOME = expand('<sfile>:p:h')
