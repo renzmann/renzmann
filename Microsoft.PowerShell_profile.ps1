@@ -6,6 +6,8 @@ Set-PSReadlineOption -BellStyle None
 
 Set-PSReadLineOption -EditMode Emacs
 $Env:Path += ";$Env:APPDATA\Python\Scripts"
+$Env:Path += ";$Env:APPDATA\Python\Python310\Scripts"
+$Env:Path += ";$HOME\.local\bin"
 $Env:Path += ";C:\Mingw\bin"
 $Env:Path += ";C:\cygwin64\bin"
 $Env:Path += ";$Env:APPDATA\npm"
@@ -36,3 +38,6 @@ Function Install-Poetry {
 # Install-Go
 # LspInstall rust-analyzer fails
 # Treesitter modules causing fatal crash on Windows. Bad `cc` or something else?
+Function Edit-TerminalSettings {
+    nvim $Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
+}
