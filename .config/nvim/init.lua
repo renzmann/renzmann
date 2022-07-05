@@ -29,6 +29,10 @@ require("packer").startup(function()
 
    -- Color theme
    use "EdenEast/nightfox.nvim"
+
+   -- Status bar
+   use "vim-airline/vim-airline"
+   use "vim-airline/vim-airline-themes"
 end)
 -- }}}
 
