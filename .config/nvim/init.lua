@@ -15,67 +15,88 @@ else
 end
 -- }}}
 
--- Set Neovim color theme {{{
-vim.cmd("colorscheme gruvbox")
--- vim.g.airline_theme = "base16_nord"
-vim.g.airline_theme = "base16_gruvbox_dark_medium"
+-- Packages {{{
+require("packer").startup(function()
+   -- Autocomplete
+   use "williamboman/nvim-lsp-installer"
+   use "neovim/nvim-lspconfig"
+   use "hrsh7th/cmp-nvim-lsp"
+   use "hrsh7th/cmp-buffer"
+   use "hrsh7th/cmp-path"
+   use "hrsh7th/nvim-cmp"
+   use "hrsh7th/vim-vsnip"
+   use "hrsh7th/cmp-vsnip"
+
+   -- Color theme
+   use "EdenEast/nightfox.nvim"
+end)
 -- }}}
 
--- Setup nvim-cmp {{{
-local cmp = require'cmp'
+-- Set Neovim color theme {{{
+vim.cmd "colorscheme nordfox"
+vim.g.airline_theme = "base16_nord"
+-- vim.cmd("colorscheme gruvbox")
+-- vim.g.airline_theme = "base16_gruvbox_dark_medium"
+-- }}}
 
-cmp.setup({
+-- Auto-completion {{{
+local cmp = require "cmp"
+
+cmp.setup {
    snippet = {
-   -- REQUIRED - you must specify a snippet engine
-   expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-   end,
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+         -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+         -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
    },
+
    -- window = {
    --   completion = cmp.config.window.bordered(),
    --   documentation = cmp.config.window.bordered(),
    -- },
+
    mapping = cmp.mapping.preset.insert({
-   ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-   ['<C-f>'] = cmp.mapping.scroll_docs(4),
-   ['<C-Space>'] = cmp.mapping.complete(),
-   ['<C-e>'] = cmp.mapping.abort(),
-   ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
-   -- Wonky ass error when doing TAB inside python function
-   -- ["<Tab>"] = cmp.mapping(function(fallback)
-   --   if cmp.visible() then
-   --     cmp.select_next_item()
-   --   elseif vim.fn["vsnip#available"](1) == 1 then
-   --     feedkey("<Plug>(vsnip-expand-or-jump)", "")
-   --   elseif has_words_before() then
-   --     cmp.complete()
-   --   else
-   --     fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-   --   end
-   -- end, { "i", "s" }),
+      -- Wonky ass error when doing TAB inside python function
+      -- ["<Tab>"] = cmp.mapping(function(fallback)
+      --   if cmp.visible() then
+      --     cmp.select_next_item()
+      --   elseif vim.fn["vsnip#available"](1) == 1 then
+      --     feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      --   elseif has_words_before() then
+      --     cmp.complete()
+      --   else
+      --     fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      --   end
+      -- end, { "i", "s" }),
 
-   -- ["<S-Tab>"] = cmp.mapping(function()
-   --   if cmp.visible() then
-   --     cmp.select_prev_item()
-   --   elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-   --     feedkey("<Plug>(vsnip-jump-prev)", "")
-   --   end
-   -- end, { "i", "s" }),
+      -- ["<S-Tab>"] = cmp.mapping(function()
+      --   if cmp.visible() then
+      --     cmp.select_prev_item()
+      --   elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+      --     feedkey("<Plug>(vsnip-jump-prev)", "")
+      --   end
+      -- end, { "i", "s" }),
    }),
+
    sources = cmp.config.sources({
-   { name = 'nvim_lsp' },
-   { name = 'vsnip' }, -- For vsnip users.
-   -- { name = 'luasnip' }, -- For luasnip users.
-   -- { name = 'ultisnips' }, -- For ultisnips users.
-   -- { name = 'snippy' }, -- For snippy users.
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
    }, {
-   { name = 'buffer' },
+      { name = 'buffer' },
    })
-})
+}
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
@@ -108,13 +129,14 @@ cmp.setup.cmdline('/', {
 -- LSP (Language Servers) {{{
 -- Keep the gutter open all the time so it doesn't shutter back and forth when diagnostics
 -- appear/disappear
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Adds ability to install LSP servers as we need them
-require('nvim-lsp-installer').setup {}
+require("nvim-lsp-installer").setup {}
 
 -- Main config starts here
-local lspconfig = require('lspconfig')
+local lspconfig = require "lspconfig"
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -129,7 +151,6 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local servers = {
   "bashls",
   "yamlls",
@@ -173,5 +194,5 @@ lspconfig["julials"].setup {
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
 -- Uncomment to disable location list of diagnostics
--- lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
+-- vim.lsp.diagnostic.set_loclist { open_loclist = false }
 -- }}}
