@@ -16,8 +16,9 @@ end
 -- }}}
 
 -- Set Neovim color theme {{{
-vim.cmd("colorscheme nordfox")
-vim.g.airline_theme = "base16_nord"
+vim.cmd("colorscheme gruvbox")
+-- vim.g.airline_theme = "base16_nord"
+vim.g.airline_theme = "base16_gruvbox_dark_medium"
 -- }}}
 
 -- Setup nvim-cmp {{{
@@ -33,10 +34,10 @@ cmp.setup({
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
    end,
    },
-   window = {
-   -- completion = cmp.config.window.bordered(),
-   -- documentation = cmp.config.window.bordered(),
-   },
+   -- window = {
+   --   completion = cmp.config.window.bordered(),
+   --   documentation = cmp.config.window.bordered(),
+   -- },
    mapping = cmp.mapping.preset.insert({
    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
    ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -105,7 +106,14 @@ cmp.setup.cmdline('/', {
 -- }}}
 
 -- LSP (Language Servers) {{{
+-- Keep the gutter open all the time so it doesn't shutter back and forth when diagnostics
+-- appear/disappear
+vim.opt.signcolumn = 'yes'
+
+-- Adds ability to install LSP servers as we need them
 require('nvim-lsp-installer').setup {}
+
+-- Main config starts here
 local lspconfig = require('lspconfig')
 
 local on_attach = function(client, bufnr)

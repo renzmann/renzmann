@@ -34,7 +34,6 @@ set background=dark
 set encoding=utf-8
 set cursorline
 set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
 set hidden
 set linebreak
 set shiftround
@@ -88,11 +87,9 @@ augroup END
 
 if has('win32')
   set nocursorline
-  set t_vb=
   if has('gui')
     set guifont=DejaVu_Sans_Mono_for_Powerline:h11
     set guioptions-=T
-    set t_vb=
   end
 end
 " }}}
@@ -110,6 +107,10 @@ augroup desert_override
   autocmd ColorScheme desert hi Folded ctermfg=246 cterm=NONE guibg=grey15 guifg=#6c6c6c gui=NONE
 augroup END
 
+if (has('termguicolors'))
+  set termguicolors
+endif
+
 " Default colos that are okay:
 " colo torte
 " colo murphy
@@ -119,9 +120,10 @@ augroup END
 
 " Custom colors that are okay:
 " colo apprentice  " github.com/romainl/Apprentice
-" colo gruvbox     " github.com/morhetz/gruvbox
+let g:gruvbox_italic=1
+colo gruvbox     " github.com/morhetz/gruvbox
 " colo iceberg     " github.com/cocopon/iceberg.vim
-colo nord        " github.com/arcticicestudio/nord-vim
+" colo nord        " github.com/arcticicestudio/nord-vim
 
 " }}}
 
