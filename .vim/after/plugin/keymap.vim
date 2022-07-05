@@ -34,6 +34,7 @@ vnoremap <silent><leader>ve    y:@"<CR>
 nnoremap <silent><leader>si    :<C-u>e $MYVIMRC<CR>
 if has('nvim')
   nnoremap <silent><leader>sn  :<C-u>exe 'edit '.stdpath('config').'/init.lua'<CR>
+  nnoremap <silent><leader>sv  :<C-u>exe 'edit '.$MYVIMHOME.'/vimrc'<CR>
 endif
 nnoremap <silent><leader>sk    :<C-u>e $MYVIMHOME/after/plugin/keymap.vim<CR>
 nnoremap <silent><leader>sp    :<C-u>e $MYVIMHOME/after/plugin<CR>
