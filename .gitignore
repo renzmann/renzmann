@@ -22,6 +22,7 @@
 !.config/nvim
 !.config/nvim/*
 !.config/nvim/**
+.config/nvim/plugin/packer_compiled.lua
 !.bash_completions
 !.bash_completions/*
 !.config/alacritty
