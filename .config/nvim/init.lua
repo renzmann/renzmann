@@ -20,19 +20,32 @@ require("packer").startup(function()
    -- Autocomplete
    use "williamboman/nvim-lsp-installer"
    use "neovim/nvim-lspconfig"
-   use "hrsh7th/cmp-nvim-lsp"
-   use "hrsh7th/cmp-buffer"
-   use "hrsh7th/cmp-path"
-   use "hrsh7th/nvim-cmp"
-   use "hrsh7th/vim-vsnip"
-   use "hrsh7th/cmp-vsnip"
+   use {
+      "hrsh7th/nvim-cmp",
+      requires = {
+         { "hrsh7th/cmp-nvim-lsp" },
+         { "hrsh7th/cmp-buffer" },
+         { "hrsh7th/cmp-path" },
+         { "hrsh7th/vim-vsnip" },
+         { "hrsh7th/cmp-vsnip" },
+      }
+   }
 
-   -- Color theme
+   -- Colors
    use "EdenEast/nightfox.nvim"
+   use "nvim-treesitter/nvim-treesitter"
 
    -- Status bar
    use "vim-airline/vim-airline"
    use "vim-airline/vim-airline-themes"
+
+   -- Fuzzy-finding
+   use {
+      "nvim-telescope/telescope.nvim",
+      requires = {
+         { "nvim-lua/plenary.nvim" },
+      }
+   }
 end)
 -- }}}
 
@@ -149,7 +162,7 @@ local on_attach = function(client, bufnr)
   -- The bindings here override very similar ones in base vim, and isn't a spot
   -- to add new bindings.  See the ./after/plugin/keymap.vim for those.
   buf_set_keymap('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<CMD>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<CMD>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', 'K',  '<CMD>lua vim.lsp.buf.hover()<CR>', opts)
 end
 

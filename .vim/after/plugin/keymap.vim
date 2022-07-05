@@ -66,35 +66,46 @@ vnoremap <leader>cc            "+y
 
 " [f]ind things
 " -----------------------------------------------------------------------
-if executable('fzf') && exists(":Files")
-  nnoremap <leader>ff            :Files<CR>
-  nnoremap <leader>fb            :Buffers<CR>
-  nnoremap <leader>fg            :GitFiles<CR>
-  nnoremap <leader>ft            :Tags<CR>
-  nnoremap <leader>fr            :Rg<CR>
-  nnoremap <leader>fa            :<C-u>e ~/.aws/credentials<CR>
+if exists(":Telescope")
+  nnoremap <leader>ff          :Telescope find_files<CR>
+  nnoremap <leader>fb          :Telescope buffers<CR>
+  nnoremap <leader>fg          :Telescope git_files<CR>
+  nnoremap <leader>ft          :Telescope tags<CR>
+  nnoremap <leader>fr          :Telescope live_grep<CR>
+  nnoremap <leader>fh          :Telescope help_tags<CR>
+  nnoremap <leader>fq          :Telescope quickfix<CR>
+  nnoremap <leader>fc          :Telescope command_history<CR>
+  nnoremap <leader>fo          :Telescope oldfiles<CR>
+elseif executable('fzf') && exists(":Files")
+  nnoremap <leader>ff          :Files<CR>
+  nnoremap <leader>fb          :Buffers<CR>
+  nnoremap <leader>fg          :GitFiles<CR>
+  nnoremap <leader>ft          :Tags<CR>
+  nnoremap <leader>fr          :Rg<CR>
 else
-  nnoremap <leader>ff            :find *
-  nnoremap <leader>fb            :b *
-  nnoremap <leader>ft            :tag *
-  nnoremap <leader>fr            :grep **<Left>
+  nnoremap <leader>ff          :find *
+  nnoremap <leader>fb          :b *
+  nnoremap <leader>ft          :tag *
+  nnoremap <leader>fr          :grep **<Left>
 endif
 nnoremap <leader>fa            :<C-u>e ~/.aws/credentials<CR>
 
 " Language server bindings
 " -----------------------------------------------------------------------
 if has('nvim')
-  inoremap <silent><C-s>         <ESC>l:lua vim.lsp.buf.signature_help()<CR>i
-  nnoremap <silent><leader>wa    :lua vim.lsp.buf.add_workspace_folder()<CR>
-  nnoremap <silent><leader>wr    :lua vim.lsp.buf.remove_workspace_folder()<CR>
-  nnoremap <silent><leader>wl    :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
+  inoremap <silent><C-s>       <ESC>l:lua vim.lsp.buf.signature_help()<CR>i
+  nnoremap <silent><leader>wa  :lua vim.lsp.buf.add_workspace_folder()<CR>
+  nnoremap <silent><leader>wr  :lua vim.lsp.buf.remove_workspace_folder()<CR>
+  nnoremap <silent><leader>wl  :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
   " [r]ename
-  nnoremap <silent><leader>rn    :lua vim.lsp.buf.rename()<CR>
+  nnoremap <silent><leader>rn  :lua vim.lsp.buf.rename()<CR>
   " [g]o references
-  nnoremap <silent><leader>gr    :lua vim.lsp.buf.references()<CR>
+  " nnoremap <silent><leader>gr  :lua vim.lsp.buf.references()<CR>
+  nnoremap <silent><leader>gr  :Telescope lsp_references<CR>
+  nnoremap <silent><leader>gs  :Telescope lsp_document_symbols<CR>
   " [d]iagnostics
-  nnoremap <silent><leader>de    :lua vim.diagnostic.open_float()<CR>
-  nnoremap <silent><leader>dn    :lua vim.diagnostic.goto_next()<CR>
-  nnoremap <silent><leader>dp    :lua vim.diagnostic.goto_prev()<CR>
-  nnoremap <silent><leader>dq    :lua vim.diagnostic.setqflist()<CR>
+  nnoremap <silent><leader>de  :lua vim.diagnostic.open_float()<CR>
+  nnoremap <silent><leader>dn  :lua vim.diagnostic.goto_next()<CR>
+  nnoremap <silent><leader>dp  :lua vim.diagnostic.goto_prev()<CR>
+  nnoremap <silent><leader>dq  :lua vim.diagnostic.setqflist()<CR>
 endif
