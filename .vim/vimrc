@@ -17,7 +17,7 @@ let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME,
 let $MYVIMHOME = expand('<sfile>:p:h')
 let &runtimepath = printf('%s,%s,%s/after', $MYVIMHOME, &runtimepath, $MYVIMHOME)
 if has('nvim')
-  let &runtimepath = printf('%s,%s,%s/after', stdpath('config'), &runtimepath, stdpath('config').'/after')
+  let &runtimepath = printf('%s,%s,%s/after', stdpath('config'), &runtimepath, stdpath('config'))
 endif
 let &packpath = &runtimepath
 
