@@ -34,6 +34,7 @@ require("packer").startup(function()
    -- Colors
    use "EdenEast/nightfox.nvim"
    use "nvim-treesitter/nvim-treesitter"
+   use "RRethy/vim-illuminate"
 
    -- Status bar
    use "vim-airline/vim-airline"
@@ -149,11 +150,11 @@ cmp.setup.cmdline('/', {
 vim.opt.signcolumn = "yes"
 
 -- Adds ability to install LSP servers as we need them
-require("nvim-lsp-installer").setup {}
+require"nvim-lsp-installer".setup {}
 
 -- Main config starts here
 local lspconfig = require "lspconfig"
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require"cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -164,6 +165,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<CMD>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', 'K',  '<CMD>lua vim.lsp.buf.hover()<CR>', opts)
+  require"illuminate".on_attach(client)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -181,7 +183,7 @@ end
 -- gopls setup
 -- Make sure that $GOPATH/bin is on $PATH after installing gopls for this to work
 -- cd $HOME && mkdir -p tmp && cd tmp && go install golang.org/x/tools/gopls@latest
-lspconfig["gopls"].setup { cmd = {'gopls', '--remote=auto'}, capabilities = capabilities }
+lspconfig["gopls"].setup { on_attach = on_attach, cmd = {'gopls', '--remote=auto'}, capabilities = capabilities }
 
 -- julia setup
 -- Make sure to run julia and from the package manager prompt:
@@ -205,6 +207,7 @@ lspconfig["julials"].setup {
     ]]
   },
   capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 -- Uncomment to disable diagnostics
