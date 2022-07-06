@@ -5,9 +5,10 @@ _install_nvim() {
 
 	case $OSTYPE in
 		'darwin'*)
-			curl -sSLO "${download_url}/nvim-macos.tar.gz" \
-				&& tar xzvf nvim-macos.tar.gz \
-				&& ln -sf ./nvim-osx64/bin/nvim "$HOME/.local/bin/nvim"
+			curl -sSL "${download_url}/nvim-macos.tar.gz" --output "$HOME/nvim-macos.tar.gz" \
+				&& tar xzvf "$HOME/nvim-macos.tar.gz" \
+				&& mv nvim-osx64 $HOME \
+				&& ln -nsf "$HOME/nvim-osx64/bin/nvim" "$HOME/.local/bin/nvim"
 			;;
 		*)
 			curl -LO "${download_url}/nvim.appimage" \
@@ -15,6 +16,7 @@ _install_nvim() {
 				&& mv nvim.appimage "$HOME/.local/bin/nvim"
 			;;
 	esac
+
 	nvim-packagesync
 }
 
