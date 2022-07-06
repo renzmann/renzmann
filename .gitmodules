@@ -13,21 +13,12 @@
 [submodule ".vim/pack/tpope/start/vim-sensible"]
 	path = .vim/pack/tpope/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible
-[submodule ".vim/pack/romainl/start/Apprentice"]
-	path = .vim/pack/romainl/opt/Apprentice
-	url = https://github.com/romainl/Apprentice
-[submodule ".vim/pack/cespare/start/vim-toml"]
-	path = .vim/pack/cespare/start/vim-toml
-	url = https://github.com/cespare/vim-toml
 [submodule ".vim/pack/LeonB/start/vim-nginx"]
 	path = .vim/pack/LeonB/opt/vim-nginx
 	url = https://github.com/LeonB/vim-nginx
 [submodule ".config/nvim/pack/vim-airline/start/vim-airline-themes"]
 	path = .config/nvim/pack/vim-airline/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
-[submodule ".vim/pack/vim/start/colorschemes"]
-	path = .vim/pack/vim/start/colorschemes
-	url = https://github.com/vim/colorschemes
 [submodule ".local/share/nvim/site/pack/packer/start/packer.nvim"]
 	path = .config/nvim/pack/wbthomason/start/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim
