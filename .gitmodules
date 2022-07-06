@@ -22,21 +22,12 @@
 [submodule ".vim/pack/LeonB/start/vim-nginx"]
 	path = .vim/pack/LeonB/opt/vim-nginx
 	url = https://github.com/LeonB/vim-nginx
-[submodule ".vim/pack/JuliaEditorSupport/opt/julia-vim"]
-	path = .vim/pack/JuliaEditorSupport/opt/julia-vim
-	url = https://github.com/JuliaEditorSupport/julia-vim
 [submodule ".config/nvim/pack/vim-airline/start/vim-airline-themes"]
 	path = .config/nvim/pack/vim-airline/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
 [submodule ".vim/pack/vim/start/colorschemes"]
 	path = .vim/pack/vim/start/colorschemes
 	url = https://github.com/vim/colorschemes
-[submodule ".vim/pack/cocopon/start/iceberg.vim"]
-	path = .vim/pack/cocopon/opt/iceberg.vim
-	url = https://github.com/cocopon/iceberg.vim
-[submodule ".vim/pack/arcticicestudio/start/nord-vim"]
-	path = .vim/pack/arcticicestudio/opt/nord-vim
-	url = https://github.com/arcticicestudio/nord-vim
 [submodule ".local/share/nvim/site/pack/packer/start/packer.nvim"]
 	path = .config/nvim/pack/wbthomason/start/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim
