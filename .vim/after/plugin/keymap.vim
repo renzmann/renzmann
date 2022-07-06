@@ -55,8 +55,10 @@ onoremap ih                    :<C-U>execute "normal! ?^==\\+$\r:nohlsearch\rkvg
 
 " Tab movement [h] [l]
 " -----------------------------------------------------------------------
-nnoremap <silent><leader>h     :<C-u>tabp<CR>
-nnoremap <silent><leader>l     :<C-u>tabn<CR>
+nnoremap <silent><leader>h     :<C-u>bprevious<CR>
+nnoremap <silent><leader>l     :<C-u>bnext<CR>
+nnoremap <silent><leader>H     :<C-u>tabprevious<CR>
+nnoremap <silent><leader>L     :<C-u>tabnext<CR>
 
 " [c]lipboard [c]ommands
 " -----------------------------------------------------------------------
