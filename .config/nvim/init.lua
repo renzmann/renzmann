@@ -1,5 +1,7 @@
 -- Author: Robert A. Enzmann
 -- License: Do anything you like.
+--
+-- Styled after LuaRocks: https://github.com/luarocks/lua-style-guide
 
 -- Source vimrc {{{
 function file_exists(name)
@@ -51,16 +53,24 @@ end)
 -- }}}
 
 -- Set Neovim color theme {{{
-vim.cmd "colorscheme nordfox"
 vim.g.airline_theme = "base16_nord"
--- vim.cmd("colorscheme gruvbox")
--- vim.g.airline_theme = "base16_gruvbox_dark_medium"
+
+require("nightfox").setup({
+   options = {
+      styles = {
+         comments = "italic",
+         functions = "italic,bold",
+      }
+   },
+})
+
+vim.cmd("colorscheme nordfox")
 -- }}}
 
 -- Auto-completion {{{
-local cmp = require "cmp"
+local cmp = require("cmp")
 
-cmp.setup {
+cmp.setup({
    snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -114,7 +124,7 @@ cmp.setup {
    }, {
       { name = 'buffer' },
    })
-}
+})
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
@@ -150,11 +160,11 @@ cmp.setup.cmdline(':', {
 vim.opt.signcolumn = "yes"
 
 -- Adds ability to install LSP servers as we need them
-require"nvim-lsp-installer".setup {}
+require("nvim-lsp-installer").setup({})
 
 -- Main config starts here
-local lspconfig = require "lspconfig"
-local capabilities = require"cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -177,18 +187,18 @@ local servers = {
   "pyright",
 }
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup { on_attach = on_attach, capabilities = capabilities }
+  lspconfig[lsp].setup({ on_attach = on_attach, capabilities = capabilities })
 end
 
 -- gopls setup
 -- Make sure that $GOPATH/bin is on $PATH after installing gopls for this to work
 -- cd $HOME && mkdir -p tmp && cd tmp && go install golang.org/x/tools/gopls@latest
-lspconfig["gopls"].setup { on_attach = on_attach, cmd = {'gopls', '--remote=auto'}, capabilities = capabilities }
+lspconfig.gopls.setup { on_attach = on_attach, cmd = {'gopls', '--remote=auto'}, capabilities = capabilities }
 
 -- julia setup
 -- Make sure to run julia and from the package manager prompt:
 -- ] add LanguageServer SymbolServer
-lspconfig["julials"].setup {
+lspconfig.julials.setup {
   cmd = {
     "julia",
     "--startup-file=no",
@@ -214,5 +224,5 @@ lspconfig["julials"].setup {
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
 -- Uncomment to disable location list of diagnostics
--- vim.lsp.diagnostic.set_loclist { open_loclist = false }
+-- vim.lsp.diagnostic.set_loclist({ open_loclist = false })
 -- }}}
