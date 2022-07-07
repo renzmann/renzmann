@@ -111,3 +111,7 @@ if has('nvim')
   nnoremap <silent><leader>dp  :lua vim.diagnostic.goto_prev()<CR>
   nnoremap <silent><leader>dq  :lua vim.diagnostic.setqflist()<CR>
 endif
+
+" e[x]tra
+" -----------------------------------------------------------------------
+nnoremap <silent><leader>xm    :<C-u>GitMessenger<CR>

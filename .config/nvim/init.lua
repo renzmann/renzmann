@@ -49,6 +49,19 @@ require("packer").startup(function()
          { "nvim-lua/plenary.nvim" },
       }
    }
+
+   use { "JuliaEditorSupport/julia-vim", optional = true}
+   -- TODO
+   -- github.com/nginx/nginx/contrib/vim files could go to a packpath folder, if we want them
+   -- replicate tpope vim-sensible in both ~/.vim/vimrc and here
+   -- airblade/vim-rooter
+   -- ? dhruvasagar/vim-table-mode
+   -- ? junegunn/vim-easy-align
+   -- + ludovicchabant/vim-gutentags
+   -- use "rbong/vim-flog"
+   -- use "rhysd/git-messenger.vim"
+   use "norcalli/nvim-colorizer.lua"
+   use "airblade/vim-gitgutter"
 end)
 -- }}}
 
@@ -225,4 +238,18 @@ lspconfig.julials.setup {
 
 -- Uncomment to disable location list of diagnostics
 -- vim.lsp.diagnostic.set_loclist({ open_loclist = false })
+-- }}}
+
+-- Colorizer {{{
+require("colorizer").setup {
+   "python";
+   "markdown";
+   "css";
+   "javascript";
+   "vim";
+   "lua";
+   html = {
+      mode = "foreground";
+   }
+}
 -- }}}
