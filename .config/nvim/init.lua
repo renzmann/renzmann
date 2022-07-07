@@ -68,14 +68,14 @@ end)
 -- Set Neovim color theme {{{
 vim.g.airline_theme = "base16_nord"
 
-require("nightfox").setup({
+require("nightfox").setup {
    options = {
       styles = {
          comments = "italic",
          functions = "italic,bold",
       }
    },
-})
+}
 
 vim.cmd("colorscheme nordfox")
 -- }}}
@@ -83,7 +83,7 @@ vim.cmd("colorscheme nordfox")
 -- Auto-completion {{{
 local cmp = require("cmp")
 
-cmp.setup({
+cmp.setup {
    snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -99,7 +99,7 @@ cmp.setup({
    --   documentation = cmp.config.window.bordered(),
    -- },
 
-   mapping = cmp.mapping.preset.insert({
+   mapping = cmp.mapping.preset.insert {
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
@@ -126,9 +126,9 @@ cmp.setup({
       --     feedkey("<Plug>(vsnip-jump-prev)", "")
       --   end
       -- end, { "i", "s" }),
-   }),
+   },
 
-   sources = cmp.config.sources({
+   sources = cmp.config.sources {
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
@@ -136,8 +136,8 @@ cmp.setup({
       -- { name = 'snippy' }, -- For snippy users.
    }, {
       { name = 'buffer' },
-   })
-})
+   }
+}
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
@@ -188,7 +188,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<CMD>Telescope lsp_definitions<CR>', opts)
   buf_set_keymap('n', 'K',  '<CMD>lua vim.lsp.buf.hover()<CR>', opts)
-  require"illuminate".on_attach(client)
+  require("illuminate").on_attach(client)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -199,14 +199,22 @@ local servers = {
   "rust_analyzer",
   "pyright",
 }
+
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({ on_attach = on_attach, capabilities = capabilities })
+  lspconfig[lsp].setup {
+     on_attach = on_attach,
+     capabilities = capabilities
+  }
 end
 
 -- gopls setup
 -- Make sure that $GOPATH/bin is on $PATH after installing gopls for this to work
 -- cd $HOME && mkdir -p tmp && cd tmp && go install golang.org/x/tools/gopls@latest
-lspconfig.gopls.setup { on_attach = on_attach, cmd = {'gopls', '--remote=auto'}, capabilities = capabilities }
+lspconfig.gopls.setup {
+   on_attach = on_attach,
+   cmd = {'gopls', '--remote=auto'},
+   capabilities = capabilities
+}
 
 -- julia setup
 -- Make sure to run julia and from the package manager prompt:
@@ -252,4 +260,13 @@ require("colorizer").setup {
       mode = "foreground";
    }
 }
+
+-- Treesitter {{{
+require("nvim-treesitter.configs").setup({
+  -- A list of parser names, or "all"
+  ensure_installed = { "c", "lua", "rust" },
+  highlight = {
+    enable = true,
+  },
+})
 -- }}}
