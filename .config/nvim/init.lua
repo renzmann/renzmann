@@ -5,7 +5,7 @@
 -- TODO lua plugins go under renzmann.plugname to prevent potential conflicts with `require`
 
 -- Editor settings {{{
-require("keymaps")
+require("renzmann.keymaps")
 
 vim.o.cursorline = true
 vim.o.encoding = "utf-8"
@@ -22,6 +22,7 @@ vim.o.relativenumber = true
 vim.o.scrolloff = 5
 vim.o.shiftround = true
 vim.o.wrap = false
+
 if vim.fn.has("termguicolors")
 then
    vim.o.termguicolors = true
