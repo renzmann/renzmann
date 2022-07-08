@@ -3,22 +3,49 @@
 --
 -- Styled after LuaRocks: https://github.com/luarocks/lua-style-guide
 
--- Source vimrc {{{
-function file_exists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
-end
+-- Editor settings {{{
+-- TODO:
+--  * strip trailing whitespace plugin
+--  * aliases/typo fixers
+--  * keymap? keep/move?
+--  * filetype plugins
+require("keymaps")
+-- function file_exists(name)
+--    local f=io.open(name,"r")
+--    if f~=nil then io.close(f) return true else return false end
+-- end
+--
+-- if file_exists(vim.env.HOME .. "/vimfiles/vimrc")
+-- then
+--    vim.cmd("source ~/vimfiles/vimrc")
+-- else
+--    vim.cmd("source ~/.vim/vimrc")
+-- end
+vim.o.hidden = true
+vim.o.linebreak = true
+vim.o.wrap = false
+vim.o.shiftround = true
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.cursorline = true
+vim.o.encoding = "utf-8"
+vim.o.hlsearch = true
+vim.o.mouse = "a"
+vim.o.foldmethod = "marker"
+vim.o.foldmarker = "{{{,}}}"
 
-if file_exists(vim.env.HOME .. "/vimfiles/vimrc")
-then
-   vim.cmd("source ~/vimfiles/vimrc")
-else
-   vim.cmd("source ~/.vim/vimrc")
+if vim.fn.has("termguicolors")
+   vim.o.termguicolors = true
 end
 -- }}}
 
 -- Packages {{{
 require("packer").startup(function()
+   -- Can't live without
+   use "tpope/vim-surround"
+   use "tpope/vim-commentary"
+   use "tpope/vim-fugitive"
+
    -- Autocomplete
    use "williamboman/nvim-lsp-installer"
    use "neovim/nvim-lspconfig"
@@ -37,6 +64,7 @@ require("packer").startup(function()
    use "EdenEast/nightfox.nvim"
    use "nvim-treesitter/nvim-treesitter"
    use "RRethy/vim-illuminate"
+   use "norcalli/nvim-colorizer.lua"
 
    -- Status bar
    use "vim-airline/vim-airline"
@@ -50,18 +78,21 @@ require("packer").startup(function()
       }
    }
 
+   -- Extra languages
    use { "JuliaEditorSupport/julia-vim", optional = true}
+
+   -- Project management
+   use "airblade/vim-rooter"
+   use "ludovicchabant/vim-gutentags"
+   use "airblade/vim-gitgutter"
+
    -- TODO
    -- github.com/nginx/nginx/contrib/vim files could go to a packpath folder, if we want them
    -- replicate tpope vim-sensible in both ~/.vim/vimrc and here
-   -- airblade/vim-rooter
    -- ? dhruvasagar/vim-table-mode
    -- ? junegunn/vim-easy-align
-   -- + ludovicchabant/vim-gutentags
    -- use "rbong/vim-flog"
    -- use "rhysd/git-messenger.vim"
-   use "norcalli/nvim-colorizer.lua"
-   use "airblade/vim-gitgutter"
 end)
 -- }}}
 
