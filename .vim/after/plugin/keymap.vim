@@ -12,6 +12,9 @@ nnoremap <C-y>                 2<C-Y>
 let mapleader=" "
 nnoremap <Space>               <Nop>
 
+" Unset accidental sleep
+nnoremap gs                    <Nop>
+
 " Case-insensitive search
 nnoremap <leader>/             /\c<Left><Left>
 
