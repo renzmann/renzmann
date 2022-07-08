@@ -62,15 +62,6 @@ if has('win32')
   set termguicolors
 endif
 
-" Set grep program to the much faster ripgrep
-if executable('rg')
-  set grepprg=rg\ --vimgrep
-endif
-
-" Auto set Omnifunc completion to `syntaxcomplete`
-if has("autocmd") && exists("+omnifunc")
-endif
-
 augroup default
   autocmd!
   " Automatically open the quickfix menu if there are results sent to it
@@ -120,16 +111,8 @@ endif
 " colo desert
 " colo evening
 
-" We'll set colors separately in neovim if that's where we're sourcing from
-if !has('nvim')
-" Custom colors that are okay:
-" colo apprentice  " github.com/romainl/Apprentice
-  let g:gruvbox_italic=1
-  colo gruvbox     " github.com/morhetz/gruvbox
-" colo iceberg     " github.com/cocopon/iceberg.vim
-" colo nord        " github.com/arcticicestudio/nord-vim
-endif
-
+let g:gruvbox_italic=1
+colo gruvbox     " github.com/morhetz/gruvbox
 " }}}
 
 " Common abbreviations {{{
