@@ -145,15 +145,17 @@ cmp.setup {
       -- end, { "i", "s" }),
    },
 
-   sources = cmp.config.sources {
-      { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
+   sources = cmp.config.sources({
+      { name = "nvim_lsp" },
+      { name = "vsnip" }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
    }, {
-      { name = 'buffer' },
-   }
+      { name = "buffer" },
+      { name = "path" },
+      { name = "nvim_lua" },
+   })
 }
 
 -- Set configuration for specific filetype.
@@ -277,6 +279,7 @@ require("colorizer").setup {
       mode = "foreground";
    }
 }
+-- }}}
 
 -- Treesitter {{{
 require("nvim-treesitter.configs").setup({
