@@ -141,13 +141,6 @@ cabbrev %% %:p:h
 cabbrev ccf cd %:p:h
 " }}}
 
-" netrw customization: {{{
-" tree style list
-let g:netrw_liststyle = 3
-" suppress the banner
-let g:netrw_banner = 0
-" }}}
-
 " slime customization: {{{
 let g:slime_target = "tmux"
 " I always have the REPL on the right, vertical split.
