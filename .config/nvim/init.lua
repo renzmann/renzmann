@@ -35,6 +35,7 @@ vim.o.foldmethod = "marker"
 vim.o.foldmarker = "{{{,}}}"
 
 if vim.fn.has("termguicolors")
+then
    vim.o.termguicolors = true
 end
 -- }}}
@@ -83,10 +84,11 @@ require("packer").startup(function()
 
    -- Project management
    use "airblade/vim-rooter"
-   use "ludovicchabant/vim-gutentags"
    use "airblade/vim-gitgutter"
 
    -- TODO
+   -- gutentags causes nvim to hang on exit
+   -- use "ludovicchabant/vim-gutentags"
    -- github.com/nginx/nginx/contrib/vim files could go to a packpath folder, if we want them
    -- replicate tpope vim-sensible in both ~/.vim/vimrc and here
    -- ? dhruvasagar/vim-table-mode
