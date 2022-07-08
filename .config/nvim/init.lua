@@ -2,7 +2,6 @@
 -- License: Do anything you like.
 --
 -- Styled after LuaRocks: https://github.com/luarocks/lua-style-guide
--- TODO lua plugins go under renzmann.plugname to prevent potential conflicts with `require`
 
 -- Editor settings {{{
 require("renzmann.keymaps")
@@ -23,10 +22,14 @@ vim.o.scrolloff = 5
 vim.o.shiftround = true
 vim.o.wrap = false
 
-if vim.fn.has("termguicolors")
-then
+if vim.fn.has("termguicolors") then
    vim.o.termguicolors = true
 end
+
+-- Common typos/abbrevs
+vim.cmd "cabbrev fidn find"
+vim.cmd "cabbrev greo grep"
+vim.cmd "cabbrev %% %:p:h"
 -- }}}
 
 -- Packages {{{
