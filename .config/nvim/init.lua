@@ -19,6 +19,8 @@ vim.o.mouse = "a"
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 5
+vim.o.splitbelow = true
+vim.o.splitright = true
 vim.o.shiftround = true
 vim.o.wrap = false
 
