@@ -16,19 +16,6 @@ $Env:XDG_DATA_HOME = "$Env:LOCALAPPDATA"
 $Env:XDG_CONFIG_DIRS = "$Env:APPDATA"
 $Env:XDG_DATA_DIRS = "$Env:APPDATA"
 
-# $folders = @($Env:XDG_CONFIG_HOME,$Env:XDG_DATA_HOME,$Env:XDG_STATE_HOME,$Env:XDG_CACHE_HOME)
-# ForEach ($f in $folders) {
-#     if (!$(Test-Path $f)) {
-#         New-Item $f -ItemType Directory
-#     }
-# }
-# Remove-Variable folders
-
-Function Install-Vimplug {
-    Invoke-WebRequest -UseBasicParsing https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
-    New-Item "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
-}
-
 Function Install-Poetry {
    (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python3 -
 }
@@ -37,7 +24,6 @@ Function Install-Poetry {
 # Install-Julia
 # Install-Go
 # LspInstall rust-analyzer fails
-# Treesitter modules causing fatal crash on Windows. Bad `cc` or something else?
 Function Edit-TerminalSettings {
     # TODO add to dotfiles and symlink here
     nvim $Env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
