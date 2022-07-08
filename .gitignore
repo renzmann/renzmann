@@ -58,4 +58,4 @@
 !.local/bin/yn-prompt
 !.local/bin/install-julia
 !.local/bin/install-vim
-!.local/bin/nvim-packagesync
+!.local/bin/nvim-packersync
