@@ -2,22 +2,26 @@
 -- License: Do anything you like.
 --
 -- Styled after LuaRocks: https://github.com/luarocks/lua-style-guide
+-- TODO lua plugins go under renzmann.plugname to prevent potential conflicts with `require`
 
 -- Editor settings {{{
 require("keymaps")
-vim.o.hidden = true
-vim.o.linebreak = true
-vim.o.wrap = false
-vim.o.shiftround = true
-vim.o.number = true
-vim.o.relativenumber = true
+
 vim.o.cursorline = true
 vim.o.encoding = "utf-8"
-vim.o.hlsearch = true
-vim.o.mouse = "a"
-vim.o.foldmethod = "marker"
 vim.o.foldmarker = "{{{,}}}"
-
+vim.o.foldmethod = "marker"
+vim.o.hidden = true
+vim.o.hlsearch = true
+vim.o.linebreak = true
+vim.o.list = true
+vim.o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
+vim.o.mouse = "a"
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.scrolloff = 5
+vim.o.shiftround = true
+vim.o.wrap = false
 if vim.fn.has("termguicolors")
 then
    vim.o.termguicolors = true
