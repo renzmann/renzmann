@@ -4,23 +4,7 @@
 -- Styled after LuaRocks: https://github.com/luarocks/lua-style-guide
 
 -- Editor settings {{{
--- TODO:
---  * strip trailing whitespace plugin
---  * aliases/typo fixers
---  * keymap? keep/move?
---  * filetype plugins
 require("keymaps")
--- function file_exists(name)
---    local f=io.open(name,"r")
---    if f~=nil then io.close(f) return true else return false end
--- end
---
--- if file_exists(vim.env.HOME .. "/vimfiles/vimrc")
--- then
---    vim.cmd("source ~/vimfiles/vimrc")
--- else
---    vim.cmd("source ~/.vim/vimrc")
--- end
 vim.o.hidden = true
 vim.o.linebreak = true
 vim.o.wrap = false
