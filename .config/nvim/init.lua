@@ -91,12 +91,11 @@ end)
 -- }}}
 
 -- Colors, Highlighting, and TreeSitter {{{
--- if vim.fn.has("termguicolors") and vim.fn.empty(os.getenv("TMUX")) then
---    require("renzmann.colors")
--- else
---    vim.cmd("colorscheme apprentice")
--- end
-vim.cmd "colorscheme nord"
+if vim.fn.empty(os.getenv("TMUX")) == 1 then
+   require("renzmann.colors")
+else
+   vim.cmd("colorscheme nord")
+end
 -- }}}
 
 -- Auto-completion {{{
