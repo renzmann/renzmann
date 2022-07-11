@@ -93,6 +93,10 @@ end)
 -- Colors, Highlighting, and TreeSitter {{{
 if vim.fn.empty(os.getenv("TMUX")) == 1 then
    require("renzmann.colors")
+elseif vim.fn.system("tmux -V") > "tmux 2.2" then
+   -- FIXME this assumes that the currently running tmux is the same as what's on PATH... not
+   -- sure if it will ever really become an issue, but in theory it could be.
+   require("renzmann.colors")
 else
    vim.cmd("colorscheme nord")
 end
