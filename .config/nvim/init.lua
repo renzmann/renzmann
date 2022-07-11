@@ -75,7 +75,7 @@ require("packer").startup(function()
    use { "JuliaEditorSupport/julia-vim", optional = true}
 
    -- Project management
-   use "airblade/vim-rooter"
+   -- use "airblade/vim-rooter"
    use "airblade/vim-gitgutter"
 
    -- TODO
@@ -225,6 +225,7 @@ local servers = {
   "yamlls",
   "rust_analyzer",
   "pyright",
+  "omnisharp",
 }
 
 for _, lsp in ipairs(servers) do

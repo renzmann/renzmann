@@ -23,7 +23,7 @@ require("colorizer").setup {
 }
 
 require("nvim-treesitter.configs").setup {
-  ensure_installed = { "c", "lua", "rust", "python" },
+  ensure_installed = { "c", "lua", "rust", "python", "c_sharp" },
   highlight = {
     enable = true,
   },
