@@ -100,7 +100,7 @@ augroup desert_override
   autocmd ColorScheme desert hi Folded ctermfg=246 cterm=NONE guibg=grey15 guifg=#6c6c6c gui=NONE
 augroup END
 
-if (has('termguicolors'))
+if (has('termguicolors')) && (empty($TMUX))
   set termguicolors
 endif
 
