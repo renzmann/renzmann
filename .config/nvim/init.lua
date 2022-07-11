@@ -24,10 +24,6 @@ vim.o.splitright = true
 vim.o.shiftround = true
 vim.o.wrap = false
 
-if vim.fn.has("termguicolors") then
-   vim.o.termguicolors = true
-end
-
 -- Common typos/abbrevs
 vim.cmd "cabbrev fidn find"
 vim.cmd "cabbrev greo grep"
@@ -56,7 +52,9 @@ require("packer").startup(function()
    }
 
    -- Colors
+   use "romainl/Apprentice"
    use "EdenEast/nightfox.nvim"
+   use "arcticicestudio/nord-vim"
    use "nvim-treesitter/nvim-treesitter"
    use "RRethy/vim-illuminate"
    use "norcalli/nvim-colorizer.lua"
@@ -92,19 +90,13 @@ require("packer").startup(function()
 end)
 -- }}}
 
--- Set Neovim color theme {{{
-vim.g.airline_theme = "base16_nord"
-
-require("nightfox").setup {
-   options = {
-      styles = {
-         comments = "italic",
-         functions = "italic,bold",
-      }
-   },
-}
-
-vim.cmd("colorscheme nordfox")
+-- Colors, Highlighting, and TreeSitter {{{
+-- if vim.fn.has("termguicolors") and vim.fn.empty(os.getenv("TMUX")) then
+--    require("renzmann.colors")
+-- else
+--    vim.cmd("colorscheme apprentice")
+-- end
+vim.cmd "colorscheme nord"
 -- }}}
 
 -- Auto-completion {{{
@@ -275,28 +267,4 @@ lspconfig.julials.setup {
 
 -- Uncomment to disable location list of diagnostics
 -- vim.lsp.diagnostic.set_loclist({ open_loclist = false })
--- }}}
-
--- Colorizer {{{
-require("colorizer").setup {
-   "python";
-   "markdown";
-   "css";
-   "javascript";
-   "vim";
-   "lua";
-   html = {
-      mode = "foreground";
-   }
-}
--- }}}
-
--- Treesitter {{{
-require("nvim-treesitter.configs").setup({
-  -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "rust" },
-  highlight = {
-    enable = true,
-  },
-})
 -- }}}
