@@ -1,16 +1,13 @@
 vim.o.termguicolors = true
 vim.g.airline_theme = "base16_nord"
 
-require("colorizer").setup {
-   "python";
-   "markdown";
-   "css";
-   "javascript";
-   "vim";
-   "lua";
-   html = {
-      mode = "foreground";
-   }
+require("nightfox").setup {
+   options = {
+      styles = {
+         comments = "italic",
+         functions = "italic,bold",
+      }
+   },
 }
 
 require("colorizer").setup {
