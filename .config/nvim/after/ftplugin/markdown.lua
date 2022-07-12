@@ -5,7 +5,7 @@
 -- let b:noStripWhitespace=1
 
 vim.bo.textwidth = 80
-vim.bo.spell = true
+vim.opt_local.spell = true
 vim.bo.spelllang = "en_us"
 vim.bo.tabstop = 2
 vim.bo.expandtab = true
