@@ -39,7 +39,7 @@ silent_insert("<C-j>", "<Esc>gUiwea")
 -- [s]ettings navigation
 -------------------------------------------------------------------------
 silent_normal("<Leader>si", "<Cmd>edit $MYVIMRC<CR>")
-silent_normal("<Leader>sk", "<Cmd>edit "..config.."/lua/keymaps.lua<CR>")
+silent_normal("<Leader>sk", "<Cmd>edit "..config.."/lua/renzmann/keymaps.lua<CR>")
 silent_normal("<Leader>sp", "<Cmd>edit "..config.."/after/plugin<CR>")
 silent_normal("<Leader>sf", "<Cmd>edit "..config.."/after/ftplugin<CR>")
 
