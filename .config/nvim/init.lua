@@ -60,8 +60,10 @@ require("packer").startup(function()
    use "norcalli/nvim-colorizer.lua"
 
    -- Status bar
-   use "vim-airline/vim-airline"
-   use "vim-airline/vim-airline-themes"
+   use {
+      "nvim-lualine/lualine.nvim",
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+   }
 
    -- Fuzzy-finding
    use {
@@ -103,6 +105,10 @@ else
    vim.g.nord_italic_comments = 1
    vim.cmd("colorscheme nord")
 end
+-- }}}
+
+-- Status line {{{
+require("lualine").setup()
 -- }}}
 
 -- Auto-completion {{{
