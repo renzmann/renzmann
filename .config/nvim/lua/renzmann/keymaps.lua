@@ -1,6 +1,6 @@
---=============================================================================
+-------------------------------------------------------------------------------
 --                             Keyboard Shortcuts
---=============================================================================
+-------------------------------------------------------------------------------
 -- Search for [<letter> to see what's mapped under <leader><letter>.
 -- e.g. /[s will take you to the settings navigation section.
 
@@ -98,3 +98,4 @@ silent_normal("<Leader>dq", ":lua vim.diagnostic.setqflist()<CR>")
 -- e[x]tra
 -------------------------------------------------------------------------
 -- nnoremap <silent><Leader>xm    :<C-u>GitMessenger<CR>
+silent_normal("<Leader>xm", "<Plug>(git-messenger)")

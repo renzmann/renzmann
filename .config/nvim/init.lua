@@ -77,16 +77,16 @@ require("packer").startup(function()
    -- Project management
    -- use "airblade/vim-rooter"
    use "airblade/vim-gitgutter"
+   use "rhysd/git-messenger.vim"
 
-   -- TODO
    -- gutentags causes nvim to hang on exit
    -- use "ludovicchabant/vim-gutentags"
+   --
    -- github.com/nginx/nginx/contrib/vim files could go to a packpath folder, if we want them
-   -- replicate tpope vim-sensible in both ~/.vim/vimrc and here
+   --
    -- ? dhruvasagar/vim-table-mode
    -- ? junegunn/vim-easy-align
    -- use "rbong/vim-flog"
-   -- use "rhysd/git-messenger.vim"
 end)
 -- }}}
 
