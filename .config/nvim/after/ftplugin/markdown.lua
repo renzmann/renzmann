@@ -4,12 +4,11 @@
 -- Don't strip whitespace in `md`, since it's used to break lines.
 -- let b:noStripWhitespace=1
 
-local o = vim.opt_local
-o.textwidth = 80
-o.spell = true
-o.spelllang = "en_us"
-o.tabstop = 2
-o.expandtab = true
-o.softtabstop = 2
-o.shiftwidth = 2
-o.fileformat = "unix"
+vim.bo.textwidth = 80
+vim.bo.spell = true
+vim.bo.spelllang = "en_us"
+vim.bo.tabstop = 2
+vim.bo.expandtab = true
+vim.bo.softtabstop = 2
+vim.bo.shiftwidth = 2
+vim.bo.fileformat = "unix"

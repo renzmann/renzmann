@@ -1,9 +1,7 @@
-local o = vim.opt_local
-
 vim.cmd [[syntax match Comment +\/\/.\+$+]]
-o.tabstop = 4
-o.softtabstop = 4
-o.shiftwidth = 4
-o.fileformat = "unix"
-o.expandtab = true
-o.textwidth = 120
+vim.bo.tabstop = 4
+vim.bo.softtabstop = 4
+vim.bo.shiftwidth = 4
+vim.bo.fileformat = "unix"
+vim.bo.expandtab = true
+vim.bo.textwidth = 120

@@ -1,7 +1,6 @@
-local o = vim.opt_local
-o.tabstop = 4
-o.softtabstop = 4
-o.shiftwidth = 4
-o.fileformat = "unix"
-o.expandtab = false
-o.textwidth = 95
+vim.bo.tabstop = 4
+vim.bo.softtabstop = 4
+vim.bo.shiftwidth = 4
+vim.bo.fileformat = "unix"
+vim.bo.expandtab = false
+vim.bo.textwidth = 95
