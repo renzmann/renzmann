@@ -80,6 +80,7 @@ require("packer").startup(function()
    -- use "airblade/vim-rooter"
    use "airblade/vim-gitgutter"
    use "rhysd/git-messenger.vim"
+   use "rbong/vim-flog"
 
    -- gutentags causes nvim to hang on exit
    -- use "ludovicchabant/vim-gutentags"
@@ -88,7 +89,6 @@ require("packer").startup(function()
    --
    -- ? dhruvasagar/vim-table-mode
    -- ? junegunn/vim-easy-align
-   -- use "rbong/vim-flog"
 end)
 -- }}}
 
