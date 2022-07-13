@@ -28,6 +28,7 @@ vim.o.wrap = false
 vim.cmd "cabbrev fidn find"
 vim.cmd "cabbrev greo grep"
 vim.cmd "cabbrev %% %:p:h"
+vim.cmd "cabbrev ccf cd %:p:h"
 -- }}}
 
 -- Packages {{{
