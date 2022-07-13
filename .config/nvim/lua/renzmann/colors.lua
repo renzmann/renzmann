@@ -11,14 +11,14 @@ require("nightfox").setup {
 }
 
 require("colorizer").setup {
-   "python";
-   "markdown";
-   "css";
-   "javascript";
-   "vim";
-   "lua";
+   "python",
+   "markdown",
+   "css",
+   "javascript",
+   "vim",
+   "lua",
    html = {
-      mode = "foreground";
+      mode = "foreground",
    }
 }
 
