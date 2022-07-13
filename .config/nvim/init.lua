@@ -41,7 +41,10 @@ require("packer").startup(function()
 
    -- Can't live without
    -- use "tpope/vim-surround"
-   use "kylechui/nvim-surround"
+   use {
+      "kylechui/nvim-surround",
+      config = function() require("nvim-surround").setup {} end,
+   }
    use "tpope/vim-commentary"
    use "tpope/vim-fugitive"
 
@@ -86,10 +89,9 @@ require("packer").startup(function()
 
    -- Extra languages
    use { "JuliaEditorSupport/julia-vim", optional = true}
-   -- use "iamcco/markdown-preview.nvim"
+   use "iamcco/markdown-preview.nvim"
 
    -- Project management
-   -- use "airblade/vim-rooter"
    use "airblade/vim-gitgutter"
    use "rhysd/git-messenger.vim"
    use "rbong/vim-flog"
