@@ -32,10 +32,17 @@ vim.cmd "cabbrev %% %:p:h"
 
 -- Packages {{{
 require("packer").startup(function()
+   -- packer can manage itself
+   use "wbthomason/packer.nvim"
+
    -- Can't live without
-   use "tpope/vim-surround"
+   -- use "tpope/vim-surround"
+   use "kylechui/nvim-surround"
    use "tpope/vim-commentary"
    use "tpope/vim-fugitive"
+
+   -- Wait until he finishes "only highlight after F is pressed"
+   -- jinh0/eyeliner.nvim
 
    -- Autocomplete
    use "williamboman/nvim-lsp-installer"
@@ -75,6 +82,7 @@ require("packer").startup(function()
 
    -- Extra languages
    use { "JuliaEditorSupport/julia-vim", optional = true}
+   -- use "iamcco/markdown-preview.nvim"
 
    -- Project management
    -- use "airblade/vim-rooter"
