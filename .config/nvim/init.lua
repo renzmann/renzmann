@@ -53,7 +53,12 @@ require("packer").startup(function()
    -- jinh0/eyeliner.nvim
 
    -- Autocomplete
-   use "williamboman/nvim-lsp-installer"
+   use {
+      "williamboman/nvim-lsp-installer",
+      config = function() require("nvim-lsp-installer").setup {} end,
+
+   }
+
    use "neovim/nvim-lspconfig"
    use {
       "hrsh7th/nvim-cmp",
@@ -223,9 +228,6 @@ cmp.setup.cmdline(':', {
 -- appear/disappear
 vim.opt.signcolumn = "yes"
 
--- Adds ability to install LSP servers as we need them
-require("nvim-lsp-installer").setup({})
-
 -- Main config starts here
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -236,9 +238,9 @@ local on_attach = function(client, bufnr)
 
   -- The bindings here override very similar ones in base vim, and isn't a spot
   -- to add new bindings.  See the ./after/plugin/keymap.vim for those.
-  buf_set_keymap('n', 'gD', '<CMD>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<CMD>Telescope lsp_definitions<CR>', opts)
-  buf_set_keymap('n', 'K',  '<CMD>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opts)
+  buf_set_keymap("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts)
+  buf_set_keymap("n", "K",  "<CMD>lua vim.lsp.buf.hover()<CR>", opts)
   require("illuminate").on_attach(client)
 end
 
