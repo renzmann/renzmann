@@ -88,22 +88,6 @@ end
 " }}}
 
 " Color theme {{{
-augroup desert_override
-  autocmd!
-  " Italic comments
-  autocmd ColorScheme desert hi Comment cterm=italic gui=italic ctermfg=73
-  " Quieter line numbers
-  autocmd ColorScheme desert hi CursorLineNr ctermbg=236 ctermfg=73 cterm=NONE guibg=#303030 guifg=#5fafaf gui=NONE
-  autocmd ColorScheme desert hi CursorLine ctermbg=236 ctermfg=NONE cterm=NONE guibg=#303030 guifg=NONE gui=NONE
-  autocmd ColorScheme desert hi LineNr ctermbg=236 ctermfg=242 cterm=NONE guibg=grey15 guifg=#6c6c6c gui=NONE
-  " Quieter fold text
-  autocmd ColorScheme desert hi Folded ctermfg=246 cterm=NONE guibg=grey15 guifg=#6c6c6c gui=NONE
-augroup END
-
-if (has('termguicolors')) && (empty($TMUX))
-  set termguicolors
-endif
-
 " Default colos that are okay:
 " colo torte
 " colo murphy
@@ -111,8 +95,12 @@ endif
 " colo desert
 " colo evening
 
-let g:gruvbox_italic=1
-colo gruvbox     " github.com/morhetz/gruvbox
+" let g:gruvbox_italic=1
+" colo gruvbox     " github.com/morhetz/gruvbox
+let g:nord_italic=1
+let g:nord_bold=1
+let g:nord_italic_comments=1
+colorscheme nord
 " }}}
 
 " Common abbreviations {{{
