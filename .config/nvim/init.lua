@@ -5,30 +5,33 @@
 
 -- Editor settings {{{
 require("renzmann.keymaps")
+local o = vim.o
+local g = vim.g
+local cmd = vim.cmd
 
-vim.o.cursorline = true
-vim.o.encoding = "utf-8"
-vim.o.foldmarker = "{{{,}}}"
-vim.o.foldmethod = "marker"
-vim.o.hidden = true
-vim.o.hlsearch = true
-vim.o.linebreak = true
-vim.o.list = true
-vim.o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
-vim.o.mouse = "a"
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.scrolloff = 5
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.shiftround = true
-vim.o.wrap = false
+o.cursorline = true
+o.encoding = "utf-8"
+o.foldmarker = "{{{,}}}"
+o.foldmethod = "marker"
+o.hidden = true
+o.hlsearch = true
+o.linebreak = true
+o.list = true
+o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
+o.mouse = "a"
+o.number = true
+o.relativenumber = true
+o.scrolloff = 5
+o.splitbelow = true
+o.splitright = true
+o.shiftround = true
+o.wrap = false
 
 -- Common typos/abbrevs
-vim.cmd "cabbrev fidn find"
-vim.cmd "cabbrev greo grep"
-vim.cmd "cabbrev %% %:p:h"
-vim.cmd "cabbrev ccf cd %:p:h"
+cmd "cabbrev fidn find"
+cmd "cabbrev greo grep"
+cmd "cabbrev %% %:p:h"
+cmd "cabbrev ccf cd %:p:h"
 -- }}}
 
 -- Packages {{{
@@ -109,10 +112,10 @@ elseif vim.fn.system("tmux -V") > "tmux 2.2" then
    -- sure if it will ever really become an issue, but in theory it could be.
    require("renzmann.colors")
 else
-   vim.g.nord_italic = 1
-   vim.g.nord_bold = 1
-   vim.g.nord_italic_comments = 1
-   vim.cmd("colorscheme nord")
+   g.nord_italic = 1
+   g.nord_bold = 1
+   g.nord_italic_comments = 1
+   cmd "colorscheme nord"
 end
 -- }}}
 
