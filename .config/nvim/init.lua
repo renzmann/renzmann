@@ -76,20 +76,18 @@ require("packer").startup(function()
    -- Status bar
    use {
       "nvim-lualine/lualine.nvim",
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      requires = { "kyazdani42/nvim-web-devicons", opt = true },
    }
 
    -- Fuzzy-finding
    use {
       "nvim-telescope/telescope.nvim",
-      requires = {
-         { "nvim-lua/plenary.nvim" },
-      }
+      requires = { "nvim-lua/plenary.nvim" }
    }
 
    -- Extra languages
-   use { "JuliaEditorSupport/julia-vim", optional = true}
-   use "iamcco/markdown-preview.nvim"
+   use "JuliaEditorSupport/julia-vim"
+   use { "iamcco/markdown-preview.nvim", ft = "markdown" }
 
    -- Project management
    use "airblade/vim-gitgutter"
