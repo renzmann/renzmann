@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 _install_nvim() {
-	local version=${1:-"0.7.0"}
+	local version=${1:-"0.7.2"}
 	local download_url="https://github.com/neovim/neovim/releases/download/v${version}"
 
 	case $OSTYPE in
 		'darwin'*)
 			curl -sSL "${download_url}/nvim-macos.tar.gz" --output "$HOME/nvim-macos.tar.gz" \
 				&& tar xzvf "$HOME/nvim-macos.tar.gz" \
-				&& mv nvim-osx64 $HOME \
-				&& ln -nsf "$HOME/nvim-osx64/bin/nvim" "$HOME/.local/bin/nvim"
+				&& mv nvim-macos $HOME
+			ln -nsf "$HOME/nvim-macos/bin/nvim" "$HOME/.local/bin/nvim"
 			;;
 		*)
 			curl -LO "${download_url}/nvim.appimage" \
@@ -17,7 +17,7 @@ _install_nvim() {
 			;;
 	esac
 
-	nvim-packagesync
+	nvim-packersync
 }
 
 _install_nvim "$@"
