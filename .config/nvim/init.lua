@@ -258,8 +258,11 @@ for _, lsp in ipairs(servers) do
 end
 
 -- gopls setup
--- Make sure that $GOPATH/bin is on $PATH after installing gopls for this to work
--- cd $HOME && mkdir -p tmp && cd tmp && go install golang.org/x/tools/gopls@latest
+-- Install notes below are from before I had the LSP installer plugin
+--
+-- > Make sure that $GOPATH/bin is on $PATH after installing gopls for this to work
+-- > cd $HOME && mkdir -p tmp && cd tmp && go install golang.org/x/tools/gopls@latest
+--
 lspconfig.gopls.setup {
    on_attach = on_attach,
    cmd = {'gopls', '--remote=auto'},
@@ -267,8 +270,11 @@ lspconfig.gopls.setup {
 }
 
 -- julia setup
--- Make sure to run julia and from the package manager prompt:
--- ] add LanguageServer SymbolServer
+-- Install notes below are from before I had the LSP installer plugin
+--
+-- > Make sure to run julia and from the package manager prompt:
+-- > ] add LanguageServer SymbolServer
+--
 lspconfig.julials.setup {
   cmd = {
     "julia",
