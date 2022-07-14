@@ -8,8 +8,8 @@
 require("renzmann.keymaps")
 local o = vim.o
 local g = vim.g
-local cmd = vim.cmd
 
+vim.env.MYVIMHOME = vim.fn.expand("<sfile>:p:h")
 o.cursorline = true
 o.encoding = "utf-8"
 o.foldmarker = "{{{,}}}"
@@ -27,15 +27,11 @@ o.splitbelow = true
 o.splitright = true
 o.shiftround = true
 o.wrap = false
-
--- Common typos/abbrevs
-cmd "cabbrev fidn find"
-cmd "cabbrev greo grep"
-cmd "cabbrev %% %:p:h"
-cmd "cabbrev ccf cd %:p:h"
 -- }}}
 
 -- Packages {{{
+-- TODO: one way we can structure this is a bunch of "requires", and pipe a
+-- settings binding to telescope to go to a settings section.
 require("packer").startup(function()
    -- packer can manage itself
    use "wbthomason/packer.nvim"
@@ -223,7 +219,7 @@ cmp.setup.cmdline(':', {
 })
 -- }}}
 
--- LSP (Language Servers) {{{
+-- LSP (Language Servers / Intellisense) {{{
 -- Keep the gutter open all the time so it doesn't shutter back and forth when diagnostics
 -- appear/disappear
 vim.opt.signcolumn = "yes"

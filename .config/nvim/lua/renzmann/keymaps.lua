@@ -38,10 +38,24 @@ silent_insert("<C-j>", "<Esc>gUiwea")
 
 -- [s]ettings navigation
 -------------------------------------------------------------------------
+local new_find = function(path)
+   local wrapped = function(opts)
+      require("telescope.builtin").find_files {
+         cwd = config.."/"..path
+      }
+   end
+   return wrapped
+end
+
+local find_plugins = new_find("after/plugin")
+local find_ftplugins = new_find("after/ftplugin")
+local find_mine = new_find("lua/renzmann")
+
 silent_normal("<Leader>si", "<Cmd>edit $MYVIMRC<CR>")
 silent_normal("<Leader>sk", "<Cmd>edit "..config.."/lua/renzmann/keymaps.lua<CR>")
-silent_normal("<Leader>sp", "<Cmd>edit "..config.."/after/plugin<CR>")
-silent_normal("<Leader>sf", "<Cmd>edit "..config.."/after/ftplugin<CR>")
+silent_normal("<Leader>sp", find_plugins)
+silent_normal("<Leader>sf", find_ftplugins)
+silent_normal("<Leader>sm", find_mine)
 
 -- Markdown and RST headers [1] [2] [3] [4]
 -------------------------------------------------------------------------
