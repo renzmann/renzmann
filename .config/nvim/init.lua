@@ -90,6 +90,7 @@ require("packer").startup(function()
    -- Extra languages
    use "JuliaEditorSupport/julia-vim"
    use { "iamcco/markdown-preview.nvim", ft = "markdown" }
+   use "habamax/vim-godot"
 
    -- Project management
    use "airblade/vim-gitgutter"
@@ -248,6 +249,7 @@ local servers = {
   "rust_analyzer",
   "pyright",
   "omnisharp",
+  "gdscript",
 }
 
 for _, lsp in ipairs(servers) do
