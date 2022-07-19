@@ -9,23 +9,56 @@ require("renzmann.keymaps")
 local o = vim.o
 local g = vim.g
 
+-- Set an environment variable that always points to the filestystem folder this init.lua
+-- resides in. Useful for scripting or checking that my configuration is working correctly.
 vim.env.MYVIMHOME = vim.fn.expand("<sfile>:p:h")
+
+-- Highlight the line our cursor is on
 o.cursorline = true
-o.encoding = "utf-8"
+
+-- Use `{{{` to mark the beginning of a fold, and `}}}` to mark the end.  The combination of
+-- both lines below cause nvim to automatically close folds within these markers, making it
+-- much easier for me to navigate this file
 o.foldmarker = "{{{,}}}"
 o.foldmethod = "marker"
+
+-- Allows us to temporarily "abandon" the current buffer, even if there are unsaved changes,
+-- and hop to another buffer
 o.hidden = true
+
+-- Start highlighting matches as we type in searches with `/` and `?`
 o.hlsearch = true
+
+-- When wrapping lines, don't break in the middle of words
 o.linebreak = true
+
+-- Add lightly colored symbols that show things like trailing whitespace and whether leading
+-- whitespace is a tab character
 o.list = true
 o.listchars = "trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂"
+
+-- Turn on mouse support. This makes it possible to scroll and visual-select text with the
+-- mouse. To disable it, which is useful for using Cmd-C on a mac, use `:set mouse=`
 o.mouse = "a"
+
+-- Turn on number lines
 o.number = true
+-- Relative line numbers make it much easier to use count-moves up and down. E.g. `13j` to get
+-- exactly 13 lines down, since that's what the relative line number says
 o.relativenumber = true
+
+-- Set the minimum number of lines between the cursor line and the top/bottom of the screen
 o.scrolloff = 2
+
+-- When creating a new split, place it below or to the right of the current window
 o.splitbelow = true
 o.splitright = true
+
+-- When indenting text via commands like `<`, `>`, CTRL-T, and CTRL-D, round to a multiple of
+-- `shiftwidth`, which is usually set per filetype
 o.shiftround = true
+
+-- By default, let lines that are too long spill off to the right, don't soft-wrap them around
 o.wrap = false
 -- }}}
 
