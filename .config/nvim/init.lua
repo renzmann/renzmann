@@ -118,7 +118,7 @@ else
    g.nord_italic = 1
    g.nord_bold = 1
    g.nord_italic_comments = 1
-   cmd "colorscheme nord"
+   vim.cmd "colorscheme nord"
 end
 -- }}}
 
