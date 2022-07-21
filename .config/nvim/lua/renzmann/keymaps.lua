@@ -12,6 +12,7 @@ end
 local function silent_normal(lhs, rhs) return silent_mode("n", lhs, rhs) end
 local function silent_insert(lhs, rhs) return silent_mode("i", lhs, rhs) end
 local function silent_operator(lhs, rhs) return silent_mode("o", lhs, rhs) end
+local function silent_visual(lhs, rhs) return silent_mode("v", lhs, rhs) end
 local config = vim.fn.stdpath("config")
 
 -- Faster scrolling
@@ -74,9 +75,9 @@ silent_normal("<Leader>L", ":<C-u>tabnext<CR>")
 
 -- [c]lipboard [c]ommands
 -------------------------------------------------------------------------
-silent_normal("<Leader>cv", '"+p')
-silent_normal("<Leader>cv", '"+p')
-silent_normal("<Leader>cc", '"+y')
+silent_normal("<Leader>cv", 'V"+p')
+silent_visual("<Leader>cv", '"+p')
+silent_visual("<Leader>cc", '"+y')
 
 -- [f]ind things
 -------------------------------------------------------------------------
