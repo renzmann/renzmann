@@ -9,10 +9,18 @@ local function silent_mode(mode, lhs, rhs)
    return vim.keymap.set(mode, lhs, rhs, { silent = true })
 end
 
-local function silent_normal(lhs, rhs) return silent_mode("n", lhs, rhs) end
-local function silent_insert(lhs, rhs) return silent_mode("i", lhs, rhs) end
-local function silent_operator(lhs, rhs) return silent_mode("o", lhs, rhs) end
-local function silent_visual(lhs, rhs) return silent_mode("v", lhs, rhs) end
+local function silent_normal(lhs, rhs)
+   return silent_mode("n", lhs, rhs)
+end
+local function silent_insert(lhs, rhs)
+   return silent_mode("i", lhs, rhs)
+end
+local function silent_operator(lhs, rhs)
+   return silent_mode("o", lhs, rhs)
+end
+local function silent_visual(lhs, rhs)
+   return silent_mode("v", lhs, rhs)
+end
 local config = vim.fn.stdpath("config")
 
 -- Faster scrolling
@@ -36,14 +44,13 @@ silent_normal("cgn", [[:<C-u>let @/=expand('<cword>')<cr>cgn]])
 -- Capitalize last word while inserting text
 silent_insert("<C-j>", "<Esc>gUiwea")
 
-
 -- [s]ettings navigation
 -------------------------------------------------------------------------
 local new_find = function(path)
    local wrapped = function(opts)
-      require("telescope.builtin").find_files {
-         cwd = config.."/"..path
-      }
+      require("telescope.builtin").find_files({
+         cwd = config .. "/" .. path,
+      })
    end
    return wrapped
 end
@@ -53,7 +60,7 @@ local find_ftplugins = new_find("after/ftplugin")
 local find_mine = new_find("lua/renzmann")
 
 silent_normal("<Leader>si", "<Cmd>edit $MYVIMRC<CR>")
-silent_normal("<Leader>sk", "<Cmd>edit "..config.."/lua/renzmann/keymaps.lua<CR>")
+silent_normal("<Leader>sk", "<Cmd>edit " .. config .. "/lua/renzmann/keymaps.lua<CR>")
 silent_normal("<Leader>sp", find_plugins)
 silent_normal("<Leader>sf", find_ftplugins)
 silent_normal("<Leader>sm", find_mine)

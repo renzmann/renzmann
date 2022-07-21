@@ -1,4 +1,4 @@
-vim.cmd [[syntax match Comment +\/\/.\+$+]]
+vim.cmd([[syntax match Comment +\/\/.\+$+]])
 vim.bo.tabstop = 4
 vim.bo.softtabstop = 4
 vim.bo.shiftwidth = 4

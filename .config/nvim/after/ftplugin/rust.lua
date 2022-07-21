@@ -1,1 +1,1 @@
-vim.cmd "compiler cargo"
+vim.cmd("compiler cargo")

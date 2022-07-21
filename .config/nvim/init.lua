@@ -67,29 +67,32 @@ o.wrap = false
 -- settings binding to telescope to go to a settings section.
 require("packer").startup(function()
    -- packer can manage itself
-   use "wbthomason/packer.nvim"
+   use("wbthomason/packer.nvim")
 
    -- Can't live without
    -- use "tpope/vim-surround"
-   use {
+   use({
       "kylechui/nvim-surround",
-      config = function() require("nvim-surround").setup {} end,
-   }
-   use "tpope/vim-commentary"
-   use "tpope/vim-fugitive"
+      config = function()
+         require("nvim-surround").setup({})
+      end,
+   })
+   use("tpope/vim-commentary")
+   use("tpope/vim-fugitive")
 
    -- Wait until he finishes "only highlight after F is pressed"
    -- jinh0/eyeliner.nvim
 
    -- Autocomplete
-   use {
+   use({
       "williamboman/nvim-lsp-installer",
-      config = function() require("nvim-lsp-installer").setup {} end,
+      config = function()
+         require("nvim-lsp-installer").setup({})
+      end,
+   })
 
-   }
-
-   use "neovim/nvim-lspconfig"
-   use {
+   use("neovim/nvim-lspconfig")
+   use({
       "hrsh7th/nvim-cmp",
       requires = {
          { "hrsh7th/cmp-nvim-lsp" },
@@ -97,38 +100,39 @@ require("packer").startup(function()
          { "hrsh7th/cmp-path" },
          { "hrsh7th/vim-vsnip" },
          { "hrsh7th/cmp-vsnip" },
-      }
-   }
+      },
+   })
 
    -- Colors
-   use "romainl/Apprentice"
-   use "EdenEast/nightfox.nvim"
-   use "arcticicestudio/nord-vim"
-   use "nvim-treesitter/nvim-treesitter"
-   use "RRethy/vim-illuminate"
-   use "norcalli/nvim-colorizer.lua"
+   use("romainl/Apprentice")
+   use("EdenEast/nightfox.nvim")
+   use("arcticicestudio/nord-vim")
+   use("nvim-treesitter/nvim-treesitter")
+   use("RRethy/vim-illuminate")
+   use("norcalli/nvim-colorizer.lua")
 
    -- Status bar
-   use {
+   use({
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
-   }
+   })
 
    -- Fuzzy-finding
-   use {
+   use({
       "nvim-telescope/telescope.nvim",
-      requires = { "nvim-lua/plenary.nvim" }
-   }
+      requires = { "nvim-lua/plenary.nvim" },
+   })
 
    -- Extra languages
-   use "JuliaEditorSupport/julia-vim"
-   use { "iamcco/markdown-preview.nvim", ft = "markdown" }
-   use "habamax/vim-godot"
+   use("JuliaEditorSupport/julia-vim")
+   use({ "iamcco/markdown-preview.nvim", ft = "markdown" })
+   use("habamax/vim-godot")
+   use({ "ckipp01/stylua-nvim", run = "cargo install stylua" })
 
    -- Project management
-   use "airblade/vim-gitgutter"
-   use "rhysd/git-messenger.vim"
-   use "rbong/vim-flog"
+   use("airblade/vim-gitgutter")
+   use("rhysd/git-messenger.vim")
+   use("rbong/vim-flog")
 
    -- gutentags causes nvim to hang on exit
    -- use "ludovicchabant/vim-gutentags"
@@ -151,23 +155,23 @@ else
    g.nord_italic = 1
    g.nord_bold = 1
    g.nord_italic_comments = 1
-   vim.cmd "colorscheme nord"
+   vim.cmd("colorscheme nord")
 end
 -- }}}
 
 -- Status line {{{
-require("lualine").setup {
+require("lualine").setup({
    options = {
-      component_separators = { left = "", ""},
+      component_separators = { left = "", "" },
       section_separators = { left = "", right = "" },
-   }
-}
+   },
+})
 -- }}}
 
 -- Auto-completion {{{
 local cmp = require("cmp")
 
-cmp.setup {
+cmp.setup({
    snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -183,13 +187,13 @@ cmp.setup {
    --   documentation = cmp.config.window.bordered(),
    -- },
 
-   mapping = cmp.mapping.preset.insert {
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-   },
+   mapping = cmp.mapping.preset.insert({
+      ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-f>"] = cmp.mapping.scroll_docs(4),
+      ["<C-Space>"] = cmp.mapping.complete(),
+      ["<C-e>"] = cmp.mapping.abort(),
+      ["<CR>"] = cmp.mapping.confirm({ select = true }),
+   }),
 
    sources = cmp.config.sources({
       { name = "nvim_lsp" },
@@ -201,34 +205,34 @@ cmp.setup {
       { name = "buffer" },
       { name = "path" },
       { name = "nvim_lua" },
-   })
-}
+   }),
+})
 
 -- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
+cmp.setup.filetype("gitcommit", {
    sources = cmp.config.sources({
-   { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+      { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
    }, {
-   { name = 'buffer' },
-   })
+      { name = "buffer" },
+   }),
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline("/", {
    mapping = cmp.mapping.preset.cmdline(),
    sources = {
-      { name = 'buffer' }
-   }
+      { name = "buffer" },
+   },
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
    mapping = cmp.mapping.preset.cmdline(),
    sources = cmp.config.sources({
-      { name = 'path' }
+      { name = "path" },
    }, {
-      { name = 'cmdline' }
-   })
+      { name = "cmdline" },
+   }),
 })
 -- }}}
 
@@ -242,33 +246,35 @@ local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local opts = { noremap=true, silent=true }
+   local function buf_set_keymap(...)
+      vim.api.nvim_buf_set_keymap(bufnr, ...)
+   end
+   local opts = { noremap = true, silent = true }
 
-  -- The bindings here override very similar ones in base vim, and isn't a spot
-  -- to add new bindings.  See the ./after/plugin/keymap.vim for those.
-  buf_set_keymap("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts)
-  buf_set_keymap("n", "K",  "<CMD>lua vim.lsp.buf.hover()<CR>", opts)
-  require("illuminate").on_attach(client)
+   -- The bindings here override very similar ones in base vim, and isn't a spot
+   -- to add new bindings.  See the ./after/plugin/keymap.vim for those.
+   buf_set_keymap("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opts)
+   buf_set_keymap("n", "gd", "<CMD>Telescope lsp_definitions<CR>", opts)
+   buf_set_keymap("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>", opts)
+   require("illuminate").on_attach(client)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  "bashls",
-  "yamlls",
-  "rust_analyzer",
-  "pyright",
-  "omnisharp",
-  "gdscript",
+   "bashls",
+   "yamlls",
+   "rust_analyzer",
+   "pyright",
+   "omnisharp",
+   "gdscript",
 }
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-     on_attach = on_attach,
-     capabilities = capabilities
-  }
+   lspconfig[lsp].setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+   })
 end
 
 -- gopls setup
@@ -277,11 +283,11 @@ end
 -- > Make sure that $GOPATH/bin is on $PATH after installing gopls for this to work
 -- > cd $HOME && mkdir -p tmp && cd tmp && go install golang.org/x/tools/gopls@latest
 --
-lspconfig.gopls.setup {
+lspconfig.gopls.setup({
    on_attach = on_attach,
-   cmd = {'gopls', '--remote=auto'},
-   capabilities = capabilities
-}
+   cmd = { "gopls", "--remote=auto" },
+   capabilities = capabilities,
+})
 
 -- julia setup
 -- Install notes below are from before I had the LSP installer plugin
@@ -289,12 +295,13 @@ lspconfig.gopls.setup {
 -- > Make sure to run julia and from the package manager prompt:
 -- > ] add LanguageServer SymbolServer
 --
-lspconfig.julials.setup {
-  cmd = {
-    "julia",
-    "--startup-file=no",
-    "--history-file=no",
-    "-e", [[
+lspconfig.julials.setup({
+   cmd = {
+      "julia",
+      "--startup-file=no",
+      "--history-file=no",
+      "-e",
+      [[
       using Pkg;
       Pkg.instantiate()
       using LanguageServer; using SymbolServer;
@@ -305,11 +312,11 @@ lspconfig.julials.setup {
       server = LanguageServer.LanguageServerInstance(stdin, stdout, project_path, depot_path);
       server.runlinter = true;
       run(server);
-    ]]
-  },
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+    ]],
+   },
+   capabilities = capabilities,
+   on_attach = on_attach,
+})
 
 -- Uncomment to disable diagnostics
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end

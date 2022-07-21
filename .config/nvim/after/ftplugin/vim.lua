@@ -5,7 +5,6 @@ vim.bo.shiftwidth = 2
 vim.bo.fileformat = "unix"
 vim.bo.textwidth = 120
 
-
 -- local bufmap = function(mode, lhs, rhs)
 --    vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, { noremap = true, silent = true})
 -- end

@@ -1,16 +1,16 @@
 vim.o.termguicolors = true
 vim.g.airline_theme = "base16_nord"
 
-require("nightfox").setup {
+require("nightfox").setup({
    options = {
       styles = {
          comments = "italic",
          functions = "italic,bold",
-      }
+      },
    },
-}
+})
 
-require("colorizer").setup {
+require("colorizer").setup({
    "python",
    "markdown",
    "css",
@@ -19,14 +19,14 @@ require("colorizer").setup {
    "lua",
    html = {
       mode = "foreground",
-   }
-}
+   },
+})
 
-require("nvim-treesitter.configs").setup {
-  ensure_installed = { "c", "lua", "rust", "python", "c_sharp", "markdown" },
-  highlight = {
-    enable = true,
-  },
-}
+require("nvim-treesitter.configs").setup({
+   ensure_installed = { "c", "lua", "rust", "python", "c_sharp", "markdown" },
+   highlight = {
+      enable = true,
+   },
+})
 
 vim.cmd("colorscheme nordfox")
