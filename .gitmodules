@@ -13,9 +13,6 @@
 [submodule ".vim/pack/LeonB/start/vim-nginx"]
 	path = .vim/pack/LeonB/opt/vim-nginx
 	url = https://github.com/LeonB/vim-nginx
-[submodule ".config/nvim/pack/vim-airline/start/vim-airline-themes"]
-	path = .config/nvim/pack/vim-airline/start/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes
 [submodule ".vim/pack/arcticicestudio/start/nord-vim"]
 	path = .vim/pack/arcticicestudio/start/nord-vim
 	url = https://github.com/arcticicestudio/nord-vim
