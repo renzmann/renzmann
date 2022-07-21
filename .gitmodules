@@ -16,3 +16,6 @@
 [submodule ".vim/pack/arcticicestudio/start/nord-vim"]
 	path = .vim/pack/arcticicestudio/start/nord-vim
 	url = https://github.com/arcticicestudio/nord-vim
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/renzmann/config-nvim
