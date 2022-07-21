@@ -1,21 +1,6 @@
-[submodule ".vim/pack/tpope/start/vim-commentary"]
-	path = .vim/pack/tpope/start/vim-commentary
-	url = https://github.com/tpope/vim-commentary
-[submodule ".vim/pack/tpope/start/vim-surround"]
-	path = .vim/pack/tpope/start/vim-surround
-	url = https://github.com/tpope/vim-surround
-[submodule ".vim/pack/tpope/start/vim-fugitive"]
-	path = .vim/pack/tpope/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive
-[submodule ".vim/pack/tpope/start/vim-sensible"]
-	path = .vim/pack/tpope/start/vim-sensible
-	url = https://github.com/tpope/vim-sensible
 [submodule ".vim/pack/LeonB/start/vim-nginx"]
 	path = .vim/pack/LeonB/opt/vim-nginx
 	url = https://github.com/LeonB/vim-nginx
-[submodule ".vim/pack/arcticicestudio/start/nord-vim"]
-	path = .vim/pack/arcticicestudio/start/nord-vim
-	url = https://github.com/arcticicestudio/nord-vim
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/renzmann/config-nvim
