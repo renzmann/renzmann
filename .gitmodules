@@ -1,6 +1,6 @@
-[submodule ".vim/pack/LeonB/start/vim-nginx"]
-	path = .vim/pack/LeonB/opt/vim-nginx
-	url = https://github.com/LeonB/vim-nginx
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = https://github.com/renzmann/config-nvim
+	url = git@github.com:renzmann/config-nvim
+[submodule ".vim"]
+	path = .vim
+	url = git@github.com:renzmann/dotvim
