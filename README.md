@@ -14,5 +14,5 @@ summary:
 3. Recursively check out editor configs, like (neo)vim stuff
 
 ```sh
-cd $HOME && curl https://raw.githubusercontent.com/renzmann/renzmann/main/bootstrap.sh | sh -
+cd $HOME && curl https://robbmann.io/boostrap.sh | sh -
 ```
