@@ -1,6 +1,4 @@
-# renzmann
-
-I do science; mostly in python
+I do science; mostly in Python
 
 ## Wanna use my dotfiles?
 At your own risk! I won't help if you break something.
