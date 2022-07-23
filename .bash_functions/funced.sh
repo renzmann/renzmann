@@ -4,7 +4,7 @@ funced() {
 	local fp=$HOME/.bash_functions/${funcname}.sh
 	local template="#!/usr/bin/env bash\n${funcname}()\n{	\n}\n"
 	[[ ! -f $fp ]] && cat > $fp << EOF
-# This script is meant to be `source`d!
+# This script is meant to be \`source\`d!
 ${funcname}() {
 	echo hello
 }
