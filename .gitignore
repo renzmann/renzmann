@@ -61,3 +61,4 @@
 !.local/bin/install-julia
 !.local/bin/install-vim
 !.local/bin/nvim-packersync
+!.local/bin/install-emacs

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+_install-emacs() {
+	git clone -b master git://git.sv.gnu.org/emacs.git \
+	&& cd emacs
+	&& ./autogen.sh
+	&& ./configure --with-mailutils --with-modules
+	&& make
+	&& make install
+}
+_install-emacs $@
