@@ -91,3 +91,6 @@ if command -v batcat &> /dev/null; then
 fi
 
 [[ -f $HOME/.cargo/env ]] && . "$HOME/.cargo/env"
+
+# For info files
+export INFOPATH="/usr/local/share/info:/usr/share/info/emacs:/usr/share/info"
