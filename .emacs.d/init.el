@@ -38,8 +38,8 @@
 ;; Basic preferences
 ;; =======================================================================
 ;; Color theme
-(use-package gruvbox-theme :ensure t)
-(load-theme 'gruvbox-dark-soft)
+(use-package nord-theme :ensure t)
+(load-theme 'nord)
 
 ;; Use DejaVu, if it's installed
 (condition-case nil
@@ -84,8 +84,8 @@
 (use-package magit :ensure magit)
 
 ;; evil - vim keybindings
-(use-package evil :ensure evil)
-(evil-mode t)
+;; (use-package evil :ensure evil)
+;; (evil-mode t)
 
 ;; show markers for trailing whitespace and delete on save
 (setq-default show-trailing-whitespace t)
