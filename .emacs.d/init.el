@@ -42,12 +42,7 @@
 (load-theme 'nord)
 
 ;; Use DejaVu, if it's installed
-(condition-case nil
-    (if (eq system-type 'darwin)
-	(set-frame-font "DejaVu Sans Mono for Powerline 14" nil t)
-	(set-frame-font "DejaVu Sans Mono for Powerline 12" nil t))
-
-  (error nil))
+(set-frame-font "Hack Nerd Font Mono" nil t)
 
 ;; Icons!
 ;; (use-package all-the-icons :ensure t :if (display-graphic-p))
@@ -205,8 +200,8 @@
 
 ;; f-string highlighting
 ;; https://emacs.stackexchange.com/a/61244
-(defconst brace-regexp  "[^{]{[^{}]*}")
-(defconst python-f-string-regexp  "f\\('.*?[^\\]'\\|\".*?[^\\]\"\\)")
+;; (defconst brace-regexp  "[^{]{[^{}]*}")
+;; (defconst python-f-string-regexp  "f\\('.*?[^\\]'\\|\".*?[^\\]\"\\)")
 
 ;; (defun python-f-string-font-lock-find (limit)
 ;;   (while (re-search-forward python-f-string-regexp limit t)
