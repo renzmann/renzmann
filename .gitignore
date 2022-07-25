@@ -1,6 +1,9 @@
 *
 !.emacs.d/*
 .emacs.d/*~
+.emacs.d/*#
+.emacs.d/ido.last
+.emacs.d/recentf
 !bootstrap.sh
 !.stylua.toml
 !.gitattributes

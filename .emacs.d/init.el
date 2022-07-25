@@ -20,39 +20,17 @@
 
 (setq package-archive-priorities '(("gnu" . 30)("melpa-stable" . 20)("melpa" . 10)))
 
-;; Install packages with (package-install-selected-packages)
-;; Remove packages with (package-autoremove)
-;; If you want to automate that, maybe add them to your 'emacs-startup-hook'?
-;; Set 'package-enable-at-startup to 'nil' in early-init.el to disable everything on earth getting loaded on startup
-;; Modify the 'package-load-list' variable to choose what's made available at startup
-;; Improve startup times by setting the user option 'package-quickstart' to 't'; this requires manually running 'package-quickstart-refresh' when activations need to be changed
-
-;; Here's an example for adding packages
-;;
-;; (unless (package-installed-p 'use-package)
-;;   (package-refresh-contents)
-;;   (package-install 'use-package))
-;;
-;; We could do that programmatically by setting `package-load-list' and looping over it
-;; with 'package-install'
-;; (setq package-load-list
-;;       ('magit))
-
-;; Project management
-(unless (package-installed-p 'magit) (package-refresh-contents) (package-install 'magit))
-
-;; Colors
-(unless (package-installed-p 'nord-theme) (package-install 'nord-theme))
+;; Add new packages interactively with either M-x package-install, or by adding it via `M-x customize-variable RET package-selected-packages`
+(package-install-selected-packages)
+;; Remove packages by:
+;; 1. Remove the entry from package-selected-packages via M-x customize-variable
+;; 2. Either restart emacs or load-file ~/.emacs.d/custom.el
+;; 3. Use (package-autoremove)
 
 ;; Editor Settings
 ;; ============================================================================
-;; Color theme(s) considered:
-;; wombat - links are hard to see (not a different color)
-;; tsdh-dark - comments are hideous
-;; deeper-blue - too high contrast
-;; misterioso - ugly comments and links are only underlined (hard to see)
-;; (load-theme 'tango-dark)
-;; (load-theme nord)
+;; Some parts of the theme are also modified in ~/.emacs.d/custom.el
+(load-theme 'wombat)
 
 ;; Stop stupid bell
 (setq ring-bell-function 'ignore)
@@ -134,3 +112,6 @@
 
 ;; Reserved for users: f5 - f8
 (global-set-key (kbd "<f5>") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+(global-set-key (kbd "S-<f5>") 'find-file-at-point)
+(global-set-key (kbd "<f6>") 'find-function-at-point)
+(global-set-key (kbd "S-<f6>") 'find-symbol-at-point)
