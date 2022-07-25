@@ -16,7 +16,7 @@
        (proto (if no-ssl "http" "https")))
   (when no-ssl (warn "Your version of Emacs does not support SSL connections."))
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
-  (add-to-list 'package-archives '("melpa-stable" . (concat proto "://stable.melpa.org/packages/"))))
+  (add-to-list 'package-archives '(cons "melpa-stable" (concat proto "://stable.melpa.org/packages/"))))
 
 (setq package-archive-priorities '(("gnu" . 30)("melpa-stable" . 20)("melpa" . 10)))
 
@@ -29,12 +29,20 @@
 
 ;; Here's an example for adding packages
 ;;
-;; (unless (package-installed-q 'use-package)
+;; (unless (package-installed-p 'use-package)
 ;;   (package-refresh-contents)
 ;;   (package-install 'use-package))
 ;;
 ;; We could do that programmatically by setting `package-load-list' and looping over it
 ;; with 'package-install'
+;; (setq package-load-list
+;;       ('magit))
+
+;; Project management
+(unless (package-installed-p 'magit) (package-refresh-contents) (package-install 'magit))
+
+;; Colors
+(unless (package-installed-p 'nord-theme) (package-install 'nord-theme))
 
 ;; Editor Settings
 ;; ============================================================================
@@ -43,7 +51,8 @@
 ;; tsdh-dark - comments are hideous
 ;; deeper-blue - too high contrast
 ;; misterioso - ugly comments and links are only underlined (hard to see)
-(load-theme 'tango-dark)
+;; (load-theme 'tango-dark)
+;; (load-theme nord)
 
 ;; Stop stupid bell
 (setq ring-bell-function 'ignore)
