@@ -56,6 +56,10 @@ _bash_prompt() {
 	# local force_color_prompt=yes
 
 	case "$TERM" in
+		dumb)
+			PS1="> "
+			return
+			;;
 		screen|*-color|*-256color|dumb|*-kitty)
 			local color_prompt=yes
 			;;
