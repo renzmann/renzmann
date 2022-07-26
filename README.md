@@ -3,7 +3,7 @@ I do science; mostly in Python
 ## Wanna use my dotfiles?
 At your own risk! I won't help if you break something.
 Make sure to read the [bootstrapping
-file](https://raw.githubusercontent.com/renzmann/renzmann/main/bootstrap.sh)
+file](https://raw.githubusercontent.com/renzmann/renzmann.github.io/master/static/bootstrap.shh)
 before running the command below to know exactly what it's going to do. In
 summary:
 
