@@ -17,7 +17,7 @@ cd $HOME && curl https://robbmann.io/boostrap.sh | sh -
 ```
 
 ## Just want my (Neo)vim or emacs config?
-Each of these is their own repo ready to be cloned into the canonical configuration location.
+Each of these is their own repo ready to be cloned into their canonical configuration location.
 See the instructions in each one for installation:
 
 [renzmann/dotvim](https://github.com/renzmann/dotvim)  
