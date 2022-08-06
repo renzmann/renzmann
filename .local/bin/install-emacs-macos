@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+_install-emacs-macos() {
+	brew install libxml2 gcc libgccjit
+	./autogen.sh
+	./configure --with-cairo --with-imagemagick --with-xwidgets --with-native-compilation --with-modules --with-mailutils
+	gmake -j$(nproc)
+	gmake clean install
+}
+_install-emacs-macos $@

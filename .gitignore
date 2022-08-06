@@ -67,3 +67,4 @@
 !.local/bin/install-vim
 !.local/bin/nvim-packersync
 !.local/bin/install-emacs
+!.local/bin/install-emacs-macos
