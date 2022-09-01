@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Still need to:
-# 1. add-path function that inserts/appends to PATH if something's not on it
-# 2. modify funced to work on ~/.bash_functions while ced is on ~/.local/bin
-
 # Source global definitions
 if [[ -f /etc/bashrc ]]; then
 	source /etc/bashrc
@@ -14,24 +10,6 @@ source $HOME/.git-prompt.sh
 for file in $HOME/.bash_functions/*; do
 	source $file
 done
-
-insert_path /usr/local/bin
-insert_path "$HOME/.local/bin"
-insert_path "$HOME/.local/share/coursier/bin"
-insert_path "$HOME/.emacs.d/bin"
-[[ -z $GOPATH ]] && export GOPATH=$HOME/go
-insert_path "$GOPATH/bin"
-insert_path "$HOME/.cargo/bin"
-append_path "$HOME/.coursier"
-
-# This has to be after we set PATH above
-export EDITOR=vim
-
-if [[ "$OSTYPE" =~ darwin ]]; then
-	for x in $(echo "$HOME/Library/Python/*/bin"); do
-		append_path $x
-	done
-fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -80,8 +58,6 @@ esac
 
 export SSL_CERT_DIR=/etc/ssl/certs
 
-[[ -d $HOME/.jabba ]] && source $HOME/.jabba/jabba.sh
-
 # .bash_functions/bash-profile.sh sets the correct VIRTUAL_ENV position
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
@@ -89,8 +65,6 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 if command -v batcat &> /dev/null; then
 	alias bat="batcat"
 fi
-
-[[ -f $HOME/.cargo/env ]] && . "$HOME/.cargo/env"
 
 # For info files
 export INFOPATH="/usr/local/share/info:/usr/share/info/emacs:/usr/share/info"

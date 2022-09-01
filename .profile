@@ -1,5 +1,4 @@
-if [ -f $HOME/.cargo/env ]; then
-  . "$HOME/.cargo/env"
-fi
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+[ -d "$HOME/.jabba" ] && source "$HOME/.jabba/jabba.sh"
 
-export PATH=$PATH:"$HOME/Library/Application Support/Coursier/bin"
+export PATH="$HOME/.local/bin:$PATH"
