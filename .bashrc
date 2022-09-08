@@ -75,8 +75,6 @@ esac
 
 export SSL_CERT_DIR=/etc/ssl/certs
 
-[[ -d $HOME/.jabba ]] && source $HOME/.jabba/jabba.sh
-
 # .bash_functions/bash-profile.sh sets the correct VIRTUAL_ENV position
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
@@ -85,22 +83,5 @@ if command -v batcat &> /dev/null; then
 	alias bat="batcat"
 fi
 
-[[ -f $HOME/.cargo/env ]] && . "$HOME/.cargo/env"
-
 # For info files
 export INFOPATH="/usr/local/share/info:/usr/share/info/emacs:/usr/share/info"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/robb/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/robb/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/robb/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/robb/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
