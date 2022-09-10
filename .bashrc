@@ -22,6 +22,7 @@ for file in $HOME/.bash_functions/*; do
 done
 
 export EDITOR=vim
+
 if [[ "$OSTYPE" =~ darwin ]]; then
 	for x in $(echo "$HOME/Library/Python/*/bin"); do
 		append_path $x
@@ -85,3 +86,6 @@ fi
 
 # For info files
 export INFOPATH="/usr/local/share/info:/usr/share/info/emacs:/usr/share/info"
+
+# If we need the conda --init stuff, put it over in .conda_profile
+[ -f $HOME/.conda_profile ] &&  source "$HOME/.conda_profile"

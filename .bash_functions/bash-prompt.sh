@@ -5,7 +5,11 @@ _trunc() {
 }
 
 _venv() {
-	[[ ! -z $VIRTUAL_ENV ]] && echo \($(basename $VIRTUAL_ENV)\)' '
+	if [[ ! -z $CONDA_PREFIX ]]; then
+		echo \($(basename "$CONDA_PREFIX")\)' '
+	elif [[ ! -z $VIRTUAL_ENV ]]; then
+		echo \($(basename $VIRTUAL_ENV)\)' '
+	fi
 }
 
 _bash_prompt() {
