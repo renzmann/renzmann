@@ -21,11 +21,7 @@ for file in $HOME/.bash_functions/*; do
 	source $file
 done
 
-if command -v nvim &> /dev/null; then
-	export EDITOR=nvim
-else
-	export EDITOR=vim
-fi
+export EDITOR=vim
 
 if [[ "$OSTYPE" =~ darwin ]]; then
 	for x in $(echo "$HOME/Library/Python/*/bin"); do
