@@ -89,3 +89,17 @@ export INFOPATH="/usr/local/share/info:/usr/share/info/emacs:/usr/share/info"
 
 # If we need the conda --init stuff, put it over in .conda_profile
 [ -f $HOME/.conda_profile ] &&  source "$HOME/.conda_profile"
+
+# vterm shell-side configuration
+# https://github.com/akermu/emacs-libvterm#shell-side-configuration
+vterm_printf(){
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
