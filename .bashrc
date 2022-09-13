@@ -103,3 +103,6 @@ vterm_printf(){
         printf "\e]%s\e\\" "$1"
     fi
 }
+
+# Late machine-specific specs
+[ -f "$HOME/.locals" ] && source "$HOME/.locals"
