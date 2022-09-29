@@ -75,9 +75,21 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; ============================================================================
+;;                              Misc.
+;; ============================================================================
+;; Enable horizontal scrolling with mouse
+;; https://stackoverflow.com/a/67758169
+(setq mouse-wheel-tilt-scroll t)
+
+;; ============================================================================
+;;                              TRAMP
+;; ============================================================================
 (setq tramp-remote-path '(tramp-own-remote-path))
 
-;; LSP
+;; ============================================================================
+;;                               LSP
+;; ============================================================================
 (require 'lsp)
 
 ;; Attmpt to fix the hanging on "starting" over tramp
@@ -96,7 +108,9 @@
 ;;                      :remote? t
 ;;                      :server-id 'pyright-remote))
 
-;; VTERM
+;; ============================================================================
+;;                              vterm
+;; ============================================================================
 (require 'vterm)
 (unless (eq system-type 'windows-nt)
   (setq vterm-shell "/bin/bash"))
