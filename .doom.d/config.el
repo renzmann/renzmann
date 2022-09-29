@@ -77,18 +77,29 @@
 
 (setq tramp-remote-path '(tramp-own-remote-path))
 
+;; LSP
 (require 'lsp)
+
+;; Attmpt to fix the hanging on "starting" over tramp
+(setq lsp-log-io t)
+
+;; Allows connecting to LSP over TRAMP
 (lsp-register-client
     (make-lsp-client :new-connection (lsp-tramp-connection "pylsp")
                      :major-modes '(python-mode)
                      :remote? t
                      :server-id 'pylsp-remote))
 
-(lsp-register-client
-    (make-lsp-client :new-connection (lsp-tramp-connection '("pyright-langserver" "--stdio"))
-                     :major-modes '(python-mode)
-                     :remote? t
-                     :server-id 'pyright-remote))
+;; (lsp-register-client
+;;     (make-lsp-client :new-connection (lsp-tramp-connection '("pyright-langserver" "--stdio"))
+;;                      :major-modes '(python-mode)
+;;                      :remote? t
+;;                      :server-id 'pyright-remote))
+
+;; VTERM
+(require 'vterm)
+(unless (eq system-type 'windows-nt)
+  (setq vterm-shell "/bin/bash"))
 
 
 (load-file "~/.doom.d/keybindings.el")
