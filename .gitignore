@@ -69,3 +69,4 @@
 !.local/bin/install-emacs
 !.local/bin/install-emacs-macos
 !.doom.d/*
+!.doom.d
