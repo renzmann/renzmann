@@ -38,7 +38,7 @@
 ;; (global-set-key (kbd "C-c x") #')
 ;; (global-set-key (kbd "C-c y") #')
 ;; (global-set-key (kbd "C-c z") #')
-;
+
 ;; ----------------------------------------
 ;; F5 - F9
 ;; ----------------------------------------
@@ -53,3 +53,9 @@
 (global-set-key (kbd "<f9>") 'vterm)
 ;; (global-set-key (kbd "M-<f9>") ')
 ;; ----------------------------------------
+
+;; ----------------------------------------
+;; Major mode rebindings
+;; ----------------------------------------
+;; not working
+;; (bind-key (kbd "g SPC") #'Info-scroll-up 'Info-mode-map)

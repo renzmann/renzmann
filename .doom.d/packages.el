@@ -52,3 +52,4 @@
 (package! blacken)
 (package! org-roam)
 (package! sql-indent)
+(package! sqlup-mode)
