@@ -104,5 +104,11 @@ vterm_printf(){
     fi
 }
 
+# Conda aliases
+_ca() {
+	awk '/name:/ { print $2 }' environment.yml
+}
+alias ca='conda activate $(_ca)'
+
 # Late machine-specific specs
 [ -f "$HOME/.locals" ] && source "$HOME/.locals"
