@@ -62,7 +62,6 @@ _bash_prompt() {
     case "$TERM" in
         dumb)
             local fancy_prompt=no
-            return
             ;;
         screen|*-color|*-256color|*-kitty|*alacritty*)
             local fancy_prompt=yes
@@ -84,15 +83,21 @@ _bash_prompt() {
 
     if [[ "$fancy_prompt" = yes ]]; then
         PS1=${conn_color}'\n┌─ '${COLOR_RESET}
-        PS1+='$(_venv)'
-        PS1+=${deb_part}
-        PS1+=${user_part}${user_sep}${host_part}
-        PS1+=${dir_sep}${dir_part}
-        PS1+=' '${git_part}
+    else
+        PS1=''
+    fi
+
+    PS1+='$(_venv)'
+    PS1+=${deb_part}
+    PS1+=${user_part}${user_sep}${host_part}
+    PS1+=${dir_sep}${dir_part}
+    PS1+=' '${git_part}
+
+    if [[ "$fancy_prompt" = yes ]]; then
         PS1+=${prompt_part}
     else
-        # TODO: color, but not "fancy" prompt
-        PS1='$(_venv)'${deb_part}'\u@\h:\w $(__git_ps1)\n\> '
+        PS1+='\n> '
     fi
 }
+
 _bash_prompt "$@"
