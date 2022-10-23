@@ -60,17 +60,21 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Don't hang on ctrl-s https://unix.stackexchange.com/a/12108
 [[ $- == *i* ]] && stty -ixon
 
+# FIXME: these cause a big login time performance hit - any way to lazy-load them on demand?
 # nvm setup bits
 export NVM_DIR="$HOME/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[[ -s "$NVM_DIR/bash_completion" ]] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+# [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 case "$TERM" in
-	dumb|emacs*)
-		;;
-	*)
-		[[ -f ~/.fzf.bash ]] && source ~/.fzf-mine.sh
-		;;
+    dumb|emacs*)
+        ;;
+    *)
+        # REMINDME: This is around a 20ms startup hit. I don't
+        # remember why I needed to get POSIX-compliant function names,
+        # so if it comes back up be sure to write down a reminder
+        # [[ -f ~/.fzf.bash ]] && source ~/.fzf-mine.sh
+        ;;
 esac
 
 export SSL_CERT_DIR=/etc/ssl/certs
