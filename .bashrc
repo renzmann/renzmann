@@ -10,6 +10,14 @@
 # it looks for .bash_login and .profile, in that order, and executes
 # the first readable file only.
 
+# From the above, I set .bash_profile to just source this file, which
+# in turn will make sure to grab any of the more common
+# configurations, like $PATH, from the more general .profile
+
+# Suppress the warning about zsh on mac
+export BASH_SILENCE_DEPRECATION_WARNING=1
+[ -f $HOME/.profile ] && source "$HOME/.profile"
+
 # Source global definitions
 if [[ -f /etc/bashrc ]]; then
 	source /etc/bashrc
