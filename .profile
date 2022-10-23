@@ -1,5 +1,4 @@
-export PATH="/usr/local/bin:/usr/bin:/bin"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
 
 [ ! -z $GOPATH ] || export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
