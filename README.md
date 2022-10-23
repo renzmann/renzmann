@@ -20,6 +20,6 @@ cd $HOME && curl https://robbmann.io/boostrap.sh | sh -
 Each of these is their own repo ready to be cloned into their canonical configuration location.
 See the instructions in each one for installation:
 
-[renzmann/dotvim](https://github.com/renzmann/dotvim)  
+[renzmann/.vim](https://github.com/renzmann/.vim)  
 [renzmann/config-nvim](https://github.com/renzmann/config-nvim)  
 [renzmann/.emacs.d](https://github.com/renzmann/.emacs.d)  
