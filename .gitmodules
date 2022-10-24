@@ -1,9 +1,9 @@
-[submodule ".vim"]
-	path = .vim
-	url = git@github.com:renzmann/dotvim
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:renzmann/config-nvim
 [submodule ".emacs.d"]
 	path = .emacs.d
 	url = git@github.com:renzmann/.emacs.d
+[submodule ".vim"]
+	path = .vim
+	url = git@github.com:renzmann/.vim

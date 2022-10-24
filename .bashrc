@@ -10,23 +10,31 @@
 # it looks for .bash_login and .profile, in that order, and executes
 # the first readable file only.
 
+# From the above, I set .bash_profile to just source this file, which
+# in turn will make sure to grab any of the more common
+# configurations, like $PATH, from the more general .profile
+
+# Suppress the warning about zsh on mac
+export BASH_SILENCE_DEPRECATION_WARNING=1
+[ -f $HOME/.profile ] && source "$HOME/.profile"
+
 # Source global definitions
 if [[ -f /etc/bashrc ]]; then
-	source /etc/bashrc
+    source /etc/bashrc
 fi
 
 # Things that need to be "sourced" instead of loaded on-demand
 source $HOME/.git-prompt.sh
 for file in $HOME/.bash_functions/*; do
-	source $file
+    source $file
 done
 
 export EDITOR=vim
 
 if [[ "$OSTYPE" =~ darwin ]]; then
-	for x in $(echo "$HOME/Library/Python/*/bin"); do
-		append_path $x
-	done
+    for x in $(echo "$HOME/Library/Python/*/bin"); do
+	append_path $x
+    done
 fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
@@ -34,23 +42,23 @@ fi
 
 # enable color support of ls and also add handy aliases
 if [[ -x /usr/bin/dircolors ]]; then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto'
-	alias ll='ls -lah'
-	#alias dir='dir --color=auto'
-	#alias vdir='vdir --color=auto'
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias ll='ls -lah'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
 
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 if [[ "$OSTYPE" =~ darwin ]]; then
-	alias ls='ls --color=yes'
-	alias ll='ls -lah'
-	alias grep='grep --color=yes'
-	alias fgrep='fgrep --color=yes'
-	alias egrep='egrep --color=yes'
+    alias ls='ls --color=yes'
+    alias ll='ls -lah'
+    alias grep='grep --color=yes'
+    alias fgrep='fgrep --color=yes'
+    alias egrep='egrep --color=yes'
 fi
 
 # colored GCC warnings and errors
@@ -61,17 +69,21 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Don't hang on ctrl-s https://unix.stackexchange.com/a/12108
 [[ $- == *i* ]] && stty -ixon
 
+# FIXME: these cause a big login time performance hit - any way to lazy-load them on demand?
 # nvm setup bits
 export NVM_DIR="$HOME/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[[ -s "$NVM_DIR/bash_completion" ]] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+# [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 case "$TERM" in
-	dumb|emacs*)
-		;;
-	*)
-		[[ -f ~/.fzf.bash ]] && source ~/.fzf-mine.sh
-		;;
+    dumb|emacs*)
+    ;;
+    *)
+    # REMINDME: This is around a 20ms startup hit. I don't
+    # remember why I needed to get POSIX-compliant function names,
+    # so if it comes back up be sure to write down a reminder
+    # [[ -f ~/.fzf.bash ]] && source ~/.fzf-mine.sh
+    ;;
 esac
 
 export SSL_CERT_DIR=/etc/ssl/certs
@@ -81,7 +93,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Alias batcat if we must
 if command -v batcat &> /dev/null; then
-	alias bat="batcat"
+    alias bat="batcat"
 fi
 
 # For info files

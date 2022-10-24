@@ -1,6 +1,6 @@
 *
-!.bash_completions
-!.bash_completions/*
+!.bash_completion
+!.bash_completion/*
 !.bash_functions
 !.bash_functions/*
 !.bash_profile
