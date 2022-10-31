@@ -16,4 +16,5 @@ fi
 [ -d "$HOME/Library/Application Support/Coursier" ] && export PATH=$PATH:"$HOME/Library/Application Support/Coursier/bin"
 [ -d "$HOME/.jabba" ] && source "$HOME/.jabba/jabba.sh"
 [ -d "$HOME/opt/miniconda3" ] && export PATH="$PATH:$HOME/opt/miniconda3/bin"
+[ -d "$HOME/miniconda3" ] && export PATH="$PATH:$HOME/miniconda3/bin"
 export PATH="$PATH:$HOME/.emacs.d/bin"
