@@ -1,4 +1,4 @@
-name: robb
+name: robbmann
 channels:
   - https://repo.anaconda.com/pkgs/main
   - defaults
@@ -14,4 +14,6 @@ dependencies:
   - jq
   - yq
   - aspell
+  - pipx
+  - cookiecutter
   - pyright
