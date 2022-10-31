@@ -17,4 +17,5 @@ fi
 [ -d "$HOME/.jabba" ] && source "$HOME/.jabba/jabba.sh"
 [ -d "$HOME/opt/miniconda3" ] && export PATH="$PATH:$HOME/opt/miniconda3/bin"
 [ -d "$HOME/.conda/envs/robbmann/" ] && export PATH="$HOME/.conda/envs/robbmann/bin:$PATH"
+[ -d "$HOME/miniconda3" ] && export PATH="$PATH:$HOME/miniconda3/bin"
 export PATH="$PATH:$HOME/.emacs.d/bin"
