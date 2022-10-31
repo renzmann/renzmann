@@ -5,11 +5,11 @@ _trunc() {
 }
 
 _venv() {
-    if [[ ! -z $CONDA_PREFIX ]]; then
-        echo \($(basename "$CONDA_PREFIX")\)' '
-    elif [[ ! -z $VIRTUAL_ENV ]]; then
-        echo \($(basename $VIRTUAL_ENV)\)' '
-    fi
+    [[ ! -z $VIRTUAL_ENV ]] && echo '('$(basename $VIRTUAL_ENV)') '
+}
+
+_conda() {
+    [[ ! -z $CONDA_PREFIX ]] && echo '['🐍$(basename "$CONDA_PREFIX")'] '
 }
 
 _bash_prompt() {
@@ -87,7 +87,12 @@ _bash_prompt() {
         PS1=''
     fi
 
+    # We want $VIRTUAL_ENV and $CONDA_PREFIX checked on each prompt
+    # refresh, so these components are implemented as function calls,
+    # and the PS1 variable just holds a reference to be evaulated
+    # later
     PS1+='$(_venv)'
+    PS1+=${GREEN}'$(_conda)'${COLOR_RESET}
     PS1+=${deb_part}
     PS1+=${user_part}${user_sep}${host_part}
     PS1+=${dir_sep}${dir_part}
