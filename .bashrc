@@ -29,8 +29,6 @@ for file in $HOME/.bash_functions/*; do
     source $file
 done
 
-export EDITOR=vim
-
 if [[ "$OSTYPE" =~ darwin ]]; then
     for x in $(echo "$HOME/Library/Python/*/bin"); do
 	append_path $x

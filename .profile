@@ -38,7 +38,9 @@ if [ "$TERM" == "dumb" ]; then
     alias less='cat'
     alias more='cat'
     export PAGER=cat
+    export EDITOR=emacsclient
 else
     alias m='more'
     alias l='less'
+    export EDITOR=vim
 fi
