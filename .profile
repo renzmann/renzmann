@@ -37,6 +37,7 @@ esac
 case "$TERM" in
     dumb|emacs*)
         export EDITOR=emacsclient
+        export PAGER=cat
     ;;
     *)
         export EDITOR=vim
