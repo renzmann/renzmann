@@ -32,3 +32,13 @@ case $- in
       fi
     fi
 esac
+
+
+case "$TERM" in
+    dumb|emacs*)
+        export EDITOR=emacsclient
+    ;;
+    *)
+        export EDITOR=vim
+    ;;
+esac
