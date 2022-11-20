@@ -1,0 +1,19 @@
+name: robbmann
+channels:
+  - https://repo.anaconda.com/pkgs/main
+  - defaults
+  - conda-forge
+dependencies:
+  # Base interpreter(s)
+  - python>=3.7
+  - conda>=4.11
+
+  # Command-line utilities
+  - fzf
+  - make
+  - jq
+  - yq
+  - aspell
+  - pipx
+  - cookiecutter
+  - pyright
