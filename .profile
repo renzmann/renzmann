@@ -20,7 +20,6 @@ fi
 [ -d "$HOME/.conda/envs/robbmann/" ] && export PATH="$PATH:$HOME/.conda/envs/robbmann/bin"
 export PATH="$PATH:$HOME/.emacs.d/bin"
 
-
 case $- in
   *i*)
     # Interactive session. Try switching to bash.
@@ -36,10 +35,16 @@ esac
 
 case "$TERM" in
     dumb|emacs*)
-        export EDITOR=emacsclient
+        # M-x shell from emacs can't handle interactive output
+        alias m='cat'
+        alias less='cat'
+        alias more='cat'
         export PAGER=cat
+        export EDITOR=emacsclient
     ;;
     *)
+        alias m='more'
+        alias l='less'
         export EDITOR=vim
     ;;
 esac

@@ -55,7 +55,7 @@ _bash_prompt() {
     local dir_sep=' '
     local dir_part=${BOLD_BLUE}'$(abbrev-pwd)'${COLOR_RESET}
     local git_part=${BOLD_MAGENTA}'$(__git_ps1 "[ᓺ %s]")'${COLOR_RESET}
-    local conn_color=${DARK_GRAY}
+    local conn_color=${MAGENTA}
     local prompt_part=${COLOR_RESET}'\n'${conn_color}'└'${MAGENTA}'❯'${COLOR_RESET}' '
     # local force_color_prompt=yes
 
