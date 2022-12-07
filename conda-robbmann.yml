@@ -16,3 +16,6 @@ dependencies:
   - make
   - pipx
   - yq
+
+  # Base Jupyter
+  - jupyterlab
