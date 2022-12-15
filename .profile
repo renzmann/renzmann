@@ -32,6 +32,7 @@ case $- in
     fi
 esac
 
+alias ec='emacsclient -nw -a vim'
 
 case "$TERM" in
     dumb|emacs*)
@@ -40,7 +41,7 @@ case "$TERM" in
         alias less='cat'
         alias more='cat'
         export PAGER=cat
-        export EDITOR=emacsclient
+        export EDITOR=ec
     ;;
     *)
         alias m='more'
