@@ -42,10 +42,14 @@ case "$TERM" in
         alias more='cat'
         export PAGER=cat
         export EDITOR=ec
-    ;;
+        ;;
+    eat-truecolor)
+        # Most programs don't know how to handle "eat-truecolor"
+        export TERM=xterm-256color
+        ;;
     *)
         alias m='more'
         alias l='less'
         export EDITOR=vim
-    ;;
+        ;;
 esac
