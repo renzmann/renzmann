@@ -35,7 +35,7 @@ esac
 alias ec='emacsclient -nw -a vim'
 
 case "$TERM" in
-    dumb|emacs*)
+    dumb|emacs*|eterm*)
         # M-x shell from emacs can't handle interactive output
         alias m='cat'
         alias less='cat'
