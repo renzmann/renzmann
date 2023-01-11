@@ -10,6 +10,11 @@
 # it looks for .bash_login and .profile, in that order, and executes
 # the first readable file only.
 
+# When an interactive shell that is not a login shell is started, Bash reads and
+# executes commands from ~/.bashrc, if that file exists. This may be inhibited
+# by using the --norc option. The --rcfile file option will force Bash to read
+# and execute commands from file instead of ~/.bashrc.
+
 # From the above, I set .bash_profile to just source this file, which
 # in turn will make sure to grab any of the more common
 # configurations, like $PATH, from the more general .profile
@@ -31,7 +36,7 @@ done
 
 if [[ "$OSTYPE" =~ darwin ]]; then
     for x in $(echo "$HOME/Library/Python/*/bin"); do
-	append_path $x
+        append_path $x
     done
 fi
 
@@ -116,7 +121,7 @@ vterm_printf(){
 
 # Conda aliases
 _ca() {
-	awk '/name:/ { print $2 }' environment.yml
+        awk '/name:/ { print $2 }' environment.yml
 }
 alias ca='conda activate $(_ca)'
 
