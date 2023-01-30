@@ -13,15 +13,6 @@
 !.config/kitty/*
 !.config/kitty/themes
 !.config/kitty/themes/*
-!.config/nvim
-!.config/nvim/*
-!.config/nvim/**
-!.doom.d
-!.doom.d/*
-!.emacs.d
-!.emacs.d/*
-!.emacs.d/init.el
-!.emacs.d/keybindings.el
 !.flake8
 !.fzf-mine.sh
 !.git-prompt.sh
@@ -67,8 +58,3 @@
 *.netrwhist
 *.swp
 .bash_functions/*.swp
-.config/nvim/plugin/packer_compiled.lua
-.emacs.d/*#
-.emacs.d/*~
-.emacs.d/ido.last
-.emacs.d/recentf
