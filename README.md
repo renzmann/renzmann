@@ -9,13 +9,19 @@ git init
 git remote add origin git@github.com:renzmann/renzmann
 git pull
 git checkout --force main
-git submodule update --init --recursive
 ```
 
-## Just want my Emacs or (Neo)vim config?
-Each of these is their own repo ready to be cloned into their canonical configuration location.
-See the instructions in each one for installation:
+Then I install editor configs as needed.
 
-[renzmann/.emacs.d](https://github.com/renzmann/.emacs.d) 
-[renzmann/.vim](https://github.com/renzmann/.vim)  
-[renzmann/config-nvim](https://github.com/renzmann/config-nvim)  
+```sh
+git clone git@github.com:renzmann/.emacs.d --depth 1
+git clone git@github.com:renzmann/config-nvim ~/.config/nvim --depth 1
+git clone git@github.com:renzmann/.vim --depth 1
+```
+
+Each of these is their own repo ready to be cloned into their canonical
+configuration location.  See the instructions in each one for installation:
+
+[renzmann/.emacs.d](https://github.com/renzmann/.emacs.d)
+[renzmann/.vim](https://github.com/renzmann/.vim)
+[renzmann/config-nvim](https://github.com/renzmann/config-nvim)
