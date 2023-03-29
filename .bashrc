@@ -24,4 +24,4 @@ unset __conda_setup
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 
-alias ec=emacsclient --tty --create-frame --alternate-editor=""
+alias ec='emacsclient --tty --create-frame --alternate-editor=""'
