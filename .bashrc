@@ -1,11 +1,12 @@
-
-if [ -f "/google/devshell/bashrc.google" ]; then
-  source "/google/devshell/bashrc.google"
-fi
-
-export PATH="$HOME/.local/bin:$PATH"
-[ ! -f $HOME/.bash_functions/bash-prompt.sh ] || . $HOME/.bash_functions/bash-prompt.sh
-[ ! -f $HOME/.git-prompt.sh ] || . $HOME/.git-prompt.sh
+#!/bin/sh
+printf "==============================\n"
+printf "Welcome to a notebook terminal\n"
+printf "==============================\n"
+printf "\n"
+printf "Notes about this terminal:\n"
+printf " * Runs separately from kernels so packages installed from here will most likely not be available at cell execution.\n"
+printf " * Shares /home/jupyter with the notebooks so files created in /home/jupyter will show in the file hierarchy.\n"
+printf "\n"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -21,7 +22,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
 
-alias ec='emacsclient --tty --create-frame --alternate-editor=""'
+[ ! -f $HOME/.bash_functions/bash-prompt.sh ] || . $HOME/.bash_functions/bash-prompt.sh
+[ ! -f $HOME/.git-prompt.sh ] || . $HOME/.git-prompt.sh
+export PATH="$PATH:$HOME/.local/bin"
