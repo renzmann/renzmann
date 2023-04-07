@@ -16,8 +16,6 @@ _install_nvim() {
 				&& mv nvim.appimage "$HOME/.local/bin/nvim"
 			;;
 	esac
-
-	nvim-packersync
 }
 
 _install_nvim "$@"
