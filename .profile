@@ -6,8 +6,8 @@ export PATH="$PATH:$GOPATH/bin"
 [ -d "$HOME/.cargo" ] && source "$HOME/.cargo/env"
 
 if [ -d "$HOME/.coursier" ]; then
-	export PATH="$HOME/.coursier:$PATH"
-	export PATH="$HOME/.local/share/coursier/bin:$PATH"
+    export PATH="$HOME/.coursier:$PATH"
+    export PATH="$HOME/.local/share/coursier/bin:$PATH"
 fi
 
 [ -d "$HOME/Applications/kitty.app" ] && export PATH="$PATH:$HOME/Applications/kitty.app/Contents/MacOS/"
@@ -21,15 +21,15 @@ fi
 export PATH="$PATH:$HOME/.emacs.d/bin"
 
 case $- in
-  *i*)
-    # Interactive session. Try switching to bash.
-    if [ -z "$BASH" ]; then # do nothing if running under bash already
-      bash=$(command -v bash)
-      if [ -x "$bash" ]; then
-        export SHELL="$bash"
-        exec "$bash"
-      fi
-    fi
+    *i*)
+        # Interactive session. Try switching to bash.
+        if [ -z "$BASH" ]; then # do nothing if running under bash already
+            bash=$(command -v bash)
+            if [ -x "$bash" ]; then
+                export SHELL="$bash"
+                exec "$bash"
+            fi
+        fi
 esac
 
 alias ec='emacsclient -nw -a vim'
@@ -42,10 +42,6 @@ case "$TERM" in
         alias more='cat'
         export PAGER=cat
         export EDITOR=ec
-        ;;
-    eat-truecolor)
-        # Most programs don't know how to handle "eat-truecolor"
-        export TERM=xterm-256color
         ;;
     *)
         alias m='more'
