@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 _install_nvim() {
-	local version=${1:-"0.7.2"}
+	local version=${1:-"0.9.0"}
 	local download_url="https://github.com/neovim/neovim/releases/download/v${version}"
 
 	case $OSTYPE in

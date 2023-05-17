@@ -23,6 +23,28 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-[ ! -f $HOME/.bash_functions/bash-prompt.sh ] || . $HOME/.bash_functions/bash-prompt.sh
-[ ! -f $HOME/.git-prompt.sh ] || . $HOME/.git-prompt.sh
 export PATH="$PATH:$HOME/.local/bin"
+source $HOME/fancy-prompt.sh
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE="/home/jupyter/.local/bin/micromamba";
+export MAMBA_ROOT_PREFIX="/home/jupyter/micromamba";
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    if [ -f "/home/jupyter/micromamba/etc/profile.d/micromamba.sh" ]; then
+        . "/home/jupyter/micromamba/etc/profile.d/micromamba.sh"
+    else
+        export  PATH="/home/jupyter/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
+    fi
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+
+conda activate keelback
