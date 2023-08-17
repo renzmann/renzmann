@@ -33,6 +33,7 @@ case $- in
 esac
 
 alias ec='emacsclient -nw -a vim'
+alias cdtop='cd $(git rev-parse --show-toplevel)'
 
 case "$TERM" in
     dumb|emacs*|eterm*)
