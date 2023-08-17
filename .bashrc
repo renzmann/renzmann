@@ -86,6 +86,7 @@ case "$TERM" in
     # remember why I needed to get POSIX-compliant function names,
     # so if it comes back up be sure to write down a reminder
     # [[ -f ~/.fzf.bash ]] && source ~/.fzf-mine.sh
+    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
     ;;
 esac
 
@@ -101,9 +102,6 @@ fi
 
 # For info files
 export INFOPATH="/usr/local/share/info:/usr/share/info/emacs:/usr/share/info"
-
-# If we need the conda --init stuff, put it over in .conda_profile
-[ -f $HOME/.conda_profile ] &&  source "$HOME/.conda_profile"
 
 # vterm shell-side configuration
 # https://github.com/akermu/emacs-libvterm#shell-side-configuration
@@ -124,6 +122,9 @@ _ca() {
         awk '/name:/ { print $2 }' environment.yml
 }
 alias ca='conda activate $(_ca)'
+alias mm='micromamba'
+alias mmd='micromamba deactivate'
+alias mma='micromamba activate'
 
 # Late machine-specific specs
 [ -f "$HOME/.locals" ] && source "$HOME/.locals"
