@@ -5,7 +5,7 @@ _trunc() {
 }
 
 _venv() {
-    [[ ! -z $VIRTUAL_ENV ]] && echo '('$(basename $VIRTUAL_ENV)') '
+    [[ ! -z $VIRTUAL_ENV ]] && [[ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ]] && echo '('$(basename $VIRTUAL_ENV)') '
 }
 
 _conda() {
