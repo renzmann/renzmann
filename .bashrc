@@ -126,5 +126,31 @@ alias mm='micromamba'
 alias mmd='micromamba deactivate'
 alias mma='micromamba activate'
 
+# Gcloud aliases
+alias glogin='gcloud auth application-default login && gcloud auth login'
+
+enable-proxy(){
+    echo -n "Proxy host: "
+    read proxyhost
+    echo -n "Proxy port: "
+    read proxyport
+    echo -n "Proxy user ID: "
+    read myuser
+    echo -n "Enter your password: "
+    read -s mypass
+    pass_enc=$(python3 -c "from urllib.parse import quote; print(quote('$mypass'))")
+    export HTTP_PROXY='http://'$myuser':'$pass_enc'@'$proxyhost':'$proxyport'/'
+    export HTTPS_PROXY="$HTTP_PROXY"
+    export http_proxy="$HTTP_PROXY"
+    export https_proxy="$HTTPS_PROXY"
+}
+
+disable-proxy(){
+    unset HTTP_PROXY
+    unset http_proxy
+    unset HTTPS_PROXY
+    unset https_proxy
+}
+
 # Late machine-specific specs
 [ -f "$HOME/.locals" ] && source "$HOME/.locals"
