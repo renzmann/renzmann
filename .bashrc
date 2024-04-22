@@ -22,13 +22,10 @@
 # Suppress the warning about zsh on mac
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-[[ -f /etc/bashrc ]] && . /etc/bashrc
+[ -r /etc/bashrc ] && . /etc/bashrc
 
 # Things that need to be "sourced" instead of loaded on-demand
-[[ -f $HOME/.git-prompt.sh ]] && . $HOME/.git-prompt.sh
-# GIT_PS1_SHOWDIRTYSTATE="yes"
-# GIT_PS1_SHOWUPSTREAM="auto"
-# GIT_PS1_SHOWCOLORHINTS="yes"
+[ -r $HOME/.git-prompt.sh ] && . $HOME/.git-prompt.sh
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -36,19 +33,13 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# FIXME: these cause a big login time performance hit - any way to lazy-load them on demand?
-# nvm setup bits
-export NVM_DIR="$HOME/.nvm"
-# [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"  # This loads nvm
-# [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Emacs `eat` integration
-# [[ -n "$EAT_SHELL_INTEGRATION_DIR" ]] && source "$EAT_SHELL_INTEGRATION_DIR/bash"
-
 # Late machine-specific specs
-[ -f "$HOME/.locals" ] && source "$HOME/.locals"
+[ -r "$HOME/.locals" ] && . "$HOME/.locals"
 
 # Prompt customization
 PS1='\n┌─ \d [\@] (\s \v: \j jobs)'
 PS1+='\n├─ \u@\h \w $(__git_ps1 "[ᓺ %s]")'
 PS1+='\n└ $ '
+
+# Aliases
+[ -r "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
