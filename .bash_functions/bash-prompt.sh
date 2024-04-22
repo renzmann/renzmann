@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # This script is meant to be `source`d!
 _trunc() {
     $HOME/.local/bin/trunc -n 20 "$(echo ${1} | awk -F '.' '{ print $1 }')"
@@ -60,14 +59,8 @@ _bash_prompt() {
     # local force_color_prompt=yes
 
     case "$TERM" in
-        dumb)
-            local fancy_prompt=no
-            ;;
-        screen|*-color|*-256color|*-kitty|*alacritty*)
-            local fancy_prompt=yes
-            ;;
-        *)
-            ;;
+        screen|*-color|*-truecolor|*-256color|*-kitty|*alacritty*) local fancy_prompt=yes ;;
+        *) local fancy_prompt=no ;;
     esac
 
     if [[ -n "$force_color_prompt" ]]; then
@@ -83,25 +76,20 @@ _bash_prompt() {
 
     if [[ "$fancy_prompt" = yes ]]; then
         PS1=${conn_color}'\n┌─ '${COLOR_RESET}
-    else
-        PS1=''
-    fi
-
-    # We want $VIRTUAL_ENV and $CONDA_PREFIX checked on each prompt
-    # refresh, so these components are implemented as function calls,
-    # and the PS1 variable just holds a reference to be evaulated
-    # later
-    PS1+='$(_venv)'
-    PS1+=${GREEN}'$(_conda)'${COLOR_RESET}
-    PS1+=${deb_part}
-    PS1+=${user_part}${user_sep}${host_part}
-    PS1+=${dir_sep}${dir_part}
-    PS1+=' '${git_part}
-
-    if [[ "$fancy_prompt" = yes ]]; then
+        # We want $VIRTUAL_ENV and $CONDA_PREFIX checked on each prompt
+        # refresh, so these components are implemented as function calls,
+        # and the PS1 variable just holds a reference to be evaulated
+        # later
+        PS1+='$(_venv)'
+        PS1+=${GREEN}'$(_conda)'${COLOR_RESET}
+        PS1+=${deb_part}
+        PS1+=${user_part}${user_sep}${host_part}
+        PS1+=${dir_sep}${dir_part}
+        PS1+=' '${git_part}
         PS1+=${prompt_part}
     else
-        PS1+='\n> '
+        # Shell-version User@host [xx:yy am/pm] $ ...
+        PS1='\s-\v \u@\H [\@]\n$ '
     fi
 }
 
