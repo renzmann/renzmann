@@ -4,7 +4,7 @@ export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:
 [ -z $GOPATH ] && export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
-[ -d "$HOME/.cargo" ] && source "$HOME/.cargo/env"
+[ -d "$HOME/.cargo" ] && . "$HOME/.cargo/env"
 
 if [ -d "$HOME/.coursier" ]; then
     export PATH="$HOME/.coursier:$PATH"
