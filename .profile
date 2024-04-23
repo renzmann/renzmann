@@ -1,4 +1,3 @@
-export SSL_CERT_DIR=/etc/ssl/certs
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 [ -z $GOPATH ] && export GOPATH="$HOME/go"
@@ -83,3 +82,6 @@ export INFOPATH="/usr/local/share/info:/usr/share/info/emacs:/usr/share/info"
 
 # .bash_functions/bash-profile.sh sets the correct VIRTUAL_ENV position
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# Machine-specific sources
+[ -r $HOME/.locals ] && . "$HOME/.locals"
