@@ -19,6 +19,8 @@
 # in turn will make sure to grab any of the more common
 # configurations, like $PATH, from the more general .profile
 
+[ -r $HOME/.profile ] && . $HOME/.profile
+
 # Suppress the warning about zsh on mac
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -36,10 +38,46 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Late machine-specific specs
 [ -r "$HOME/.locals" ] && . "$HOME/.locals"
 
+# Easier to read color codes
+# BLACK         "\[\033[0;30m\]"
+# DARK_GRAY     "\[\033[1;30m\]"
+#
+# RED           "\[\033[0;31m\]"
+# BOLD_RED      "\[\033[1;31m\]"
+#
+# GREEN         "\[\033[0;32m\]"
+# BOLD_GREEN    "\[\033[1;32m\]"
+#
+# YELLOW        "\[\033[0;33m\]"
+# BOLD_YELLOW   "\[\033[1;33m\]"
+#
+# BLUE          "\[\033[0;34m\]"
+# BOLD_BLUE     "\[\033[1;34m\]"
+#
+# MAGENTA       "\[\033[0;35m\]"
+# BOLD_MAGENTA  "\[\033[1;35m\]"
+#
+# CYAN          "\[\033[0;36m\]"
+# BOLD_CYAN     "\[\033[1;36m\]"
+#
+# LIGHT_GRAY    "\[\033[0;37m\]"
+# WHITE         "\[\033[1;37m\]"
+#
+# COLOR_RESET   "\[\033[00m\]"
+
+
 # Prompt customization
-PS1='\n┌─ \d [\@] (\s \v: \j jobs)'
-PS1+='\n├─ \u@\h \w $(__git_ps1 "[ᓺ %s]")'
-PS1+='\n└ $ '
+case $TERM in
+    *color*)
+         PS1='\n┌─ '"\[\033[1;37m\]"'\d [\@] (\s \v: \j jobs)'"\[\033[00m\]"
+        PS1+='\n├─ '"\[\033[1;32m\]"'\u@\h'"\[\033[00m\]"' '"\[\033[1;34m\]"'\w'"\[\033[00m\]"' '"\[\033[1;35m\]"'$(__git_ps1 "[ᓺ %s]")'"\[\033[00m\]"
+        PS1+='\n└ $ '
+        ;;
+    *)
+         PS1='\n┌─ \d [\@] (\s \v: \j jobs)'
+        PS1+='\n├─ \u@\h \w $(__git_ps1 "[ᓺ %s]")'
+        PS1+='\n└ $ '
+esac
 
 # Aliases
 [ -r "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
