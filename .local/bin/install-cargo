@@ -1,5 +1,2 @@
 #!/usr/bin/env bash
-_install-cargo() {
-	curl https://sh.rustup.rs -sSf | sh
-}
-_install-cargo $@
+curl https://sh.rustup.rs -sSf | sh
