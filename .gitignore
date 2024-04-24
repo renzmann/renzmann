@@ -38,6 +38,7 @@
 !.local/bin/pywhere
 !.local/bin/sqlfmt
 !.local/bin/trunc
+!.local/bin/urlencode
 !.local/bin/yn-prompt
 !.profile
 !.screenrc
