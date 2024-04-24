@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-_nvim-packagesync() {
-	"$HOME/.local/bin/nvim" --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-}
-_nvim-packagesync $@

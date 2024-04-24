@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-_install-golang() {
-	cd $HOME
-	curl -sSLO https://go.dev/dl/go1.18.1.linux-amd64.tar.gz
-	tar -xzvf go1.18.1.linux-amd64.tar.gz
-}
-_install-golang $@
