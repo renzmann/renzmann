@@ -14,9 +14,9 @@ git checkout --force main
 Then I install editor configs as needed.
 
 ```sh
-git clone git@github.com:renzmann/.emacs.d --depth 1
-git clone git@github.com:renzmann/config-nvim ~/.config/nvim --depth 1
-git clone git@github.com:renzmann/.vim --depth 1
+git clone git@github.com:renzmann/.emacs.d ~/.emacs.d
+git clone git@github.com:renzmann/config-nvim ~/.config/nvim
+git clone git@github.com:renzmann/.vim ~/.vim
 ```
 
 Each of these is their own repo ready to be cloned into their canonical
