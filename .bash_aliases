@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-alias ec='emacsclient -a nano'
+alias ec='emacsclient -n -a nano'
 alias cdtop='cd $(git rev-parse --show-toplevel)'
 
 # enable color support of ls and also add handy aliases
