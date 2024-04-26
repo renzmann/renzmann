@@ -1,3 +1,5 @@
+export HISTFILESIZE=100000
+export HISTSIZE=100000
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 [ -z $GOPATH ] && export GOPATH="$HOME/go"
@@ -42,12 +44,12 @@ case "$TERM" in
         alias less='cat'
         alias more='cat'
         export PAGER=cat
-        export EDITOR=ec
+        command -v emacsclient &>/dev/null && export EDITOR=ec || export EDITOR=vi
         ;;
     *)
         alias m='more'
         alias l='less'
-        export EDITOR=vim
+        command -v emacsclient &>/dev/null && export EDITOR=ec || export EDITOR=vi
         ;;
 esac
 

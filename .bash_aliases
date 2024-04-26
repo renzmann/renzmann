@@ -1,5 +1,5 @@
-
-alias ec='emacsclient -a nano'
+#!/usr/bin/env sh
+alias ec='emacsclient -n -a nano'
 alias cdtop='cd $(git rev-parse --show-toplevel)'
 
 # enable color support of ls and also add handy aliases
@@ -34,6 +34,7 @@ alias mma='micromamba activate'
 
 # Gcloud aliases
 alias glogin='gcloud auth login --update-adc'
+alias gs='gcloud storage'
 
 # Alias batcat if we must
 command -v batcat &> /dev/null && alias bat="batcat"
