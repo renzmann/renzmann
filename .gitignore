@@ -48,7 +48,6 @@
 !.vim/**
 !Microsoft.PowerShell_profile.ps1
 !bootstrap.sh
-!install.ps1
 *.netrwhist
 *.swp
 .bash_functions/*.swp
