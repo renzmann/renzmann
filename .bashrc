@@ -81,3 +81,6 @@ esac
 
 # Aliases
 [ -r "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
+
+# Bash integrations
+command -v direnv &>/dev/null && eval "$(direnv hook bash)"
