@@ -55,6 +55,26 @@ esac
 
 [ -d "/usr/local/opt/llvm@12/" ] && export LLVM_SYS_120_PREFIX="/usr/local/opt/llvm@12"
 
+urlencode() {
+    old_lc_collate=$LC_COLLATE
+    LC_COLLATE=C
+
+    local length="${#1}"
+    for (( i = 0; i < length; i++ )); do
+        local c="${1:$i:1}"
+        case $c in
+            [a-zA-Z0-9.~_-]) printf '%s' "$c" ;;
+            *) printf '%%%02X' "'$c" ;;
+        esac
+    done
+
+    LC_COLLATE=$old_lc_collate
+}
+
+urldecode() {
+    local url_encoded="${1//+/ }"
+    printf '%b' "${url_encoded//%/\\x}"
+}
 
 enable-proxy(){
     echo -n "Proxy host: "
@@ -65,8 +85,7 @@ enable-proxy(){
     read myuser
     echo -n "Enter your password: "
     read -s mypass
-    pass_enc=$(python3 -c "from urllib.parse import quote; print(quote('$mypass'))")
-    export HTTP_PROXY='http://'$myuser':'$pass_enc'@'$proxyhost':'$proxyport'/'
+    export HTTP_PROXY='http://'$myuser':'$(urlencode ${mypass})'@'$proxyhost':'$proxyport'/'
     export HTTPS_PROXY="$HTTP_PROXY"
     export http_proxy="$HTTP_PROXY"
     export https_proxy="$HTTPS_PROXY"
