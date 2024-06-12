@@ -77,14 +77,24 @@ urldecode() {
 }
 
 enable-proxy(){
-    echo -n "Proxy host: "
-    read proxyhost
-    echo -n "Proxy port: "
-    read proxyport
-    echo -n "Proxy user ID: "
-    read myuser
-    echo -n "Enter your password: "
-    read -s mypass
+    local proxyhost
+    local proxyport
+    local myuser
+
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -h) shift; proxyhost="${1}" ;;
+            -p) shift; proxyport="${1}" ;;
+            -u) shift; myuser="${1}" ;;
+        esac
+        shift
+    done
+
+    [ -z $proxyhost ] && read -p "Proxy host: " proxyhost
+    [ -z $proxyport ] && read -p "Proxy port: " proxyport
+    [ -z $myuser ] && read -p "Proxy user ID: " myuser
+    read -s -p "Enter your password: " mypass
+
     export HTTP_PROXY='http://'$myuser':'$(urlencode ${mypass})'@'$proxyhost':'$proxyport'/'
     export HTTPS_PROXY="$HTTP_PROXY"
     export http_proxy="$HTTP_PROXY"
