@@ -3,7 +3,7 @@ export HISTSIZE=100000
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
 [ -z $GOPATH ] && export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
+export PATH="$GOPATH/bin:$PATH"
 
 [ -d "$HOME/.cargo" ] && . "$HOME/.cargo/env"
 
