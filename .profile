@@ -1,10 +1,10 @@
 export HISTFILESIZE=100000
 export HISTSIZE=100000
-export PATH="$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
-
+export PATH="$HOME/.local/bin:/usr/local/go/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 [ -z $GOPATH ] && export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
+[ -d "/opt/homebrew/bin" ] && export PATH="/opt/homebrew/bin:$PATH"
 [ -d "$HOME/.cargo" ] && . "$HOME/.cargo/env"
 
 if [ -d "$HOME/.coursier" ]; then
@@ -20,9 +20,17 @@ fi
 [ -d "$HOME/.emacs.d/bin" ] && export PATH="$PATH:$HOME/.emacs.d/bin"
 
 if [[ "$OSTYPE" =~ darwin ]]; then
-    for x in $(echo "$HOME/Library/Python/*/bin"); do
+    for x in $HOME/Library/Frameworks/Python/*/bin
+    do
         export PATH="${PATH}:${x}"
     done
+    for x in /Library/Frameworks/Python.framework/Versions/*/bin
+    do
+        export PATH="${PATH}:${x}"
+    done
+    if [ -f "$HOME/.local/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/.local/google-cloud-sdk/path.bash.inc"; fi
+    if [ -f "$HOME/.local/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/.local/google-cloud-sdk/completion.bash.inc"; fi
+    if [ -f "/System/Volumes/Data/opt/homebrew/etc/ca-certificates/cert.pem" ]; then export NODE_EXTRA_CA_CERTS=/System/Volumes/Data/opt/homebrew/etc/ca-certificates/cert.pem; fi
 fi
 
 case $- in
@@ -106,6 +114,11 @@ disable-proxy(){
     unset http_proxy
     unset HTTPS_PROXY
     unset https_proxy
+}
+
+stop-garbage(){
+    # https://apple.stackexchange.com/a/446877
+    printf '\e[?2004l'
 }
 
 # For info files
