@@ -14,6 +14,7 @@ fi
 
 [ -d "$HOME/Applications/kitty.app" ] && export PATH="$PATH:$HOME/Applications/kitty.app/Contents/MacOS/"
 [ -d "$HOME/Applications/Emacs.app" ] && export PATH="$PATH:$HOME/Applications/Emacs.app/Contents/MacOS/bin"
+[ -d "/Applications/Emacs.app" ] && export PATH="$PATH:/Applications/Emacs.app/Contents/MacOS/bin"
 [ -d "$HOME/Applications/CMake.app" ] && export PATH="$PATH:$HOME/Applications/CMake.app/Contents/bin"
 [ -d "$HOME/Library/Application Support/Coursier" ] && export PATH=$PATH:"$HOME/Library/Application Support/Coursier/bin"
 [ -d "$HOME/.jabba" ] && source "$HOME/.jabba/jabba.sh"
