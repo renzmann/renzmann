@@ -123,7 +123,7 @@ stop-garbage(){
 }
 
 # For info files
-export INFOPATH="/usr/local/share/info:/usr/share/info/emacs:/usr/share/info"
+# export INFOPATH="/usr/local/share/info:/usr/share/info/emacs:/usr/share/info"
 
 # .bash_functions/bash-profile.sh sets the correct VIRTUAL_ENV position
 export VIRTUAL_ENV_DISABLE_PROMPT=1

@@ -14,7 +14,7 @@ git checkout --force main
 Then I install editor configs as needed.
 
 ```sh
-git clone git@github.com:renzmann/.emacs.d ~/.emacs.d
+git clone --recurse-submodules git@github.com:renzmann/.emacs.d ~/.emacs.d
 git clone git@github.com:renzmann/config-nvim ~/.config/nvim
 git clone git@github.com:renzmann/.vim ~/.vim
 ```
