@@ -69,13 +69,13 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Prompt customization
 case $TERM in
     *color*)
-         PS1='\n┌─ '"\[\033[1;37m\]"'\d [\@] (\s \v: \j jobs)'"\[\033[00m\]"
+        PS1='\n┌─ '"\[\033[1;37m\]"'\d [\@] (\s \v: \j jobs)'"\[\033[00m\]"
         PS1+='\n├─ '"\[\033[1;32m\]"'\u@\h'"\[\033[00m\]"' '"\[\033[1;34m\]"'\w'"\[\033[00m\]"' '"\[\033[1;35m\]"'$(__git_ps1 "[ᓺ %s]")'"\[\033[00m\]"
         PS1+='\n└ $ '
         ;;
     *)
-         PS1='\n┌─ \d [\@] (\s \v: \j jobs)'
-        PS1+='\n├─ \u@\h \w $(__git_ps1 "[ᓺ %s]")'
+        PS1='\n┌─ \d [\@] (\s \v: \j jobs)'
+        PS1+='\n├─ \u@\h \w $(__git_ps1 "[枝 %s]")'
         PS1+='\n└ $ '
 esac
 
