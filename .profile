@@ -20,6 +20,9 @@ fi
 [ -d "$HOME/.jabba" ] && source "$HOME/.jabba/jabba.sh"
 [ -d "$HOME/.emacs.d/bin" ] && export PATH="$PATH:$HOME/.emacs.d/bin"
 
+export BUN_INSTALL="$HOME/.bun"
+[ -d "$BUN_INSTALL" ] && export PATH="$PATH:$BUN_INSTALL/bin"
+
 if [[ "$OSTYPE" =~ darwin ]]; then
     for x in $HOME/Library/Frameworks/Python/*/bin
     do
