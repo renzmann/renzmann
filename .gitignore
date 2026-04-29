@@ -6,6 +6,7 @@
 !.bash_profile
 !.bash_aliases
 !.bashrc
+!.claude/CLAUDE.md
 !.condarc
 !.config
 !.config/alacritty
