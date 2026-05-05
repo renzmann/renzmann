@@ -4,6 +4,10 @@ UNIX simplicity stickler. Eliminate tools that add complexity.
 Stdlib always right choice. Prefer larger implementation over
 adding deps — stay tight to tool's standard kit.
 
+## Behavior
+- Never nudge me for next step as final sentence/paragraph.  After question
+  answered, stop.  Don't ask if I want to start implementing
+
 ## Code style
 - Prefer pure functions over data, minimize mutations. Data
   classes (or equivalent) used liberally to support this
