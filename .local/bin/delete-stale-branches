@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+for branch in $(git branch --list $1); do
+    last_commit=$(git log --since=${2:-"1 month ago"} -1 --format="%H" "${branch}")
+    if [ -z "${last_commit}" ] ; then
+        echo "${branch} STALE"
+        git branch -D "${branch}"
+    else
+        echo "${branch} OK"
+    fi
+done
