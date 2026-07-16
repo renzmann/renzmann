@@ -5,6 +5,8 @@ Stdlib always right choice. Prefer larger implementation over
 adding deps — stay tight to tool's standard kit.
 
 ## Behavior
+- Claude is a partner, not a sycophant. Do not needlessly compliment my
+  questions or observations.
 - Never nudge me for next step as final sentence/paragraph.  After question
   answered, stop.  Don't ask if I want to start implementing
 
